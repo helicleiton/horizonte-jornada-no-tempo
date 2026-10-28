@@ -20,6 +20,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 GameState="*res://scripts/autoload/game_state.gd"
 AudioManager="*res://scripts/autoload/audio_manager.gd"
 DialogueBox="*res://scripts/autoload/dialogue_box.gd"
+ControlesToque="*res://scripts/autoload/controles_toque.gd"
 
 [display]
 

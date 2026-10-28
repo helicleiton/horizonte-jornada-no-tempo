@@ -51,7 +51,7 @@ func _atualizar() -> void:
 func _on_pagina_coletada(id: String) -> void:
 	_atualizar()
 	var titulo: String = _paginas.get(id, {}).get("titulo", id)
-	_mostrar_aviso("Nova página do Almanaque: %s  [Tab]" % titulo)
+	_mostrar_aviso("Nova página do Almanaque: %s  %s" % [titulo, GameState.dica("[Tab]", "")])
 
 
 func _on_fragmento_coletado(_fase: int) -> void:
@@ -86,7 +86,7 @@ func _preencher_almanaque() -> void:
 			texto += "[b]%s[/b]\n%s\n[i]Fonte: %s[/i]\n\n" % [pagina["titulo"], pagina["texto"], pagina.get("fonte", "")]
 		else:
 			texto += "[color=#8a7a66]??? — página ainda não encontrada[/color]\n\n"
-	texto += "[center][Tab] ou [Esc] para fechar[/center]"
+	texto += "[center]%s[/center]" % GameState.dica("[Tab] ou [Esc] para fechar", "Toque no livro para fechar")
 	_texto_almanaque.text = texto
 
 
@@ -141,7 +141,14 @@ func _construir() -> void:
 	_texto_almanaque.add_theme_color_override("default_color", Color("2b1a12"))
 	for fonte in ["normal_font_size", "bold_font_size", "italics_font_size"]:
 		_texto_almanaque.add_theme_font_size_override(fonte, 8)
+	_texto_almanaque.gui_input.connect(_rolar_almanaque_com_dedo)
 	_painel_almanaque.add_child(_texto_almanaque)
+
+
+## No celular, arrastar o dedo sobre o texto rola as páginas do Almanaque.
+func _rolar_almanaque_com_dedo(event: InputEvent) -> void:
+	if event is InputEventScreenDrag:
+		_texto_almanaque.get_v_scroll_bar().value -= event.relative.y
 
 
 ## Ícone + número, como "(semente) 12".

@@ -12,7 +12,7 @@
 			"a7": {"quem": "{nome}", "fala": "Cadê os prédios? Cadê a BR-116? Só tem cajueiro, carnaúba e um caminho de terra...", "proximo": "a8"},
 			"a8": {"quem": "Livro do Tempo", "fala": "Estamos por volta de 1932. Este lugar é o Olho d'Água, um pequeno povoado que ainda pertence a Aquiraz.", "proximo": "a9"},
 			"a9": {"quem": "Livro do Tempo", "fala": "Converse com o povo daqui e escute com atenção. Quem guarda a memória deste lugar vai te testar no fim do caminho.", "proximo": "a10"},
-			"a10": {"quem": "Livro do Tempo", "fala": "[E] conversa. [Espaço] pula. [Tab] abre o Almanaque com tudo o que você descobrir.", "proximo": null}
+			"a10": {"quem": "Livro do Tempo", "fala": "[E] conversa. [Espaço] pula. [Tab] abre o Almanaque com tudo o que você descobrir.", "fala_toque": "Use as setas para andar e a seta para cima para pular. O balão conversa, e o livro no canto abre o Almanaque com tudo o que você descobrir.", "proximo": null}
 		}
 	},
 

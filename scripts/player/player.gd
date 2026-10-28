@@ -181,6 +181,17 @@ func _atualizar_passos(delta: float) -> void:
 
 
 func _interagir() -> void:
+	var alvo := _alvo_interacao()
+	if alvo:
+		alvo.interagir(self)
+
+
+## Usado pelos controles de toque para acender o botão de conversar.
+func pode_interagir() -> bool:
+	return estado == Estado.NORMAL and _alvo_interacao() != null
+
+
+func _alvo_interacao() -> Node2D:
 	var alvo: Node2D = null
 	var menor_distancia := INF
 	for area in _area_interacao.get_overlapping_areas():
@@ -190,8 +201,7 @@ func _interagir() -> void:
 		if distancia < menor_distancia:
 			menor_distancia = distancia
 			alvo = area
-	if alvo:
-		alvo.interagir(self)
+	return alvo
 
 
 # --- API usada por inimigos, fases e pela caixa de diálogo --------------------

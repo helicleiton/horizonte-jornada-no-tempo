@@ -74,10 +74,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("interagir") or event.is_action_pressed("pular"):
 		get_viewport().set_input_as_handled()
-		if _digitando:
-			_terminar_fala()
-		elif _opcoes.get_child_count() == 0:
-			_ir_para(_no_atual.get("proximo"))
+		_avancar()
+
+
+## Tocar (ou clicar) na caixa de texto também avança: é assim que se joga no celular.
+func _on_painel_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_painel.accept_event()
+		_avancar()
+
+
+func _avancar() -> void:
+	if _digitando:
+		_terminar_fala()
+	elif _opcoes.get_child_count() == 0:
+		_ir_para(_no_atual.get("proximo"))
 
 
 func _escolher_inicio() -> String:
@@ -110,7 +121,10 @@ func _ir_para(chave: Variant) -> void:
 	_no_atual = nos[chave]
 	_aplicar_efeitos(_no_atual)
 	_nome.text = _formatar(_no_atual.get("quem", _dados.get("nome", "")))
-	_texto.text = _formatar(_no_atual.get("fala", ""))
+	var fala: String = _no_atual.get("fala", "")
+	if GameState.toque:
+		fala = _no_atual.get("fala_toque", fala)
+	_texto.text = _formatar(fala)
 	_texto.visible_characters = 0
 	_caracteres = 0.0
 	_ultimo_blip = 0
@@ -212,10 +226,14 @@ func _construir_interface() -> void:
 	estilo.set_border_width_all(1)
 	estilo.set_content_margin_all(5)
 	_painel.add_theme_stylebox_override("panel", estilo)
+	_painel.mouse_filter = Control.MOUSE_FILTER_STOP
+	_painel.gui_input.connect(_on_painel_gui_input)
 	add_child(_painel)
 
+	# Textos deixam o toque passar para o painel; só os botões de opção o seguram.
 	var coluna := VBoxContainer.new()
 	coluna.add_theme_constant_override("separation", 2)
+	coluna.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_painel.add_child(coluna)
 
 	_nome = Label.new()
@@ -228,11 +246,13 @@ func _construir_interface() -> void:
 	_texto.fit_content = true
 	_texto.scroll_active = false
 	_texto.custom_minimum_size = Vector2(0, 22)
+	_texto.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_texto.add_theme_font_size_override("normal_font_size", 8)
 	coluna.add_child(_texto)
 
 	_opcoes = VBoxContainer.new()
 	_opcoes.add_theme_constant_override("separation", 1)
+	_opcoes.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	coluna.add_child(_opcoes)
 
 	_continuar = Label.new()

@@ -665,6 +665,48 @@ def livro():
     return contorno(margem(img, 1))
 
 
+def botao_toque(icone, apertado=False, tamanho=26):
+    """Botão redondo dos controles de toque (celular): couro escuro e borda dourada."""
+    img = Image.new("RGBA", (tamanho, tamanho), CLARO)
+    d = ImageDraw.Draw(img)
+    fundo = c(92, 58, 36, 230) if apertado else c(43, 26, 18, 170)
+    borda = c(255, 214, 120) if apertado else c(232, 176, 74)
+    d.ellipse([0, 0, tamanho - 1, tamanho - 1], fill=fundo, outline=borda)
+    d.ellipse([1, 1, tamanho - 2, tamanho - 2], outline=sh(borda, 0.6))
+    claro = c(255, 240, 200)
+    m = tamanho // 2
+    if icone == "esquerda":
+        d.polygon([(m - 6, m), (m + 4, m - 7), (m + 4, m + 7)], fill=claro)
+    elif icone == "direita":
+        d.polygon([(m + 6, m), (m - 4, m - 7), (m - 4, m + 7)], fill=claro)
+    elif icone == "pular":
+        d.polygon([(m, m - 7), (m - 7, m + 1), (m + 7, m + 1)], fill=claro)
+        d.rectangle([m - 3, m + 1, m + 3, m + 6], fill=claro)
+    elif icone == "falar":
+        d.rounded_rectangle([m - 8, m - 6, m + 8, m + 4], 3, fill=claro)
+        d.polygon([(m - 4, m + 3), (m - 6, m + 8), (m + 1, m + 3)], fill=claro)
+        for x in (m - 4, m, m + 4):
+            d.rectangle([x - 1, m - 2, x, m - 1], fill=fundo)
+    elif icone == "almanaque":
+        d.rectangle([m - 8, m - 5, m + 7, m + 5], fill=c(122, 72, 40))
+        d.rectangle([m - 7, m - 4, m + 6, m + 3], fill=c(244, 228, 184))
+        d.line([(m - 1, m - 5), (m - 1, m + 4)], fill=c(180, 140, 90))
+        d.ellipse([m - 3, m - 9, m + 1, m - 5], fill=c(120, 210, 255))
+    elif icone == "tela_cheia":
+        for sx, sy in ((-1, -1), (1, -1), (-1, 1), (1, 1)):
+            x, y = m + sx * 6, m + sy * 6
+            d.line([(x, y), (x - sx * 4, y)], fill=claro, width=2)
+            d.line([(x, y), (x, y - sy * 4)], fill=claro, width=2)
+    return img
+
+
+def botoes_toque():
+    for icone, tamanho in (("esquerda", 30), ("direita", 30), ("pular", 30), ("falar", 26),
+                           ("almanaque", 22), ("tela_cheia", 18)):
+        salvar(botao_toque(icone, False, tamanho), "toque_%s.png" % icone)
+        salvar(botao_toque(icone, True, tamanho), "toque_%s_apertado.png" % icone)
+
+
 # ----------------------------------------------------------------------------
 
 def main():
@@ -701,6 +743,7 @@ def main():
     salvar(hud_semente(), "hud_semente.png")
     salvar(hud_pagina(), "hud_pagina.png")
     salvar(hud_fragmento(), "hud_fragmento.png")
+    botoes_toque()
     print("ok:", len(os.listdir(SAIDA)), "arquivos em", SAIDA)
 
 

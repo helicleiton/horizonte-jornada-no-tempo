@@ -16,6 +16,8 @@ const TOTAL_FRAGMENTOS := 4
 
 ## "Chico" ou "Luzia" — usado nos diálogos através de {nome}.
 var nome_protagonista := "Chico"
+## Celular/tablet: mostra os controles na tela e troca as dicas de teclado.
+var toque := DisplayServer.is_touchscreen_available()
 var sementes := 0
 var cajus := CAJUS_MAX
 var itens := {}
@@ -96,6 +98,11 @@ func set_flag(nome: String, valor := true) -> void:
 
 func get_flag(nome: String) -> bool:
 	return flags.get(nome, false)
+
+
+## Escolhe a dica certa para o aparelho: teclado ou tela de toque.
+func dica(teclado: String, tela: String) -> String:
+	return tela if toque else teclado
 
 
 # --- Controles -----------------------------------------------------------------

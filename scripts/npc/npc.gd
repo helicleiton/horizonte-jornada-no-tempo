@@ -24,7 +24,7 @@ func _ready() -> void:
 			_sprite.flip_h = olhar_esquerda
 			add_child(_sprite)
 	_indicador = Label.new()
-	_indicador.text = "%s [E]" % nome_exibido
+	_indicador.text = GameState.dica("%s [E]", "%s") % nome_exibido
 	_indicador.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_indicador.add_theme_font_size_override("font_size", 8)
 	_indicador.add_theme_color_override("font_outline_color", Color("2b1a12"))
