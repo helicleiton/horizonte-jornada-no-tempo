@@ -6,6 +6,7 @@ const SPR := "res://assets/sprites/"
 const MUSICA := "res://assets/audio/musica/fase1_baiao.ogg"
 const AMBIENTE := "res://assets/audio/ambiente/dia_sertao.ogg"
 const NASCENTE := "res://assets/audio/ambiente/nascente.ogg"
+const ZURRO := "res://assets/audio/sfx/jumento.ogg"
 const CHAO_Y := 160.0
 
 @export var limite_direito := 1500
@@ -163,6 +164,15 @@ func _colocar_cenario() -> void:
 		_prop("cerca", x, CHAO_Y + 1, -4)
 	for x in [20, 160, 580, 820, 960, 1290, 1430]:
 		_prop("arbusto", x, CHAO_Y + 1, -3, x % 2 == 0)
+	# Palma, coroa-de-frade, agave e pedras (pixel art CC0, tools/importar_arte.py)
+	for item in [["palma", 280], ["palma_pequena", 1025], ["palma", 1345]]:
+		_prop(item[0], item[1], CHAO_Y + 1, -5)
+	for item in [["coroa_de_frade", 382], ["coroa_de_frade_pequena", 396], ["coroa_de_frade", 1405]]:
+		_prop(item[0], item[1], CHAO_Y + 1, -4)
+	_prop("agave", 880, CHAO_Y + 1, -5)
+	_prop("pedra", 778, CHAO_Y + 2, -3)
+	_prop("pedra", 1165, CHAO_Y + 2, -3, true)
+	_prop("pedra_grande", 1478, CHAO_Y + 2, -4)
 	# Nascente (o olho d'água do Seu Venâncio)
 	_prop("nascente", 752, CHAO_Y + 4, -2)
 
@@ -172,6 +182,7 @@ func _colocar_cenario() -> void:
 		jumento.flip_h = true
 		jumento.z_index = -1
 		add_child(jumento)
+		_zurrar_de_vez_em_quando(jumento.position)
 
 
 # --- Áudio ----------------------------------------------------------------------------------
@@ -190,3 +201,24 @@ func _iniciar_audio() -> void:
 	agua.volume_db = -4.0
 	add_child(agua)
 	agua.play()
+
+
+## O jumento do Seu Zeca zurra a cada 14–26 s; só se ouve de perto.
+func _zurrar_de_vez_em_quando(posicao: Vector2) -> void:
+	if not ResourceLoader.exists(ZURRO):
+		return
+	var zurro := AudioStreamPlayer2D.new()
+	zurro.stream = load(ZURRO)
+	zurro.position = posicao
+	zurro.max_distance = 300.0
+	zurro.volume_db = -6.0
+	add_child(zurro)
+	var timer := Timer.new()
+	timer.one_shot = true
+	add_child(timer)
+	timer.timeout.connect(func() -> void:
+		if not DialogueBox.ativo:
+			zurro.pitch_scale = randf_range(0.94, 1.04)
+			zurro.play()
+		timer.start(randf_range(14.0, 26.0)))
+	timer.start(randf_range(6.0, 12.0))

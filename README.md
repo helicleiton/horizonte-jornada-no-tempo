@@ -2,7 +2,7 @@
 
 Plataforma 2D educativo em pixel art sobre a história e a cultura de Horizonte (CE). Engine: **Godot 4** (renderer *Compatibility*, para rodar no navegador). Resolução base 320×180, escala inteira.
 
-**Estado atual:** protótipo jogável da **Fase 1** (movimentação, NPCs com diálogo ramificado, coletáveis, HUD, Almanaque, perigos) com **pixel art e áudio originais** (gerados por código, veja `CREDITOS.md`). Fases 2–4 ainda não existem.
+**Estado atual:** protótipo jogável da **Fase 1** (movimentação, NPCs com diálogo ramificado, coletáveis, HUD, Almanaque, perigos) com **pixel art original** (gerada por código, mais plantas do sertão CC0 do OpenGameArt) e **áudio misto**: efeitos sintetizados e gravações reais CC0 do Freesound/Kenney (veja `CREDITOS.md`). Fases 2–4 ainda não existem.
 
 **Jogar online:** https://helicleiton.github.io/horizonte-jornada-no-tempo/
 
@@ -45,7 +45,7 @@ scripts/npc, objetos, ui, levels
 data/dialogos_fase1.json diálogos (editáveis sem tocar no código)
 data/almanaque.json      páginas do Almanaque, com fonte de cada fato
 assets/                  sprites e áudio gerados (não edite à mão: rode as ferramentas)
-tools/                   gerar_sprites.py e gerar_audio.py
+tools/                   gerar_sprites.py, gerar_audio.py, importar_arte.py e importar_sons.py (assets CC0)
 docs/                    roteiro da Fase 1, lista de assets
 tests/                   teste de fumaça
 ```

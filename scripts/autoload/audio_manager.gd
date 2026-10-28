@@ -1,6 +1,7 @@
 extends Node
 ## Efeitos sonoros, música e ambiente (autoload "AudioManager").
-## Os arquivos são gerados por tools/gerar_audio.py em assets/audio/.
+## Os arquivos vêm de tools/gerar_audio.py (sintetizados) e de
+## tools/importar_sons.py (gravações CC0), em assets/audio/.
 
 const EFEITOS := [
 	"pulo", "aterrissa", "passo1", "passo2", "semente", "item", "pagina", "caju", "fragmento",

@@ -6,3 +6,6 @@ build/
 # Obras de terceiros usadas só como referência (não redistribuir)
 *.pdf
 scenes/player/player.tscn
+
+# Downloads de tools/importar_sons.py
+tools/.cache_sons/
