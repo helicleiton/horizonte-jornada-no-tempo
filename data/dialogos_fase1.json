@@ -1,0 +1,158 @@
+{
+	"abertura": {
+		"nome": "Narrador",
+		"inicio": "a1",
+		"nos": {
+			"a1": {"quem": "Narrador", "fala": "Biblioteca Pública de Horizonte, dias de hoje. Tarde quente, ventilador rangendo no teto.", "proximo": "a2"},
+			"a2": {"quem": "{nome}", "fala": "Trabalho de História pra amanhã: “As origens de Horizonte”. E eu sem saber nem por onde começar...", "proximo": "a3"},
+			"a3": {"quem": "{nome}", "fala": "Ué... que livro velho é esse escondido atrás da estante? “Livro do Tempo de Horizonte”?", "proximo": "a4"},
+			"a4": {"quem": "Livro do Tempo", "fala": "Finalmente alguém me encontrou! Minhas páginas se espalharam pelos anos. Sem elas, a memória desta terra se apaga.", "proximo": "a5"},
+			"a5": {"quem": "Livro do Tempo", "fala": "Encontre os Fragmentos de Memória e me restaure. Vamos começar... pelo começo!", "proximo": "a6"},
+			"a6": {"quem": "{nome}", "fala": "Pelo começo? Peraí, que luz é essa?! AAAAH!", "proximo": "a7"},
+			"a7": {"quem": "{nome}", "fala": "Cadê os prédios? Cadê a BR-116? Só tem cajueiro, carnaúba e um caminho de terra...", "proximo": "a8"},
+			"a8": {"quem": "Livro do Tempo", "fala": "Estamos por volta de 1932. Este lugar é o Olho d'Água, um pequeno povoado que ainda pertence a Aquiraz.", "proximo": "a9"},
+			"a9": {"quem": "Livro do Tempo", "fala": "Converse com o povo daqui e escute com atenção. Quem guarda a memória deste lugar vai te testar no fim do caminho.", "proximo": "a10"},
+			"a10": {"quem": "Livro do Tempo", "fala": "[E] conversa. [Espaço] pula. [Tab] abre o Almanaque com tudo o que você descobrir.", "proximo": null}
+		}
+	},
+
+	"tropeiro_zeca": {
+		"nome": "Seu Zeca (tropeiro)",
+		"inicio": "z1",
+		"condicoes": [{"flag": "falou_zeca", "no": "repete"}],
+		"nos": {
+			"z1": {"fala": "Ôxe! Tu caiu do céu, foi? Quase que meu jumento te pisa!", "proximo": "z2"},
+			"z2": {"quem": "{nome}", "fala": "Desculpa! Eu nem sei direito como vim parar aqui.", "proximo": "z3"},
+			"z3": {"fala": "Pois muito prazer: Zeca, tropeiro. Levo carga no lombo dos jumentos daqui até a capital, Fortaleza, e até a serra de Pacoti.", "flag": "falou_zeca", "proximo": "menu"},
+			"menu": {"fala": "Quer saber de alguma coisa? Pergunte, que tropeiro gosta de prosa.", "opcoes": [
+				{"texto": "O que você carrega?", "proximo": "carga1"},
+				{"texto": "Que lugar é este?", "proximo": "lugar1"},
+				{"texto": "Alguém precisa de ajuda por aqui?", "proximo": "ajuda1", "condicao": {"sem_flag": "zeca_deu_sementes"}},
+				{"texto": "Até mais, Seu Zeca!", "proximo": "tchau"}
+			]},
+			"carga1": {"fala": "Rapadura dos engenhos daqui e do Dourado, e farinha das casas de farinha. Tudo em saco, no lombo dos bichos.", "proximo": "carga2"},
+			"carga2": {"fala": "Na volta trago sal, querosene, tecido e ferramenta. E notícia também, que tropeiro é o jornal do sertão!", "recompensa": {"pagina": "tropeiros"}, "proximo": "menu"},
+			"lugar1": {"fala": "Isto aqui é o Olho d'Água. O povo diz Olho d'Água do Venâncio, por causa da nascente que fica nas terras do Seu Venâncio.", "proximo": "lugar2"},
+			"lugar2": {"fala": "Toda tropa que passa para aqui pra beber água e descansar na sombra do cajueiro. Tem quem diga que um dia isso vira cidade grande. Vê se pode!", "proximo": "menu"},
+			"ajuda1": {"fala": "A Dona Mariinha, do roçado ali adiante, tá aperreada. A ventania espalhou as mudas de algodão dela.", "proximo": "ajuda2"},
+			"ajuda2": {"fala": "Tome umas sementes de carnaúba pra viagem. E cuidado com o xique-xique: espinho dele não perdoa!", "flag": "zeca_deu_sementes", "recompensa": {"sementes": 3}, "proximo": "menu"},
+			"tchau": {"fala": "Vá com Deus! E beba água, que o sol daqui é quente que só.", "proximo": null},
+			"repete": {"fala": "Os bichos já beberam água. Daqui a pouco pego a estrada de novo.", "proximo": "menu"}
+		}
+	},
+
+	"agricultora_mariinha": {
+		"nome": "Dona Mariinha (agricultora)",
+		"inicio": "m1",
+		"condicoes": [
+			{"flag": "mudas_entregues", "no": "depois"},
+			{"item": "muda_algodao", "min": 5, "no": "entrega1"},
+			{"flag": "missao_mudas", "no": "lembrete"}
+		],
+		"nos": {
+			"m1": {"fala": "Ai, meu Padim Ciço... minhas mudas de algodão!", "proximo": "m2"},
+			"m2": {"fala": "Choveu, a terra ficou boa de plantar, e aí veio uma ventania danada e espalhou tudo!", "proximo": "menu"},
+			"menu": {"fala": "Será que tu pode me dar uma mão?", "opcoes": [
+				{"texto": "Eu ajudo a procurar!", "proximo": "aceitar1"},
+				{"texto": "Esse roçado é da senhora?", "proximo": "roca1"},
+				{"texto": "O que mais a senhora planta?", "proximo": "planta1"}
+			]},
+			"roca1": {"fala": "Quem dera! A terra é do dono. A gente planta de a meia: entra com o trabalho todinho e, na colheita, metade fica pra ele.", "proximo": "roca2"},
+			"roca2": {"fala": "Se o inverno é bom, dá pra encher o paiol. Se vem a seca, o prejuízo é só de quem plantou.", "recompensa": {"pagina": "roca"}, "proximo": "menu"},
+			"planta1": {"fala": "Feijão, milho e mandioca, que é pra ter o que comer. Inverno, pra nós, é o tempo das chuvas, viu?", "proximo": "planta2"},
+			"planta2": {"fala": "E o algodão, que a pluma vende bem. Tem gente que chama de ouro branco.", "proximo": "menu"},
+			"aceitar1": {"fala": "Deus lhe pague! São cinco mudas. Procure em cima das pedras e dos galhos, que o vento leva longe.", "flag": "missao_mudas", "proximo": null},
+			"lembrete": {"fala": "Achou minhas mudas? São cinco ao todo. O vento levou pra todo lado!", "proximo": null},
+			"entrega1": {"fala": "Olha elas aí! Todas as cinco, inteirinhas!", "flag": "mudas_entregues", "remover_item": {"id": "muda_algodao", "quantidade": 5}, "recompensa": {"sementes": 10, "caju": 1}, "proximo": "entrega2"},
+			"entrega2": {"fala": "Tome um caju, pra dar sustança. Aqui o caju é quem segura a gente: come o caju, assa a castanha.", "proximo": "entrega3"},
+			"entrega3": {"fala": "Agora vá falar com o Seu Venâncio, lá perto do olho d'água. E depois procure a Vó Bastiana, do Alto Alegre. Ela sabe as histórias antigas.", "proximo": null},
+			"depois": {"fala": "As mudas já tão na terra. Agora é pedir a Deus que chova no tempo certo.", "proximo": null}
+		}
+	},
+
+	"seu_venancio": {
+		"nome": "Seu Venâncio",
+		"inicio": "v1",
+		"condicoes": [{"flag": "falou_venancio", "no": "repete"}],
+		"nos": {
+			"v1": {"fala": "Bom dia! Chegue pra sombra. Veio buscar água no olho d'água também?", "proximo": "v2"},
+			"v2": {"quem": "{nome}", "fala": "Olho d'água? É aquele lugar onde a água brota sozinha do chão?", "proximo": "v3"},
+			"v3": {"fala": "Isso mesmo. Não precisa cavar poço nem cacimba: a água vem à tona sozinha, como um olho derramando água. E nunca secou.", "proximo": "v4"},
+			"v4": {"fala": "Como a nascente fica aqui nas minhas terras, o povo passou a chamar o lugar de Olho d'Água do Venâncio.", "flag": "falou_venancio", "recompensa": {"pagina": "olho_dagua"}, "proximo": "menu"},
+			"menu": {"fala": "Pergunte o que quiser.", "opcoes": [
+				{"texto": "Por que a água é tão importante aqui?", "proximo": "agua1"},
+				{"texto": "O que o senhor produz?", "proximo": "prod1", "condicao": {"sem_flag": "venancio_deu_sementes"}},
+				{"texto": "Obrigado, Seu Venâncio!", "proximo": "tchau"}
+			]},
+			"agua1": {"fala": "Onde tem água, tem gente. É por causa das nascentes, dos riachos e do Pacoti que o povo foi ficando por estas bandas.", "proximo": "menu"},
+			"prod1": {"fala": "Tenho engenho: faço rapadura da cana. E também produzo cal. O Zeca tropeiro leva muita coisa daqui pra vender fora.", "recompensa": {"sementes": 5}, "flag": "venancio_deu_sementes", "proximo": "menu"},
+			"tchau": {"fala": "Vá com Deus. E respeite a nascente: água limpa é herança pros que vêm depois.", "proximo": null},
+			"repete": {"fala": "Voltou! A água tá fresquinha hoje.", "proximo": "menu"}
+		}
+	},
+
+	"menino_tonho": {
+		"nome": "Tonho",
+		"inicio": "t1",
+		"condicoes": [{"flag": "falou_tonho", "no": "repete"}],
+		"nos": {
+			"t1": {"fala": "Psiu! Tu não é daqui não, né? Tá com uma roupa esquisita que só!", "proximo": "t2"},
+			"t2": {"quem": "{nome}", "fala": "Sou de longe... bem longe. O que você tá fazendo?", "proximo": "t3"},
+			"t3": {"fala": "Esperando a mãe sair da farinhada. Na farinhada a mandioca vira farinha, e a casa de farinha fica cheia de gente trabalhando junto.", "flag": "falou_tonho", "recompensa": {"sementes": 3}, "proximo": "menu"},
+			"menu": {"fala": "Quer saber de uma novidade?", "opcoes": [
+				{"texto": "Que novidade?", "proximo": "osso1"},
+				{"texto": "Viu alguma coisa brilhando por aí?", "proximo": "brilho1"},
+				{"texto": "Valeu, Tonho!", "proximo": "tchau"}
+			]},
+			"osso1": {"fala": "O Seu Chico Moreira, lá da Lagoa do Ipu, tava cavando um poço e achou uns ossos enormes! Maior que boi, maior que tudo!", "proximo": "osso2"},
+			"osso2": {"fala": "O povo diz que é bicho do tempo antigo, de antes de existir gente. Já pensou um bicho desse andando por aqui?", "recompensa": {"pagina": "preguica_gigante"}, "proximo": "menu"},
+			"brilho1": {"fala": "Vi sim! Perto da casa da Vó Bastiana tem uma luz azul piscando. Fiquei com medo e corri!", "proximo": "menu"},
+			"tchau": {"fala": "Vá com cuidado, que tem bode solto e xique-xique pra todo lado!", "proximo": null},
+			"repete": {"fala": "A farinhada ainda não acabou. Tá sentindo o cheiro do beiju?", "proximo": "menu"}
+		}
+	},
+
+	"vo_bastiana": {
+		"nome": "Vó Bastiana (Alto Alegre)",
+		"inicio": "cedo",
+		"condicoes": [
+			{"flag": "fragmento_1", "no": "depois"},
+			{"flags": ["mudas_entregues", "falou_venancio"], "no": "b1"}
+		],
+		"nos": {
+			"cedo": {"fala": "Chegou cedo demais, criança. Ajude a Mariinha com as mudas e escute o Seu Venâncio. Depois a gente conversa.", "proximo": null},
+			"b1": {"fala": "Senta aqui. Eu já sei: tu vem de outro tempo, né?", "proximo": "b2"},
+			"b2": {"quem": "{nome}", "fala": "Como é que a senhora sabe?!", "proximo": "b3"},
+			"b3": {"fala": "Quem guarda memória sabe das coisas. E essa luz azul que caiu no meu terreiro, eu guardei pra ti.", "proximo": "b4"},
+			"b4": {"fala": "Mas antes, escuta uma história que os mais velhos do Alto Alegre contam de pai pra filho.", "proximo": "h1"},
+			"h1": {"fala": "Muito tempo atrás, um navio trouxe gente escravizada da África até a Barra do Ceará. Um homem chamado Cazuza fugiu do porão.", "proximo": "h2"},
+			"h2": {"fala": "Ele andou dias pelo mato até as terras de Pacajus. Foi pego, sofreu castigo, mas não desistiu.", "proximo": "h3"},
+			"h3": {"fala": "Quem acolheu Cazuza foi o povo da aldeia, os índios Paiacus. Com eles aprendeu a cuidar da terra, e lá formou família.", "recompensa": {"pagina": "paiacus"}, "proximo": "h4"},
+			"h4": {"fala": "Os filhos, netos e bisnetos de Cazuza ficaram por estas terras. Daí vem o povo do Alto Alegre. Porque ele resistiu, a gente resiste também.", "recompensa": {"pagina": "cazuza"}, "proximo": "b5"},
+			"b5": {"fala": "Agora me diz se tu escutou direito. Três perguntas, e a luz azul é tua.", "proximo": "q1"},
+			"q1": {"fala": "Primeira: por que este lugar se chama Olho d'Água do Venâncio?", "opcoes": [
+				{"texto": "Porque o Seu Venâncio cavou um açude", "proximo": "e1"},
+				{"texto": "Porque a nascente fica nas terras do Seu Venâncio", "proximo": "q2"},
+				{"texto": "Porque Venâncio era o nome de um rio", "proximo": "e1"}
+			]},
+			"e1": {"fala": "Não foi isso não. Lembre do que o próprio Seu Venâncio te contou lá na nascente...", "proximo": "q1"},
+			"q2": {"fala": "Segunda: como o Zeca tropeiro leva a rapadura e a farinha até Fortaleza?", "opcoes": [
+				{"texto": "No lombo dos jumentos", "proximo": "q3"},
+				{"texto": "De trem", "proximo": "e2"},
+				{"texto": "De caminhão, pela BR", "proximo": "e2"}
+			]},
+			"e2": {"fala": "Ainda não tem nada disso por aqui, criança! Pense no Zeca e nos bichos dele...", "proximo": "q2"},
+			"q3": {"fala": "Terceira: quem acolheu Cazuza quando ele precisou de refúgio?", "opcoes": [
+				{"texto": "Os capitães do mato", "proximo": "e3"},
+				{"texto": "O povo da cidade de Fortaleza", "proximo": "e3"},
+				{"texto": "Os índios Paiacus", "proximo": "fim1"}
+			]},
+			"e3": {"fala": "Não, não... Escute de novo a história que eu te contei.", "proximo": "q3"},
+			"fim1": {"fala": "Muito bem! Tu escutou com atenção, e é assim que toda história começa: escutando quem veio antes.", "flag": "fragmento_1", "recompensa": {"fragmento": 1, "sementes": 15}, "proximo": "fim2"},
+			"fim2": {"fala": "Quando voltar pro teu tempo, procure os mais velhos e pergunte. Memória que ninguém escuta se perde.", "proximo": "fim3"},
+			"fim3": {"quem": "Livro do Tempo", "fala": "Fragmento de Memória restaurado! Uma página se ilumina: em 1938, este distrito vai ganhar um nome novo...", "proximo": "fim4"},
+			"fim4": {"quem": "Livro do Tempo", "fala": "Sugerido pela professora Raimunda Duarte Teixeira: Horizonte. E um dia o povo daqui vai lutar pra ele virar cidade.", "recompensa": {"pagina": "nome_horizonte"}, "proximo": null},
+			"depois": {"fala": "Vá, criança! O futuro tá te esperando. E não esqueça do Cazuza.", "proximo": null}
+		}
+	}
+}

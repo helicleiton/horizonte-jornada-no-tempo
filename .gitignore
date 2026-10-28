@@ -1,0 +1,8 @@
+# Godot
+.godot/
+build/
+*.translation
+
+# Obras de terceiros usadas só como referência (não redistribuir)
+*.pdf
+scenes/player/player.tscn

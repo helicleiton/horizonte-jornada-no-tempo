@@ -1,0 +1,42 @@
+{
+	"tropeiros": {
+		"titulo": "Tropeiros e rapadura",
+		"texto": "Antes das rodovias, a produção da região seguia em lombo de burros e jumentos. A rapadura dos engenhos de Aquiraz, Pacajus, Olho d'Água e Dourado abastecia Pacoti, Fortaleza e outras localidades. Mais tarde, a farinha do Alto Alegre também seguia em tropas de jumentos até Fortaleza.",
+		"fonte": "Livro Horizonte: Do Olho d'Água do Venâncio ao Horizonte das Indústrias, p. 89; SANTOS, M. P. (UFC, 2012)."
+	},
+	"roca": {
+		"titulo": "O roçado e o trabalho de a meia",
+		"texto": "Muitas famílias plantavam em terra alheia no sistema de a meia: quem plantava entrava com todo o trabalho e dividia a colheita com o dono da terra. Se a safra se perdia na seca, o prejuízo era só de quem plantou. Nos roçados havia mandioca, feijão, milho, macaxeira e, no Ceará, também algodão.",
+		"fonte": "SANTOS, M. P. Incursões na história e memória da comunidade de quilombo de Alto-Alegre. UFC, 2012."
+	},
+	"olho_dagua": {
+		"titulo": "Olho d'Água do Venâncio",
+		"texto": "Olho d'água é o lugar onde a água do subsolo brota sozinha, sem precisar cavar. O primeiro nome de Horizonte veio de uma nascente nas terras de Venâncio Raimundo de Sousa (1894), agropecuarista que também produzia rapadura e cal, e foi inspetor escolar e vereador. O antigo casarão da família é patrimônio cultural da cidade.",
+		"fonte": "Livro Horizonte, p. 27; IBGE Cidades; Prefeitura de Horizonte."
+	},
+	"preguica_gigante": {
+		"titulo": "A preguiça-gigante",
+		"texto": "No início da década de 1930, Chico Moreira, dono de um sítio na Lagoa do Ipu, encontrou ao cavar um poço a ossada de uma preguiça-gigante, com cerca de 9 metros de comprimento e 3 de altura. O fóssil foi para o Museu Nacional, na Quinta da Boa Vista, Rio de Janeiro.",
+		"fonte": "Prefeitura de Horizonte (Curiosidades); Mapa Mental da História de Horizonte."
+	},
+	"taipa_carnauba": {
+		"titulo": "Casa de taipa e carnaúba",
+		"texto": "A casa de taipa, ou pau a pique, é feita de uma grade de varas amarradas e preenchida com barro amassado à mão. A carnaúba, comum perto dos rios da região, dava palha para cobrir casas, tronco para vigas e cera. Em Horizonte há cajueiros, coqueiros, mangueiras e trechos de carnaubais.",
+		"fonte": "SANTOS, M. P. (UFC, 2012), p. 32; conhecimento tradicional cearense."
+	},
+	"paiacus": {
+		"titulo": "Os Paiacus",
+		"texto": "Os primeiros habitantes da região foram os índios Paiacus, que viviam da caça, da pesca e do plantio, e já cultivavam a mandioca antes da chegada dos portugueses. Resistiram à tomada de suas terras na Guerra dos Bárbaros (1680–1713) e foram aldeados por jesuítas em Monte-mor-o-Velho, origem da atual Pacajus.",
+		"fonte": "Prefeitura de Horizonte; IBGE Cidades; Livro Horizonte, p. 72–73 e 117."
+	},
+	"cazuza": {
+		"titulo": "Cazuza e o Alto Alegre",
+		"texto": "Pela memória oral do Alto Alegre, Cazuza fugiu de um navio negreiro na Barra do Ceará, foi capturado e castigado em Pacajus e acolhido pelos Paiacus, onde formou família. Seus descendentes vivem no Alto Alegre, Alto da Estrela, Cajueiro da Malhada e na Base (Pacajus). A comunidade foi reconhecida como quilombola pela Fundação Palmares em 2005.",
+		"fonte": "Projeto Bordando Memórias / Coletivo Bordando Resistência; SANTOS, M. P. (UFC, 2012); Prefeitura de Horizonte."
+	},
+	"nome_horizonte": {
+		"titulo": "De Olho d'Água a Horizonte",
+		"texto": "O distrito de Olho d'Água pertenceu a Aquiraz até 1935, quando passou ao município de Guarani (atual Pacajus). Pelo Decreto Estadual nº 448, de 20/12/1938, passou a se chamar Horizonte, nome sugerido pela professora Raimunda Duarte Teixeira: o lugar que a vista não alcança.",
+		"fonte": "IBGE Cidades (Formação Administrativa); Prefeitura de Horizonte; Livro Horizonte, p. 28."
+	}
+}
