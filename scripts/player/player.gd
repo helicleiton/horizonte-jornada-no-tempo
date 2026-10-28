@@ -58,6 +58,9 @@ var _timer_invencivel := 0.0
 var _timer_atordoado := 0.0
 var _timer_bloqueio_entrada := 0.0
 var _no_chao_antes := false
+var _tempo_no_ar := 0.0
+var _timer_passo := 0.0
+var _passo_alternado := false
 
 @onready var _sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 @onready var _area_interacao: Area2D = $AreaInteracao
@@ -67,6 +70,20 @@ func _ready() -> void:
 	add_to_group("jogador")
 	_calcular_fisica_do_pulo()
 	GameState.jogador_morreu.connect(_on_jogador_morreu)
+	_criar_sprite()
+	pulou.connect(func() -> void: AudioManager.tocar("pulo"))
+	aterrissou.connect(func() -> void: AudioManager.tocar("aterrissa", 1.0, -4.0))
+
+
+## Usa a tira de sprites do(a) protagonista (chico.png ou luzia.png) quando
+## não houver um AnimatedSprite2D já montado na cena.
+func _criar_sprite() -> void:
+	if _sprite:
+		return
+	var caminho := "res://assets/sprites/%s.png" % GameState.nome_protagonista.to_lower()
+	_sprite = SpriteFactory.animado(caminho, 24, SpriteFactory.ANIMACOES_PERSONAGEM, Vector2(0, -17))
+	if _sprite:
+		add_child(_sprite)
 
 
 ## Converte altura e tempo do pulo em velocidade e gravidade. Assim o game
@@ -95,7 +112,8 @@ func _physics_process(delta: float) -> void:
 
 	_aplicar_gravidade(delta)
 	move_and_slide()
-	_verificar_aterrissagem()
+	_verificar_aterrissagem(delta)
+	_atualizar_passos(delta)
 	_atualizar_visual()
 
 
@@ -142,11 +160,24 @@ func _aplicar_gravidade(delta: float) -> void:
 	velocity.y = minf(velocity.y + gravidade * delta, queda_max)
 
 
-func _verificar_aterrissagem() -> void:
+func _verificar_aterrissagem(delta: float) -> void:
 	var no_chao := is_on_floor()
-	if no_chao and not _no_chao_antes:
+	# Só conta como aterrissagem depois de um tempo no ar (evita som ao nascer na fase).
+	if no_chao and not _no_chao_antes and _tempo_no_ar > 0.12:
 		aterrissou.emit()
+	_tempo_no_ar = 0.0 if no_chao else _tempo_no_ar + delta
 	_no_chao_antes = no_chao
+
+
+func _atualizar_passos(delta: float) -> void:
+	if not is_on_floor() or absf(velocity.x) < 40.0 or estado != Estado.NORMAL:
+		_timer_passo = 0.0
+		return
+	_timer_passo -= delta
+	if _timer_passo <= 0.0:
+		_timer_passo = 0.27
+		_passo_alternado = not _passo_alternado
+		AudioManager.tocar("passo1" if _passo_alternado else "passo2", randf_range(0.92, 1.08), -8.0)
 
 
 func _interagir() -> void:
@@ -214,6 +245,7 @@ func _atualizar_visual() -> void:
 	if _sprite:
 		_sprite.flip_h = not olhando_direita
 		_tocar_animacao(_escolher_animacao())
+		_sprite.speed_scale = clampf(absf(velocity.x) / velocidade_max, 0.6, 1.2) if _sprite.animation == "correr" else 1.0
 	else:
 		queue_redraw()
 

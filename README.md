@@ -2,7 +2,9 @@
 
 Plataforma 2D educativo em pixel art sobre a história e a cultura de Horizonte (CE). Engine: **Godot 4** (renderer *Compatibility*, para rodar no navegador). Resolução base 320×180, escala inteira.
 
-**Estado atual:** protótipo jogável da **Fase 1** (movimentação, NPCs com diálogo ramificado, coletáveis, HUD, Almanaque, perigos). Fases 2–4 ainda não existem. Sem arte nem som: tudo é desenhado com formas.
+**Estado atual:** protótipo jogável da **Fase 1** (movimentação, NPCs com diálogo ramificado, coletáveis, HUD, Almanaque, perigos) com **pixel art e áudio originais** (gerados por código, veja `CREDITOS.md`). Fases 2–4 ainda não existem.
+
+**Jogar online:** https://helicleiton.github.io/horizonte-jornada-no-tempo/
 
 ## Como jogar
 
@@ -42,6 +44,8 @@ scripts/autoload/        game_state.gd (sementes, cajus, itens, flags) e dialogu
 scripts/npc, objetos, ui, levels
 data/dialogos_fase1.json diálogos (editáveis sem tocar no código)
 data/almanaque.json      páginas do Almanaque, com fonte de cada fato
+assets/                  sprites e áudio gerados (não edite à mão: rode as ferramentas)
+tools/                   gerar_sprites.py e gerar_audio.py
 docs/                    roteiro da Fase 1, lista de assets
 tests/                   teste de fumaça
 ```
@@ -66,7 +70,7 @@ Fontes: livro *Horizonte: Do Olho d'Água do Venâncio ao Horizonte das Indústr
 - Outros ganchos documentados: São João Batista, padroeiro (24/06) e quadrilhas juninas; rendeiras; Zilmar do Horizonte (cordelista); Patativa do Assaré (citado no livro); preguiça-gigante achada por Chico Moreira; Paiacus e a Guerra dos Bárbaros.
 
 ## Próximos passos
-1. Arte e som reais (ver `docs/assets_recomendados.md`) e tela de título com escolha Chico/Luzia.
+1. Tela de título com escolha Chico/Luzia (o sprite da Luzia já existe), fonte pixel com acentos e retratos nos diálogos.
 2. **Fase 2 (1987):** votos de apoio, desvio de obstáculos urbanos, enigma sobre 06/03/1987 e o plebiscito da Sahori.
 3. **Fase 3 (1990–2000):** plataformas-esteira, engrenagens, símbolos de progresso, Distrito Industrial.
 4. **Fase 4:** puzzles de reciclagem e plantio.

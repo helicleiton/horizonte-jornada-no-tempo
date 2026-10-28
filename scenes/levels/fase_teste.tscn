@@ -120,30 +120,36 @@ position = Vector2(40, 160)
 position = Vector2(100, 160)
 nome_exibido = "Seu Zeca"
 id_dialogo = "tropeiro_zeca"
+sprite_sheet = "res://assets/sprites/zeca.png"
 cor = Color(0.5, 0.3, 0.2, 1)
 
 [node name="Mariinha" parent="." instance=ExtResource("3")]
 position = Vector2(520, 160)
 nome_exibido = "Dona Mariinha"
 id_dialogo = "agricultora_mariinha"
+sprite_sheet = "res://assets/sprites/mariinha.png"
 cor = Color(0.75, 0.3, 0.4, 1)
 
 [node name="Venancio" parent="." instance=ExtResource("3")]
 position = Vector2(700, 160)
 nome_exibido = "Seu Venâncio"
 id_dialogo = "seu_venancio"
+sprite_sheet = "res://assets/sprites/venancio.png"
 cor = Color(0.3, 0.45, 0.6, 1)
 
 [node name="Tonho" parent="." instance=ExtResource("3")]
 position = Vector2(920, 160)
 nome_exibido = "Tonho"
 id_dialogo = "menino_tonho"
+sprite_sheet = "res://assets/sprites/tonho.png"
 cor = Color(0.4, 0.6, 0.35, 1)
 
 [node name="Bastiana" parent="." instance=ExtResource("3")]
 position = Vector2(1380, 160)
+olhar_esquerda = true
 nome_exibido = "Vó Bastiana"
 id_dialogo = "vo_bastiana"
+sprite_sheet = "res://assets/sprites/bastiana.png"
 cor = Color(0.9, 0.9, 0.85, 1)
 
 [node name="Muda1" parent="." instance=ExtResource("4")]

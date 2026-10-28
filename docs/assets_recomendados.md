@@ -1,5 +1,7 @@
 # Assets recomendados
 
+> **Atualização:** a Fase 1 já tem arte e áudio originais gerados por código (`tools/gerar_sprites.py`, `tools/gerar_audio.py`; veja `CREDITOS.md`). Esta lista continua valendo como guia para **substituir por arte feita à mão** por pixel artists e músicos, e para as Fases 2–4.
+
 Hoje o jogo roda com formas coloridas (placeholders). Esta lista diz o que trocar por arte e som reais.
 Prefira licenças **CC0 / CC-BY** e anote a autoria em `CREDITOS.md` antes de publicar.
 

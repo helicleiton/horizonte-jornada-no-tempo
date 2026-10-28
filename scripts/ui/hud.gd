@@ -4,6 +4,7 @@ extends CanvasLayer
 ## e pausa o jogo.
 
 const ARQUIVO_ALMANAQUE := "res://data/almanaque.json"
+const ICONES := "res://assets/sprites/"
 
 var _paginas := {}
 var _barra_cajus: BarraCajus
@@ -40,11 +41,11 @@ func _unhandled_input(event: InputEvent) -> void:
 func _atualizar() -> void:
 	_barra_cajus.atual = GameState.cajus
 	_barra_cajus.maximo = GameState.CAJUS_MAX
-	_barra_cajus.custom_minimum_size = Vector2(GameState.CAJUS_MAX * 10, 12)
+	_barra_cajus.custom_minimum_size = Vector2(GameState.CAJUS_MAX * 14, 13)
 	_barra_cajus.queue_redraw()
-	_rotulo_sementes.text = "Sementes: %d" % GameState.sementes
-	_rotulo_paginas.text = "Páginas: %d/%d" % [GameState.paginas.size(), _paginas.size()]
-	_rotulo_fragmentos.text = "Fragmentos: %d/%d" % [GameState.fragmentos.size(), GameState.TOTAL_FRAGMENTOS]
+	_rotulo_sementes.text = str(GameState.sementes)
+	_rotulo_paginas.text = "%d/%d" % [GameState.paginas.size(), _paginas.size()]
+	_rotulo_fragmentos.text = "%d/%d" % [GameState.fragmentos.size(), GameState.TOTAL_FRAGMENTOS]
 
 
 func _on_pagina_coletada(id: String) -> void:
@@ -72,6 +73,7 @@ func _alternar_almanaque() -> void:
 		_preencher_almanaque()
 	_painel_almanaque.visible = abrir
 	get_tree().paused = abrir
+	AudioManager.tocar("almanaque_abrir" if abrir else "almanaque_fechar", 1.0, -4.0)
 	if abrir:
 		_texto_almanaque.grab_focus()
 
@@ -95,14 +97,16 @@ func _construir() -> void:
 	add_child(margem)
 
 	var linha := HBoxContainer.new()
-	linha.add_theme_constant_override("separation", 10)
+	linha.add_theme_constant_override("separation", 8)
 	margem.add_child(linha)
 
 	_barra_cajus = BarraCajus.new()
+	_barra_cajus.cheio = load(ICONES + "hud_caju.png")
+	_barra_cajus.vazio = load(ICONES + "hud_caju_vazio.png")
 	linha.add_child(_barra_cajus)
-	_rotulo_sementes = _criar_rotulo(linha)
-	_rotulo_paginas = _criar_rotulo(linha)
-	_rotulo_fragmentos = _criar_rotulo(linha)
+	_rotulo_sementes = _criar_contador(linha, "hud_semente.png")
+	_rotulo_paginas = _criar_contador(linha, "hud_pagina.png")
+	_rotulo_fragmentos = _criar_contador(linha, "hud_fragmento.png")
 
 	_aviso = Label.new()
 	_aviso.add_theme_font_size_override("font_size", 8)
@@ -110,7 +114,7 @@ func _construir() -> void:
 	_aviso.add_theme_color_override("font_outline_color", Color("2b1a12"))
 	_aviso.add_theme_constant_override("outline_size", 3)
 	_aviso.anchor_right = 1.0
-	_aviso.offset_top = 18
+	_aviso.offset_top = 22
 	_aviso.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_aviso.modulate.a = 0.0
 	add_child(_aviso)
@@ -140,23 +144,33 @@ func _construir() -> void:
 	_painel_almanaque.add_child(_texto_almanaque)
 
 
-func _criar_rotulo(pai: Node) -> Label:
+## Ícone + número, como "(semente) 12".
+func _criar_contador(pai: Node, icone: String) -> Label:
+	var caixa := HBoxContainer.new()
+	caixa.add_theme_constant_override("separation", 3)
+	pai.add_child(caixa)
+	var imagem := TextureRect.new()
+	imagem.texture = load(ICONES + icone)
+	imagem.stretch_mode = TextureRect.STRETCH_KEEP
+	imagem.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	caixa.add_child(imagem)
 	var rotulo := Label.new()
 	rotulo.add_theme_font_size_override("font_size", 8)
 	rotulo.add_theme_color_override("font_outline_color", Color("2b1a12"))
-	rotulo.add_theme_constant_override("outline_size", 3)
-	pai.add_child(rotulo)
+	rotulo.add_theme_constant_override("outline_size", 4)
+	caixa.add_child(rotulo)
 	return rotulo
 
 
-## Vida desenhada como cajus: a fruta laranja com a castanha embaixo.
+## Vida desenhada com ícones de caju: laranja = cheio, cinza = perdido.
 class BarraCajus extends Control:
 	var atual := 5
 	var maximo := 5
+	var cheio: Texture2D
+	var vazio: Texture2D
 
 	func _draw() -> void:
 		for i in maximo:
-			var cheio := i < atual
-			var x := i * 10.0 + 4.0
-			draw_circle(Vector2(x, 4), 4.0, Color("f28c28") if cheio else Color("5a4a40"))
-			draw_circle(Vector2(x, 9), 2.0, Color("7a5230") if cheio else Color("3a302a"))
+			var textura := cheio if i < atual else vazio
+			if textura:
+				draw_texture(textura, Vector2(i * 14, 0))

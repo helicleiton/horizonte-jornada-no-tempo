@@ -19,6 +19,7 @@ var _no_atual := {}
 var _jogador: Node = null
 var _digitando := false
 var _caracteres := 0.0
+var _ultimo_blip := 0
 
 var _painel: PanelContainer
 var _nome: Label
@@ -57,6 +58,13 @@ func _process(delta: float) -> void:
 		return
 	_caracteres += CARACTERES_POR_SEGUNDO * delta
 	_texto.visible_characters = int(_caracteres)
+	# Um "blip" a cada 2 letras, com timbre próprio de cada personagem.
+	var visiveis := _texto.visible_characters
+	if visiveis - _ultimo_blip >= 2:
+		_ultimo_blip = visiveis
+		var letra := _texto.get_parsed_text().substr(maxi(visiveis - 1, 0), 1)
+		if letra.strip_edges() != "":
+			AudioManager.tocar("blip%d" % (1 + absi(_nome.text.hash()) % 3), randf_range(0.95, 1.06), -9.0)
 	if _texto.visible_characters >= _texto.get_total_character_count():
 		_terminar_fala()
 
@@ -105,6 +113,7 @@ func _ir_para(chave: Variant) -> void:
 	_texto.text = _formatar(_no_atual.get("fala", ""))
 	_texto.visible_characters = 0
 	_caracteres = 0.0
+	_ultimo_blip = 0
 	_digitando = true
 	_limpar_opcoes()
 	_continuar.hide()
@@ -133,6 +142,7 @@ func _terminar_fala() -> void:
 
 
 func _escolher(opcao: Dictionary) -> void:
+	AudioManager.tocar("escolha", 1.0, -6.0)
 	_aplicar_efeitos(opcao)
 	_ir_para(opcao.get("proximo"))
 

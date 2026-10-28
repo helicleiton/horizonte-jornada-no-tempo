@@ -615,6 +615,43 @@ def fragmento():
     return contorno(margem(img, 1), c(20, 50, 110, 255))
 
 
+def hud_caju(cheio=True):
+    img = Image.new("RGBA", (10, 11), CLARO)
+    d = ImageDraw.Draw(img)
+    corpo = c(244, 140, 44) if cheio else c(150, 142, 138)
+    d.ellipse([0, 3, 7, 10], fill=corpo)
+    d.point((2, 5), fill=c(255, 205, 120) if cheio else c(190, 184, 180))
+    d.rectangle([5, 7, 7, 9], fill=sh(corpo, 0.8))
+    d.ellipse([5, 0, 9, 4], fill=c(120, 92, 66) if cheio else c(100, 96, 94))
+    return contorno(margem(img, 1))
+
+
+def hud_semente():
+    img = Image.new("RGBA", (7, 7), CLARO)
+    d = ImageDraw.Draw(img)
+    d.ellipse([0, 0, 6, 6], fill=c(98, 62, 36))
+    d.point((2, 2), fill=c(190, 140, 90))
+    return contorno(margem(img, 1))
+
+
+def hud_pagina():
+    img = Image.new("RGBA", (7, 9), CLARO)
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, 6, 8], fill=c(244, 228, 184))
+    for y in (2, 4, 6):
+        d.line([(1, y), (5, y)], fill=c(140, 100, 60))
+    return contorno(margem(img, 1))
+
+
+def hud_fragmento():
+    img = Image.new("RGBA", (9, 11), CLARO)
+    d = ImageDraw.Draw(img)
+    d.polygon([(4, 0), (8, 5), (4, 10), (0, 5)], fill=c(70, 170, 235))
+    d.polygon([(4, 0), (8, 5), (4, 5)], fill=c(140, 215, 250))
+    d.point((3, 3), fill=c(255, 255, 255))
+    return contorno(margem(img, 1), c(20, 50, 110, 255))
+
+
 def livro():
     img = Image.new("RGBA", (24, 20), CLARO)
     d = ImageDraw.Draw(img)
@@ -659,6 +696,11 @@ def main():
     salvar(caju_vazio(), "caju_vazio.png")
     salvar(fragmento(), "fragmento.png")
     salvar(livro(), "livro.png")
+    salvar(hud_caju(True), "hud_caju.png")
+    salvar(hud_caju(False), "hud_caju_vazio.png")
+    salvar(hud_semente(), "hud_semente.png")
+    salvar(hud_pagina(), "hud_pagina.png")
+    salvar(hud_fragmento(), "hud_fragmento.png")
     print("ok:", len(os.listdir(SAIDA)), "arquivos em", SAIDA)
 
 
