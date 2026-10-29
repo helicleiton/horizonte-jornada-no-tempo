@@ -5,6 +5,14 @@ extends CanvasLayer
 
 const ARQUIVO_ALMANAQUE := "res://data/almanaque.json"
 const ICONES := "res://assets/sprites/"
+## Texto do fim de cada fase. A fase 2b (primeira eleição) não tem fragmento.
+const TEXTO_FIM := {
+	1: "Você restaurou o Fragmento de Memória 1. A próxima parada é 1987: a emancipação de Horizonte.",
+	2: "Você restaurou o Fragmento de Memória 2. A próxima parada é a primeira eleição, em 1988.",
+	3: "Você restaurou o Fragmento de Memória 3. A Fase 4 ainda está em construção.",
+	5: "Você viu como nasceu a primeira eleição de Horizonte. A próxima parada são os anos 1990.",
+}
+const ROTULO_FASE := {5: "2b"}
 
 var _paginas := {}
 var _barra_cajus: BarraCajus
@@ -14,6 +22,13 @@ var _rotulo_fragmentos: Label
 var _aviso: Label
 var _painel_almanaque: PanelContainer
 var _texto_almanaque: RichTextLabel
+var _tela_fim: TelaFimFase
+var _menu_pausa: MenuPausa
+
+## Número da fase exibida nos objetivos e no fim de fase.
+@export var fase := 1
+## Cena da próxima fase, mostrada no fim desta. Vazio = sem próxima fase.
+@export_file("*.tscn") var proxima_cena := ""
 
 
 func _ready() -> void:
@@ -36,6 +51,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif _painel_almanaque.visible and event.is_action_pressed("ui_cancel"):
 		_alternar_almanaque()
 		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("ui_cancel") and not DialogueBox.ativo and not _tela_fim.visible:
+		if _menu_pausa.visible:
+			_menu_pausa.fechar()
+		else:
+			_menu_pausa.abrir()
+		get_viewport().set_input_as_handled()
 
 
 func _atualizar() -> void:
@@ -57,6 +78,19 @@ func _on_pagina_coletada(id: String) -> void:
 func _on_fragmento_coletado(_fase: int) -> void:
 	_atualizar()
 	_mostrar_aviso("Fragmento de Memória restaurado!")
+
+
+## Espera a conversa em curso terminar, para o fim de fase não cobrir o diálogo.
+func _mostrar_fim_de_fase() -> void:
+	if DialogueBox.ativo:
+		DialogueBox.dialogo_terminado.connect(_ao_terminar_dialogo, CONNECT_ONE_SHOT)
+		return
+	var rotulo: String = ROTULO_FASE.get(fase, str(fase))
+	_tela_fim.mostrar("Fase %s concluída!" % rotulo, TEXTO_FIM.get(fase, ""))
+
+
+func _ao_terminar_dialogo(_id: String) -> void:
+	_mostrar_fim_de_fase()
 
 
 func _mostrar_aviso(texto: String) -> void:
@@ -107,6 +141,18 @@ func _construir() -> void:
 	_rotulo_sementes = _criar_contador(linha, "hud_semente.png")
 	_rotulo_paginas = _criar_contador(linha, "hud_pagina.png")
 	_rotulo_fragmentos = _criar_contador(linha, "hud_fragmento.png")
+	var objetivos := PainelObjetivos.new()
+	objetivos.fase = fase
+	objetivos.concluiu.connect(_mostrar_aviso)
+	objetivos.fase_concluida.connect(_mostrar_fim_de_fase)
+	add_child(objetivos)
+
+	_tela_fim = TelaFimFase.new()
+	_tela_fim.proxima_cena = proxima_cena
+	add_child(_tela_fim)
+
+	_menu_pausa = MenuPausa.new()
+	add_child(_menu_pausa)
 
 	_aviso = Label.new()
 	_aviso.add_theme_font_size_override("font_size", 8)
@@ -114,7 +160,7 @@ func _construir() -> void:
 	_aviso.add_theme_color_override("font_outline_color", Color("2b1a12"))
 	_aviso.add_theme_constant_override("outline_size", 3)
 	_aviso.anchor_right = 1.0
-	_aviso.offset_top = 22
+	_aviso.offset_top = 96
 	_aviso.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_aviso.modulate.a = 0.0
 	add_child(_aviso)

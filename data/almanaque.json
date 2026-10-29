@@ -34,6 +34,26 @@
 		"texto": "Pela memória oral do Alto Alegre, Cazuza fugiu de um navio negreiro na Barra do Ceará, foi capturado e castigado em Pacajus e acolhido pelos Paiacus, onde formou família. Seus descendentes vivem no Alto Alegre, Alto da Estrela, Cajueiro da Malhada e na Base (Pacajus). A comunidade foi reconhecida como quilombola pela Fundação Palmares em 2005.",
 		"fonte": "Projeto Bordando Memórias / Coletivo Bordando Resistência; SANTOS, M. P. (UFC, 2012); Prefeitura de Horizonte."
 	},
+	"emancipacao": {
+		"titulo": "A luta pela emancipação",
+		"texto": "Em 1963 uma lei criou o município de Horizonte, mas ela foi derrubada pela ditadura em 1964 e 1965. Anos depois, a Sociedade dos Amigos de Horizonte (Sahori) liderou um plebiscito: 2.273 votos a favor e 182 contra. A Lei nº 11.300, de 6 de março de 1987, criou o município, que foi instalado em 1º de janeiro de 1989.",
+		"fonte": "Mapa Mental da História de Horizonte (Lei nº 11.300 e instalação em 1989); Livro Horizonte: Do Olho d'Água do Venâncio ao Horizonte das Indústrias (plebiscito e lei de 1963, a confirmar na página)."
+	},
+	"primeira_eleicao": {
+		"titulo": "A primeira eleição de Horizonte",
+		"texto": "Em 1988 Horizonte escolheu, pela primeira vez, o prefeito e os vereadores da cidade. O voto era dado numa cédula de papel, e a contagem era feita à mão, à vista dos fiscais. O primeiro prefeito, Francisco César de Sousa, tomou posse em 1º de janeiro de 1989, quando o município foi instalado.",
+		"fonte": "Livro Horizonte (primeiro prefeito); Mapa Mental da História de Horizonte (posse em 1º/1/1989). O detalhe da cédula e da contagem manual é o padrão das eleições brasileiras da época: a verificar com a Justiça Eleitoral."
+	},
+	"personagens_emancipacao": {
+		"titulo": "Quem fez Horizonte",
+		"texto": "Venâncio Raimundo de Sousa: dono das terras da nascente que deu nome ao lugar. Raimunda Duarte Teixeira: professora que sugeriu o nome Horizonte, em 1938. Virgílio Távora: governador na época da primeira lei de criação do município, em 1963, derrubada pela ditadura. Gonzaga Mota: governador que sancionou a Lei nº 11.300, em 6 de março de 1987. Francisco César de Sousa: primeiro prefeito, empossado em 1º de janeiro de 1989.",
+		"fonte": "IBGE Cidades; Prefeitura de Horizonte; Mapa Mental da História de Horizonte; Livro Horizonte (lei de 1963 e nome de 1938, a confirmar na página)."
+	},
+	"distrito_industrial": {
+		"titulo": "O Distrito Industrial",
+		"texto": "Em 9 de fevereiro de 1990, a Lei nº 032 criou a Companhia de Desenvolvimento Industrial de Horizonte. Hoje a cidade tem mais de 40 indústrias, nos setores têxtil, de calçados, de granito e automotivo, e cerca de 20 mil empregos diretos.",
+		"fonte": "Livro Horizonte (Lei nº 032/1990); Mapa Mental da História de Horizonte (indústrias e empregos)."
+	},
 	"nome_horizonte": {
 		"titulo": "De Olho d'Água a Horizonte",
 		"texto": "O distrito de Olho d'Água pertenceu a Aquiraz até 1935, quando passou ao município de Guarani (atual Pacajus). Pelo Decreto Estadual nº 448, de 20/12/1938, passou a se chamar Horizonte, nome sugerido pela professora Raimunda Duarte Teixeira: o lugar que a vista não alcança.",

@@ -30,6 +30,23 @@ func _ready() -> void:
 	_registrar_controles()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("tela_cheia"):
+		alternar_tela_cheia()
+		get_viewport().set_input_as_handled()
+
+
+# --- Tela cheia --------------------------------------------------------------
+
+func tela_cheia_ativa() -> bool:
+	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+
+
+func alternar_tela_cheia() -> void:
+	var modo := DisplayServer.WINDOW_MODE_WINDOWED if tela_cheia_ativa() else DisplayServer.WINDOW_MODE_FULLSCREEN
+	DisplayServer.window_set_mode(modo)
+
+
 # --- Sementes de carnaúba (moeda) -------------------------------------------
 
 func adicionar_sementes(quantidade: int) -> void:
@@ -116,6 +133,8 @@ func _registrar_controles() -> void:
 		"pular": [KEY_SPACE, KEY_W, KEY_UP],
 		"interagir": [KEY_E, KEY_ENTER],
 		"almanaque": [KEY_TAB, KEY_Q],
+		"tela_cheia": [KEY_F11, KEY_F],
+		"mudo": [KEY_M],
 	}
 	var botoes := {
 		"mover_esquerda": [JOY_BUTTON_DPAD_LEFT],
@@ -123,6 +142,8 @@ func _registrar_controles() -> void:
 		"pular": [JOY_BUTTON_A],
 		"interagir": [JOY_BUTTON_X],
 		"almanaque": [JOY_BUTTON_BACK],
+		"tela_cheia": [JOY_BUTTON_START],
+		"mudo": [],
 	}
 	var eixos := {"mover_esquerda": -1.0, "mover_direita": 1.0}
 

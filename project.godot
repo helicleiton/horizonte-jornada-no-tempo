@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Horizonte: Jornada Através do Tempo"
 config/description="Plataforma 2D educativo sobre a história e a cultura de Horizonte, Ceará."
-run/main_scene="res://scenes/levels/fase_teste.tscn"
+run/main_scene="res://scenes/ui/menu_inicial.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
@@ -30,6 +30,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[gui]
+
+theme/default_font_antialiasing=0
 
 [rendering]
 

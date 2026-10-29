@@ -14,6 +14,8 @@ var _musica: AudioStreamPlayer
 var _ambiente: AudioStreamPlayer
 var _cajus_antes := GameState.CAJUS_MAX
 var _itens_antes := {}
+## Som desligado pelo jogador (tecla M ou botão SOM no menu).
+var mudo := false
 
 
 func _ready() -> void:
@@ -36,6 +38,20 @@ func _ready() -> void:
 	GameState.fragmento_coletado.connect(func(_fase: int) -> void: tocar("fragmento"))
 	GameState.cajus_mudou.connect(_on_cajus_mudou)
 	GameState.itens_mudou.connect(_on_itens_mudou)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("mudo"):
+		alternar_mudo()
+		get_viewport().set_input_as_handled()
+
+
+## Liga ou desliga todo o som do jogo, inclusive a narração.
+func alternar_mudo() -> void:
+	mudo = not mudo
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), mudo)
+	if mudo:
+		Narracao.calar()
 
 
 func tocar(nome: String, tom := 1.0, volume_db := 0.0) -> void:

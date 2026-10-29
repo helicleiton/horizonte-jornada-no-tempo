@@ -1,8 +1,8 @@
 extends Area2D
-## Item coletável: sementes de carnaúba, itens de missão (mudas de algodão),
-## páginas do almanaque, cajus (vida) e fragmentos de memória.
+## Item coletável: sementes de carnaúba, itens de missão (mudas de algodão e
+## votos de apoio), páginas do almanaque, cajus (vida) e fragmentos de memória.
 
-enum Tipo { SEMENTE, ITEM, PAGINA, CAJU, FRAGMENTO }
+enum Tipo { SEMENTE, ITEM, PAGINA, CAJU, FRAGMENTO, VOTO, CAIXA, SANTINHO }
 
 const SPRITES := {
 	Tipo.SEMENTE: "semente",
@@ -10,6 +10,9 @@ const SPRITES := {
 	Tipo.PAGINA: "pagina",
 	Tipo.CAJU: "caju",
 	Tipo.FRAGMENTO: "fragmento",
+	Tipo.VOTO: "pagina",
+	Tipo.CAIXA: "pagina",
+	Tipo.SANTINHO: "pagina",
 }
 
 @export var tipo := Tipo.SEMENTE
@@ -56,6 +59,12 @@ func _on_body_entered(corpo: Node2D) -> void:
 			GameState.curar(quantidade)
 		Tipo.FRAGMENTO:
 			GameState.coletar_fragmento(fase)
+		Tipo.VOTO:
+			GameState.adicionar_item("voto_apoio")
+		Tipo.CAIXA:
+			GameState.adicionar_item("caixa_calcado")
+		Tipo.SANTINHO:
+			GameState.adicionar_item("santinho")
 
 	flutuar = false
 	set_deferred("monitoring", false)

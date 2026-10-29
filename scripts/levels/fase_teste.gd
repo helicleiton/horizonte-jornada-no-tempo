@@ -4,6 +4,8 @@ extends Node2D
 
 const SPR := "res://assets/sprites/"
 const MUSICA := "res://assets/audio/musica/fase1_baiao.ogg"
+## Hino de Horizonte, quando o arquivo estiver na pasta (ver docs/assets_recomendados.md).
+const HINO := "res://assets/audio/musica/hino_horizonte.ogg"
 const AMBIENTE := "res://assets/audio/ambiente/dia_sertao.ogg"
 const NASCENTE := "res://assets/audio/ambiente/nascente.ogg"
 const ZURRO := "res://assets/audio/sfx/jumento.ogg"
@@ -33,6 +35,12 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	# Paredes invisíveis nas pontas da fase: sem elas, o jogador andava até a borda
+	# e caía, perdendo um caju.
+	var x := clampf(_jogador.global_position.x, 4.0, limite_direito - 4.0)
+	if x != _jogador.global_position.x:
+		_jogador.global_position.x = x
+		_jogador.velocity.x = 0.0
 	# Caiu num buraco: perde um caju e volta ao início da fase.
 	if _jogador.global_position.y > limite_queda and _jogador.estado != Player.Estado.MORTO:
 		GameState.perder_caju()
@@ -188,7 +196,7 @@ func _colocar_cenario() -> void:
 # --- Áudio ----------------------------------------------------------------------------------
 
 func _iniciar_audio() -> void:
-	AudioManager.tocar_musica(MUSICA, -9.0)
+	AudioManager.tocar_musica(HINO if ResourceLoader.exists(HINO) else MUSICA, -9.0)
 	AudioManager.tocar_ambiente(AMBIENTE, -15.0)
 	var fluxo := AudioManager.carregar_em_loop(NASCENTE)
 	if fluxo == null:

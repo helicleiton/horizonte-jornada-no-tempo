@@ -1,0 +1,74 @@
+{
+	"abertura": {
+		"nome": "Livro do Tempo",
+		"inicio": "a1",
+		"nos": {
+			"a1": {"quem": "Livro do Tempo", "fala": "1987. A Lei nº 11.300, de 6 de março, sancionada pelo governador Gonzaga Mota no Palácio da Abolição, cria o município de Horizonte.", "proximo": "a2"},
+			"a2": {"quem": "{nome}", "fala": "Então a cidade já existe? Quem vai mandar nela?", "proximo": "a3"},
+			"a3": {"quem": "Livro do Tempo", "fala": "Falta a primeira eleição. Em 1º de janeiro de 1989 o município é instalado e toma posse o primeiro prefeito, Francisco César de Sousa. Mas antes, o povo precisa votar.", "proximo": "a4"},
+			"a4": {"quem": "Livro do Tempo", "fala": "Converse com as pessoas da campanha, distribua os santinhos, aprenda como se votava naquele tempo e acompanhe o resultado.", "proximo": null}
+		}
+	},
+
+	"expedito_campanha": {
+		"nome": "Seu Expedito (Sahori)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "resultado_ouvido", "no": "fim"},
+			{"flag": "falou_campanha", "item": "santinho", "min": 3, "no": "entrega"},
+			{"flag": "falou_campanha", "no": "repete"}
+		],
+		"nos": {
+			"inicio": {"fala": "A lei saiu, mas ninguém vota em quem não conhece! Eu sou Expedito, da Sahori. A gente precisa de candidatos que conheçam a terra.", "proximo": "i2"},
+			"i2": {"fala": "Quer ajudar com a campanha?", "opcoes": [
+				{"texto": "Como funciona a campanha?", "proximo": "c1"},
+				{"texto": "Vou ajudar com os santinhos", "flag": "falou_campanha", "proximo": "fim_campanha"}
+			]},
+			"c1": {"fala": "O candidato faz comício, pede voto de porta em porta e espalha santinhos: folhetos com o nome e o número dele. Em 1988 foi assim em toda a cidade.", "proximo": "i2"},
+			"fim_campanha": {"fala": "Ótimo! Pegue três santinhos pelo caminho e traga pra mim, que eu espalho pelo bairro.", "proximo": null},
+			"repete": {"fala": "Já falamos da campanha. Ainda faltam os três santinhos.", "proximo": null},
+			"entrega": {"fala": "Esses santinhos vão chegar a todo mundo! Obrigado. Agora fale com a Dona Ilda, que vai mostrar como era votar.", "flag": "santinhos_distribuidos", "remover_item": {"id": "santinho", "quantidade": 3}, "proximo": null},
+			"fim": {"fala": "Horizonte agora escolhe quem governa. Foi um caminho longo, desde o plebiscito até a urna.", "proximo": null}
+		}
+	},
+
+	"ilda_votacao": {
+		"nome": "Dona Ilda (mesária)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "votacao_ok", "no": "ja"}
+		],
+		"nos": {
+			"inicio": {"fala": "Sou a presidente da mesa de votação, aqui na escola. Vou te mostrar como era votar em 1988. Preparado?", "proximo": "q"},
+			"q": {"fala": "Como o eleitor votava naquele tempo?", "opcoes": [
+				{"texto": "Apertando números numa urna eletrônica", "proximo": "errou1"},
+				{"texto": "Marcando o candidato numa cédula de papel", "flag": "votacao_ok", "proximo": "acertou"},
+				{"texto": "Pelo telefone", "proximo": "errou2"}
+			]},
+			"errou1": {"fala": "Ainda não! A urna eletrônica só chegou anos depois. Pense no papel.", "proximo": "q"},
+			"errou2": {"fala": "Não, era no papel mesmo. Tente de novo.", "proximo": "q"},
+			"acertou": {"fala": "Isso! O eleitor marcava a cédula em particular e depositava na urna.", "proximo": "a2"},
+			"a2": {"fala": "A contagem era feita à mão, à vista dos fiscais. Foi assim que o povo de Horizonte escolheu o primeiro prefeito.", "recompensa": {"pagina": "primeira_eleicao"}, "proximo": null},
+			"ja": {"fala": "Já aprendemos juntos. Vá ouvir o resultado com o Seu Nonato.", "proximo": null}
+		}
+	},
+
+	"nonato_vereador": {
+		"nome": "Seu Nonato (candidato a vereador)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "resultado_ouvido", "no": "ja"}
+		],
+		"nos": {
+			"inicio": {"fala": "Sou candidato a vereador. Vereador é quem faz as leis da cidade junto com o prefeito.", "proximo": "i2"},
+			"i2": {"fala": "Quer saber do resultado?", "opcoes": [
+				{"texto": "Quem é o prefeito?", "proximo": "p1"},
+				{"texto": "Quem ganhou a eleição?", "flag": "resultado_ouvido", "proximo": "res"}
+			]},
+			"p1": {"fala": "O primeiro prefeito foi Francisco César de Sousa. Ele tomou posse junto com a Câmara Municipal, em 1º de janeiro de 1989.", "proximo": "i2"},
+			"res": {"fala": "Francisco César de Sousa foi o prefeito eleito. Horizonte virou município no dia 1º de janeiro de 1989.", "recompensa": {"pagina": "personagens_emancipacao"}, "proximo": "fim"},
+			"fim": {"fala": "Agora a cidade é nossa, {nome}. Obrigado por conhecer essa história.", "proximo": null},
+			"ja": {"fala": "Você já ouviu o resultado, lembra?", "proximo": null}
+		}
+	}
+}

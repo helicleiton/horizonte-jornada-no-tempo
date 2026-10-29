@@ -212,3 +212,4 @@ position = Vector2(1250, 160)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("6")
+proxima_cena = "res://scenes/levels/fase2.tscn"

@@ -60,7 +60,8 @@ func _process(delta: float) -> void:
 	_texto.visible_characters = int(_caracteres)
 	# Um "blip" a cada 2 letras, com timbre próprio de cada personagem.
 	var visiveis := _texto.visible_characters
-	if visiveis - _ultimo_blip >= 2:
+	# Enquanto a voz narra, não tocam os blips para não competir com ela.
+	if visiveis - _ultimo_blip >= 2 and not Narracao.falando():
 		_ultimo_blip = visiveis
 		var letra := _texto.get_parsed_text().substr(maxi(visiveis - 1, 0), 1)
 		if letra.strip_edges() != "":
@@ -125,6 +126,7 @@ func _ir_para(chave: Variant) -> void:
 	if GameState.toque:
 		fala = _no_atual.get("fala_toque", fala)
 	_texto.text = _formatar(fala)
+	Narracao.falar(_texto.text, _nome.text)
 	_texto.visible_characters = 0
 	_caracteres = 0.0
 	_ultimo_blip = 0
@@ -181,6 +183,7 @@ func _aplicar_efeitos(dados: Dictionary) -> void:
 func _encerrar() -> void:
 	ativo = false
 	_digitando = false
+	Narracao.calar()
 	_limpar_opcoes()
 	_painel.hide()
 	if is_instance_valid(_jogador) and _jogador.has_method("sair_dialogo"):

@@ -93,5 +93,9 @@ func _ready() -> void:
 	hud._preencher_almanaque()
 	check(hud._texto_almanaque.text.contains("Cazuza"), "almanaque lista páginas coletadas")
 
+	# fim de fase: com as 4 missões concluídas, a tela oferece a Fase 2
+	await frames(3)
+	check(hud._tela_fim.visible and hud._tela_fim.proxima_cena == "res://scenes/levels/fase2.tscn", "fim da Fase 1 oferece a Fase 2")
+
 	print("---- falhas: %d" % falhas)
 	get_tree().quit(falhas)

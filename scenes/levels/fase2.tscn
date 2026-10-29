@@ -1,0 +1,185 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/fase_2.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/jogador.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/npc/npc.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/objetos/coletavel.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/objetos/perigo.tscn" id="5"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="6"]
+
+[sub_resource type="RectangleShape2D" id="chao1"]
+size = Vector2(400, 20)
+
+[sub_resource type="RectangleShape2D" id="chao2"]
+size = Vector2(360, 20)
+
+[sub_resource type="RectangleShape2D" id="chao3"]
+size = Vector2(640, 20)
+
+[sub_resource type="RectangleShape2D" id="plat"]
+size = Vector2(64, 8)
+
+[node name="FaseDois" type="Node2D"]
+script = ExtResource("1")
+dialogo_abertura = "abertura"
+arquivo_dialogos = "res://data/dialogos_fase2.json"
+
+[node name="Fundo" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Ceu" type="ColorRect" parent="Fundo"]
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.96, 0.78, 0.45, 1)
+
+[node name="Horizonte" type="ColorRect" parent="Fundo"]
+offset_top = 110.0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.85, 0.55, 0.3, 1)
+
+[node name="Terreno" type="Node2D" parent="."]
+
+[node name="Chao1" type="StaticBody2D" parent="Terreno"]
+position = Vector2(0, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terreno/Chao1"]
+position = Vector2(200, 10)
+shape = SubResource("chao1")
+
+[node name="Visual" type="ColorRect" parent="Terreno/Chao1"]
+offset_right = 400.0
+offset_bottom = 40.0
+color = Color(0.55, 0.36, 0.2, 1)
+
+[node name="Chao2" type="StaticBody2D" parent="Terreno"]
+position = Vector2(440, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terreno/Chao2"]
+position = Vector2(180, 10)
+shape = SubResource("chao2")
+
+[node name="Visual" type="ColorRect" parent="Terreno/Chao2"]
+offset_right = 360.0
+offset_bottom = 40.0
+color = Color(0.55, 0.36, 0.2, 1)
+
+[node name="Chao3" type="StaticBody2D" parent="Terreno"]
+position = Vector2(860, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terreno/Chao3"]
+position = Vector2(320, 10)
+shape = SubResource("chao3")
+
+[node name="Visual" type="ColorRect" parent="Terreno/Chao3"]
+offset_right = 640.0
+offset_bottom = 40.0
+color = Color(0.55, 0.36, 0.2, 1)
+
+[node name="Plataforma1" type="StaticBody2D" parent="Terreno"]
+position = Vector2(150, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terreno/Plataforma1"]
+position = Vector2(32, 4)
+shape = SubResource("plat")
+
+[node name="Visual" type="ColorRect" parent="Terreno/Plataforma1"]
+offset_right = 64.0
+offset_bottom = 8.0
+color = Color(0.4, 0.27, 0.15, 1)
+
+[node name="Plataforma2" type="StaticBody2D" parent="Terreno"]
+position = Vector2(410, 118)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terreno/Plataforma2"]
+position = Vector2(32, 4)
+shape = SubResource("plat")
+
+[node name="Visual" type="ColorRect" parent="Terreno/Plataforma2"]
+offset_right = 64.0
+offset_bottom = 8.0
+color = Color(0.4, 0.27, 0.15, 1)
+
+[node name="Plataforma3" type="StaticBody2D" parent="Terreno"]
+position = Vector2(1050, 115)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terreno/Plataforma3"]
+position = Vector2(32, 4)
+shape = SubResource("plat")
+
+[node name="Visual" type="ColorRect" parent="Terreno/Plataforma3"]
+offset_right = 64.0
+offset_bottom = 8.0
+color = Color(0.4, 0.27, 0.15, 1)
+
+[node name="PontoInicio" type="Marker2D" parent="."]
+position = Vector2(40, 160)
+
+[node name="Jogador" parent="." instance=ExtResource("2")]
+position = Vector2(40, 160)
+
+[node name="Expedito" parent="." instance=ExtResource("3")]
+position = Vector2(600, 160)
+nome_exibido = "Seu Expedito"
+id_dialogo = "expedito_sahori"
+arquivo_dialogos = "res://data/dialogos_fase2.json"
+sprite_sheet = "res://assets/sprites/venancio.png"
+cor = Color(0.3, 0.45, 0.6, 1)
+
+[node name="Lucia" parent="." instance=ExtResource("3")]
+position = Vector2(880, 160)
+nome_exibido = "Dona Lúcia"
+id_dialogo = "lucia_professora"
+arquivo_dialogos = "res://data/dialogos_fase2.json"
+sprite_sheet = "res://assets/sprites/mariinha.png"
+cor = Color(0.75, 0.3, 0.4, 1)
+
+[node name="Ze" parent="." instance=ExtResource("3")]
+position = Vector2(1260, 160)
+nome_exibido = "Zé da praça"
+id_dialogo = "ze_praca"
+arquivo_dialogos = "res://data/dialogos_fase2.json"
+sprite_sheet = "res://assets/sprites/tonho.png"
+cor = Color(0.4, 0.6, 0.35, 1)
+
+[node name="Voto1" parent="." instance=ExtResource("4")]
+position = Vector2(300, 145)
+tipo = 5
+
+[node name="Voto2" parent="." instance=ExtResource("4")]
+position = Vector2(640, 110)
+tipo = 5
+
+[node name="Voto3" parent="." instance=ExtResource("4")]
+position = Vector2(1000, 145)
+tipo = 5
+
+[node name="Sementes1" parent="." instance=ExtResource("4")]
+position = Vector2(230, 145)
+
+[node name="Sementes2" parent="." instance=ExtResource("4")]
+position = Vector2(520, 145)
+
+[node name="Sementes3" parent="." instance=ExtResource("4")]
+position = Vector2(780, 145)
+
+[node name="Sementes4" parent="." instance=ExtResource("4")]
+position = Vector2(1150, 145)
+
+[node name="Caju1" parent="." instance=ExtResource("4")]
+position = Vector2(1220, 145)
+tipo = 3
+
+[node name="Xique1" parent="." instance=ExtResource("5")]
+position = Vector2(470, 160)
+
+[node name="Xique2" parent="." instance=ExtResource("5")]
+position = Vector2(760, 160)
+
+[node name="Xique3" parent="." instance=ExtResource("5")]
+position = Vector2(1140, 160)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("6")
+fase = 2
+proxima_cena = "res://scenes/levels/fase2b.tscn"

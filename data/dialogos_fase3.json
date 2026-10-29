@@ -1,0 +1,66 @@
+{
+	"abertura": {
+		"nome": "Livro do Tempo",
+		"inicio": "a1",
+		"nos": {
+			"a1": {"quem": "Livro do Tempo", "fala": "Estamos nos anos 1990. Em 9 de fevereiro de 1990, a Lei nº 032 criou a Companhia de Desenvolvimento Industrial de Horizonte.", "proximo": "a2"},
+			"a2": {"quem": "{nome}", "fala": "Tanta fábrica numa cidade do interior? Eu achava que isso era coisa de capital...", "proximo": "a3"},
+			"a3": {"quem": "Livro do Tempo", "fala": "Hoje são mais de 40 indústrias, de tecido, calçado, granito e automóveis, com cerca de 20 mil empregos diretos.", "proximo": "a4"},
+			"a4": {"quem": "Livro do Tempo", "fala": "Converse com a Dona Socorro e com o engenheiro Paulo, junte três caixas de calçado e restaure o Fragmento 3.", "proximo": null}
+		}
+	},
+
+	"socorro_fabrica": {
+		"nome": "Dona Socorro (fábrica)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "caixas_entregues", "no": "ja"},
+			{"item": "caixa_calcado", "min": 3, "no": "recebe"},
+			{"flag": "falou_socorro", "no": "repete"}
+		],
+		"nos": {
+			"inicio": {"fala": "Bom dia! Eu trabalho numa fábrica de calçados aqui. Muita gente do sertão veio pra cá atrás de emprego.", "proximo": "i2"},
+			"i2": {"fala": "A fábrica precisa de ajuda com as caixas. Quer saber mais antes?", "opcoes": [
+				{"texto": "Como é o trabalho na fábrica?", "proximo": "t1"},
+				{"texto": "Vou ajudar com as caixas", "flag": "falou_socorro", "proximo": "fim"}
+			]},
+			"t1": {"fala": "É turno certo, muita máquina e muita gente. Antes, quem morava na roça não tinha esse tipo de trabalho por perto.", "proximo": "i2"},
+			"fim": {"fala": "Se achar caixas de calçado pelo caminho, traga pra mim. Eu organizo a entrega.", "proximo": null},
+			"repete": {"fala": "Já conversamos, lembra? Ainda falta trazer as caixas.", "proximo": null},
+			"recebe": {"fala": "Ah, as caixas! Obrigada, meu filho. Pode levar a notícia ao engenheiro Paulo.", "flag": "falou_socorro", "proximo": "recebe2"},
+			"recebe2": {"fala": "Vou deixar tudo separado pra entrega. Agora é com o Paulo.", "flag": "caixas_entregues", "remover_item": {"id": "caixa_calcado", "quantidade": 3}, "proximo": null},
+			"ja": {"fala": "As caixas já estão comigo. Agora fale com o engenheiro Paulo.", "proximo": null}
+		}
+	},
+
+	"paulo_engenheiro": {
+		"nome": "Engenheiro Paulo",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flags": ["falou_socorro", "falou_paulo", "caixas_entregues"], "no": "entrega"},
+			{"item": "caixa_calcado", "min": 3, "no": "quase"},
+			{"flag": "falou_paulo", "no": "repete"}
+		],
+		"nos": {
+			"inicio": {"fala": "Sou o engenheiro Paulo, da Companhia de Desenvolvimento Industrial. A lei 032 foi a base pra essas fábricas virem pra cá.", "proximo": "i2"},
+			"i2": {"fala": "O que quer saber sobre as indústrias?", "opcoes": [
+				{"texto": "Quais indústrias existem?", "proximo": "i3"},
+				{"texto": "Vou trazer as caixas", "flag": "falou_paulo", "proximo": "fim"}
+			]},
+			"i3": {"fala": "Têxteis, calçados, granito e automotivo. Hoje são mais de 40 indústrias e cerca de 20 mil empregos diretos.", "proximo": "i2"},
+			"fim": {"fala": "Boa! Assim que tiver as caixas, passe pela Dona Socorro. Ela precisa delas.", "proximo": null},
+			"repete": {"fala": "Já conversamos. Ainda falta levar as caixas à Dona Socorro.", "proximo": null},
+			"quase": {"fala": "As caixas estão com você! Antes de entregar, leve-as à Dona Socorro.", "proximo": null},
+			"entrega": {"fala": "Você trouxe as caixas e conversou com todo mundo. Esse é o Fragmento de Memória 3: o retrato de uma cidade que virou polo industrial.", "recompensa": {"fragmento": 3, "pagina": "distrito_industrial"}, "proximo": "e2"},
+			"e2": {"fala": "Horizonte cresceu com trabalho e muita luta, {nome}. Ainda há uma fase pela frente.", "proximo": null}
+		}
+	},
+
+	"ze_praca": {
+		"nome": "Zé da praça",
+		"inicio": "inicio",
+		"nos": {
+			"inicio": {"fala": "Cuidado com as engrenagens da fábrica perto do galpão. Dizem que as caixas de calçado estão espalhadas por aí.", "proximo": null}
+		}
+	}
+}

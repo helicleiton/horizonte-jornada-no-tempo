@@ -63,5 +63,4 @@ func _botao(nome: String, acao: String, posicao: Vector2) -> TouchScreenButton:
 
 
 func _alternar_tela_cheia() -> void:
-	var cheia := DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if cheia else DisplayServer.WINDOW_MODE_FULLSCREEN)
+	GameState.alternar_tela_cheia()
