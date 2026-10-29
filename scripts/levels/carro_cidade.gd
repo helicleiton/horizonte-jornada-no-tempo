@@ -70,32 +70,102 @@ func _verificar_eventos() -> void:
 
 
 func _draw() -> void:
-	# Céu e casas ao fundo
-	draw_rect(Rect2(0, 0, LIMITE, 110), Color("e9b77a"))
+	_desenhar_ceu_e_predios()
+	_desenhar_rua()
+	for cone in _cones:
+		_desenhar_cone(cone)
+	for pos in _gatilhos:
+		_desenhar_agente(pos)
+	_desenhar_destino()
+	_desenhar_carro(_x, 124.0)
+
+
+func _desenhar_ceu_e_predios() -> void:
+	draw_rect(Rect2(0, 0, LIMITE, 60), Color("f3c98b"))
+	draw_rect(Rect2(0, 60, LIMITE, 50), Color("eab67a"))
+	var cores := [Color("8a6f63"), Color("a08072"), Color("6f5a52"), Color("b58f7c")]
 	for i in 30:
 		var x := i * 52.0
-		var altura := 30.0 + float((i * 37) % 40)
-		draw_rect(Rect2(x, 110 - altura, 36, altura), Color("7a6258"))
-		for j in 3:
-			draw_rect(Rect2(x + 8, 110 - altura + 8 + j * 12, 4, 4), Color("f4c95d"))
-	# Calçada e rua
-	draw_rect(Rect2(0, 110, LIMITE, 14), Color("b9a08a"))
-	draw_rect(Rect2(0, 124, LIMITE, 60), Color("4a4442"))
+		var largura := 38.0 + float((i * 13) % 12)
+		var altura := 40.0 + float((i * 37) % 45)
+		var cor: Color = cores[i % cores.size()]
+		draw_rect(Rect2(x, 110 - altura, largura, altura), cor)
+		draw_rect(Rect2(x, 110 - altura, largura, 3), cor.darkened(0.25))
+		# janelas com caixilho, algumas acesas
+		var linha := 110.0 - altura + 8.0
+		while linha < 100.0:
+			var coluna := x + 5.0
+			while coluna < x + largura - 9.0:
+				var acesa := (int(coluna) + int(linha)) % 3 == 0
+				draw_rect(Rect2(coluna, linha, 6, 7), Color("3d3430"))
+				draw_rect(Rect2(coluna + 1, linha + 1, 4, 5), Color("f4c95d") if acesa else Color("6e8fa3"))
+				coluna += 10.0
+			linha += 12.0
+		# porta no térreo
+		draw_rect(Rect2(x + largura * 0.5 - 4, 92, 8, 18), Color("4a3328"))
+
+
+func _desenhar_rua() -> void:
+	# calçada com pedras
+	draw_rect(Rect2(0, 110, LIMITE, 14), Color("cdbba6"))
 	for i in 60:
-		draw_rect(Rect2(i * 26.0, 150, 12, 3), Color("f4c95d"))
-	# Cones
-	for cone in _cones:
-		draw_rect(Rect2(cone - 3, 136, 6, 12), Color("e8702a"))
-	# Gatilhos (agentes)
-	for pos in _gatilhos:
-		draw_rect(Rect2(pos - 4, 100, 8, 24), Color("2b6cb0"))
-	# Destino
-	draw_rect(Rect2(LIMITE - 20, 110, 6, 40), Color("f4f4f4"))
-	# Carro
-	var y := 124.0
-	draw_rect(Rect2(_x - 16, y - 10, 32, 12), Color("c0392b"))
-	draw_rect(Rect2(_x - 9, y - 16, 18, 7), Color("8e2a20"))
-	draw_rect(Rect2(_x - 13, y + 1, 8, 6), Color("1a1a1a"))
-	draw_rect(Rect2(_x + 5, y + 1, 8, 6), Color("1a1a1a"))
-	if _velocidade < -1.0 or _piscar > 0.5:
-		draw_rect(Rect2(_x - 17, y - 8, 2, 2), Color("ffe08a"))
+		draw_rect(Rect2(i * 26.0, 116, 24, 1), Color("b5a18b"))
+	# meio-fio
+	draw_rect(Rect2(0, 124, LIMITE, 3), Color("9a9a9a"))
+	# asfalto com textura
+	draw_rect(Rect2(0, 127, LIMITE, 55), Color("4a4644"))
+	for i in 120:
+		draw_rect(Rect2(i * 13.0 + float((i * 7) % 5), 140 + float((i * 3) % 30), 2, 1), Color("56504d"))
+	# faixas centrais
+	for i in 60:
+		draw_rect(Rect2(i * 26.0, 150, 12, 3), Color("f4e7b0"))
+
+
+func _desenhar_cone(x: float) -> void:
+	draw_rect(Rect2(x - 4, 138, 8, 2), Color("1a1a1a"))
+	draw_colored_polygon(PackedVector2Array([Vector2(x - 3, 138), Vector2(x + 3, 138), Vector2(x + 1, 127), Vector2(x - 1, 127)]), Color("e8702a"))
+	draw_rect(Rect2(x - 2, 131, 4, 2), Color("f5f5f0"))
+
+
+func _desenhar_agente(x: float) -> void:
+	# agente de trânsito de colete laranja, em pé na calçada
+	var base := 124.0
+	draw_rect(Rect2(x - 2, base - 3, 2, 3), Color("2b2b2b"))
+	draw_rect(Rect2(x + 1, base - 3, 2, 3), Color("2b2b2b"))
+	draw_rect(Rect2(x - 3, base - 12, 6, 9), Color("e8702a"))
+	draw_rect(Rect2(x - 3, base - 9, 6, 2), Color("f5f5f0"))
+	draw_rect(Rect2(x - 2.5, base - 17, 5, 5), Color("e0a96d"))
+	draw_rect(Rect2(x - 4, base - 19, 8, 2), Color("1f3a5f"))
+
+
+func _desenhar_destino() -> void:
+	var x := LIMITE - 20.0
+	draw_rect(Rect2(x, 102, 2, 26), Color("3b3b3b"))
+	draw_rect(Rect2(x + 2, 102, 16, 8), Color("f5f5f0"))
+	for i in 4:
+		for j in 2:
+			if (i + j) % 2 == 0:
+				draw_rect(Rect2(x + 2 + i * 4, 102 + j * 4, 4, 4), Color("1a1a1a"))
+
+
+func _desenhar_carro(x: float, y: float) -> void:
+	# sombra no asfalto
+	draw_rect(Rect2(x - 17, y + 6, 34, 3), Color(0, 0, 0, 0.35))
+	# carroceria
+	draw_rect(Rect2(x - 16, y - 9, 32, 11), Color("b8322a"))
+	draw_rect(Rect2(x - 16, y - 9, 32, 2), Color("d9554b"))
+	# cabine e vidros
+	draw_rect(Rect2(x - 9, y - 16, 18, 8), Color("8e2a20"))
+	draw_rect(Rect2(x - 7, y - 14, 6, 5), Color("9fd3ea"))
+	draw_rect(Rect2(x + 1, y - 14, 6, 5), Color("9fd3ea"))
+	# faróis e lanternas
+	draw_rect(Rect2(x + 14, y - 6, 2, 3), Color("fff2a8"))
+	draw_rect(Rect2(x - 16, y - 6, 2, 3), Color("d62a2a"))
+	# rodas
+	draw_circle(Vector2(x - 9, y + 3), 4, Color("1a1a1a"))
+	draw_circle(Vector2(x + 9, y + 3), 4, Color("1a1a1a"))
+	draw_circle(Vector2(x - 9, y + 3), 1.5, Color("9a9a9a"))
+	draw_circle(Vector2(x + 9, y + 3), 1.5, Color("9a9a9a"))
+	# piscas quando freia ou ao sair de uma batida
+	if _velocidade < -1.0:
+		draw_rect(Rect2(x - 16, y - 9, 2, 3), Color("ff3b3b"))

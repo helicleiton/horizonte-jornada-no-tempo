@@ -21,7 +21,7 @@ func _ready() -> void:
 
 	var painel := PanelContainer.new()
 	var estilo := StyleBoxFlat.new()
-	estilo.bg_color = Color("2b1a12cc")
+	estilo.bg_color = Color("2b1a12f2")
 	estilo.border_color = Color("e8b04a")
 	estilo.set_border_width_all(1)
 	estilo.set_content_margin_all(4)
@@ -37,12 +37,16 @@ func _ready() -> void:
 	_cabecalho.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	_cabecalho.add_theme_font_size_override("font_size", 8)
 	_cabecalho.add_theme_color_override("font_color", Color("f4c95d"))
+	_cabecalho.add_theme_color_override("font_outline_color", Color("2b1a12"))
+	_cabecalho.add_theme_constant_override("outline_size", 3)
 	_cabecalho.pressed.connect(_alternar_lista)
 	coluna.add_child(_cabecalho)
 
 	_lista = Label.new()
 	_lista.add_theme_font_size_override("font_size", 8)
-	_lista.add_theme_color_override("font_color", Color("f4c95d"))
+	_lista.add_theme_color_override("font_color", Color("fff3c4"))
+	_lista.add_theme_color_override("font_outline_color", Color("2b1a12"))
+	_lista.add_theme_constant_override("outline_size", 3)
 	_lista.autowrap_mode = TextServer.AUTOWRAP_WORD
 	_lista.custom_minimum_size = Vector2(190, 0)
 	coluna.add_child(_lista)
