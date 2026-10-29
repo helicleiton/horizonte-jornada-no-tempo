@@ -7,6 +7,8 @@ var _botao_narracao: Button
 var _painel_creditos: Control
 var _selecao_personagem: Control
 var _selecao_fases: Control
+var _botao_instalar: Button
+var _tempo_instalar := 0.0
 var _proxima_fase := FASE_1
 
 const CONTATO := "https://wa.me/5585994252561"
@@ -73,14 +75,78 @@ func _ready() -> void:
 	_botao_atalho_livre(linha_narracao, _sair_do_jogo).text = "SAIR"
 	_atualizar_opcoes()
 
+	if OS.has_feature("web"):
+		# Guarda o convite de instalação do navegador, para o botão do menu usar.
+		JavaScriptBridge.eval("window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); window.deferredPrompt = e; });")
+		_botao_instalar = Button.new()
+		_botao_instalar.text = "INSTALAR APP"
+		_botao_instalar.custom_minimum_size = Vector2(92, 16)
+		_botao_instalar.position = Vector2(214, 158)
+		_botao_instalar.visible = false
+		_botao_instalar.pressed.connect(_instalar_app)
+		add_child(_botao_instalar)
+
+	if OS.has_feature("web") and JavaScriptBridge.eval("/iPhone|iPad|iPod/.test(navigator.userAgent) && !window.navigator.standalone"):
+		_construir_dica_iphone()
+
 	_construir_selecao()
 	_construir_fases()
 	_construir_creditos()
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# A tela cheia também pode mudar pela tecla F11, então o texto é conferido sempre.
 	_atualizar_opcoes()
+	if _botao_instalar:
+		_tempo_instalar += delta
+		if _tempo_instalar > 1.0:
+			_tempo_instalar = 0.0
+			_botao_instalar.visible = JavaScriptBridge.eval("!!window.deferredPrompt")
+
+
+## No iPhone o navegador não mostra o convite de instalação: a dica ensina como fazer.
+func _construir_dica_iphone() -> void:
+	var fundo := ColorRect.new()
+	fundo.color = Color(0.08, 0.05, 0.03, 0.92)
+	fundo.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	fundo.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(fundo)
+	var centro := CenterContainer.new()
+	centro.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(centro)
+	var painel := PanelContainer.new()
+	var estilo := StyleBoxFlat.new()
+	estilo.bg_color = Color("2b1a12")
+	estilo.border_color = Color("e8b04a")
+	estilo.set_border_width_all(2)
+	estilo.set_content_margin_all(8)
+	painel.add_theme_stylebox_override("panel", estilo)
+	painel.custom_minimum_size = Vector2(230, 0)
+	centro.add_child(painel)
+	var coluna := VBoxContainer.new()
+	coluna.add_theme_constant_override("separation", 6)
+	painel.add_child(coluna)
+	var texto := Label.new()
+	texto.text = "Para jogar como app no iPhone:
+1. Toque no botão Compartilhar (quadrado com seta para cima), na barra do Safari.
+2. Role e toque em \"Adicionar à Tela de Início\".
+3. Abra o jogo pelo ícone da Horizonte."
+	texto.autowrap_mode = TextServer.AUTOWRAP_WORD
+	texto.custom_minimum_size = Vector2(214, 0)
+	texto.add_theme_color_override("font_color", Color("fff3c4"))
+	coluna.add_child(texto)
+	var ok := Button.new()
+	ok.text = "ENTENDI"
+	ok.custom_minimum_size = Vector2(120, 18)
+	ok.pressed.connect(fundo.queue_free)
+	ok.pressed.connect(centro.queue_free)
+	coluna.add_child(ok)
+
+
+## Abre o convite do navegador para instalar o jogo na tela inicial do celular.
+func _instalar_app() -> void:
+	JavaScriptBridge.eval("if (window.deferredPrompt) { window.deferredPrompt.prompt(); window.deferredPrompt = null; }")
+	_botao_instalar.visible = false
 
 
 func _on_jogar_pressed() -> void:
