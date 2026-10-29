@@ -10,6 +10,7 @@ var _selecao_fases: Control
 var _proxima_fase := FASE_1
 
 const CONTATO := "https://wa.me/5585994252561"
+const SITE := "https://helicleiton.com"
 const FASE_1 := "res://scenes/levels/fase_teste.tscn"
 const FASE_2 := "res://scenes/levels/fase2.tscn"
 const FASE_2B := "res://scenes/levels/fase2b.tscn"
@@ -66,7 +67,10 @@ func _ready() -> void:
 	vbox.add_child(linha_opcoes)
 	_botao_tela_cheia = _botao_atalho_livre(linha_opcoes, GameState.alternar_tela_cheia)
 	_botao_som = _botao_atalho_livre(linha_opcoes, _alternar_som)
-	_botao_narracao = _botao(vbox, "", _alternar_narracao)
+	var linha_narracao := HBoxContainer.new()
+	vbox.add_child(linha_narracao)
+	_botao_narracao = _botao_atalho_livre(linha_narracao, _alternar_narracao)
+	_botao_atalho_livre(linha_narracao, _sair_do_jogo).text = "SAIR"
 	_atualizar_opcoes()
 
 	_construir_selecao()
@@ -122,6 +126,15 @@ func _escolher_fase(caminho: String) -> void:
 func _on_creditos_pressed() -> void:
 	AudioManager.tocar("escolha")
 	_painel_creditos.visible = true
+
+
+## Sai do jogo: no navegador volta ao site; no computador fecha o programa e abre o site.
+func _sair_do_jogo() -> void:
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("window.location.href = '%s';" % SITE)
+	else:
+		OS.shell_open(SITE)
+		get_tree().quit()
 
 
 func _alternar_narracao() -> void:
