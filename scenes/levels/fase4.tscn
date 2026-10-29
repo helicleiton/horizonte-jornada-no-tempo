@@ -95,6 +95,14 @@ arquivo_dialogos = "res://data/dialogos_fase4.json"
 sprite_sheet = "res://assets/sprites/luzia.png"
 cor = Color(0.6, 0.4, 0.6, 1)
 
+[node name="Gilberto" parent="." instance=ExtResource("3")]
+position = Vector2(1210, 160)
+nome_exibido = "Professor Gilberto"
+id_dialogo = "desafio_historia"
+arquivo_dialogos = "res://data/dialogos_fase4.json"
+sprite_sheet = "res://assets/sprites/chico.png"
+cor = Color(0.3, 0.45, 0.6, 1)
+
 [node name="Helena" parent="." instance=ExtResource("3")]
 position = Vector2(1280, 160)
 nome_exibido = "Professora Helena"
@@ -155,3 +163,4 @@ position = Vector2(1100, 160)
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("6")
 fase = 4
+proxima_cena = "res://scenes/levels/fase5.tscn"

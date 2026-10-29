@@ -1,87 +1,107 @@
 {
-	"tropeiros": {
-		"titulo": "Tropeiros e rapadura",
-		"texto": "Antes das rodovias, a produção da região seguia em lombo de burros e jumentos. A rapadura dos engenhos de Aquiraz, Pacajus, Olho d'Água e Dourado abastecia Pacoti, Fortaleza e outras localidades. Mais tarde, a farinha do Alto Alegre também seguia em tropas de jumentos até Fortaleza.",
-		"fonte": "Livro Horizonte: Do Olho d'Água do Venâncio ao Horizonte das Indústrias, p. 89; SANTOS, M. P. (UFC, 2012)."
-	},
-	"roca": {
-		"titulo": "O roçado e o trabalho de a meia",
-		"texto": "Muitas famílias plantavam em terra alheia no sistema de a meia: quem plantava entrava com todo o trabalho e dividia a colheita com o dono da terra. Se a safra se perdia na seca, o prejuízo era só de quem plantou. Nos roçados havia mandioca, feijão, milho, macaxeira e, no Ceará, também algodão.",
-		"fonte": "SANTOS, M. P. Incursões na história e memória da comunidade de quilombo de Alto-Alegre. UFC, 2012."
-	},
-	"olho_dagua": {
-		"titulo": "Olho d'Água do Venâncio",
-		"texto": "Olho d'água é o lugar onde a água do subsolo brota sozinha, sem precisar cavar. O primeiro nome de Horizonte veio de uma nascente nas terras de Venâncio Raimundo de Sousa (1894), agropecuarista que também produzia rapadura e cal, e foi inspetor escolar e vereador. O antigo casarão da família é patrimônio cultural da cidade.",
-		"fonte": "Livro Horizonte, p. 27; IBGE Cidades; Prefeitura de Horizonte."
-	},
-	"preguica_gigante": {
-		"titulo": "A preguiça-gigante",
-		"texto": "No início da década de 1930, Chico Moreira, dono de um sítio na Lagoa do Ipu, encontrou ao cavar um poço a ossada de uma preguiça-gigante, com cerca de 9 metros de comprimento e 3 de altura. O fóssil foi para o Museu Nacional, na Quinta da Boa Vista, Rio de Janeiro.",
-		"fonte": "Prefeitura de Horizonte (Curiosidades); Mapa Mental da História de Horizonte."
-	},
-	"taipa_carnauba": {
-		"titulo": "Casa de taipa e carnaúba",
-		"texto": "A casa de taipa, ou pau a pique, é feita de uma grade de varas amarradas e preenchida com barro amassado à mão. A carnaúba, comum perto dos rios da região, dava palha para cobrir casas, tronco para vigas e cera. Em Horizonte há cajueiros, coqueiros, mangueiras e trechos de carnaubais.",
-		"fonte": "SANTOS, M. P. (UFC, 2012), p. 32; conhecimento tradicional cearense."
-	},
-	"paiacus": {
-		"titulo": "Os Paiacus",
-		"texto": "Os primeiros habitantes da região foram os índios Paiacus, que viviam da caça, da pesca e do plantio, e já cultivavam a mandioca antes da chegada dos portugueses. Resistiram à tomada de suas terras na Guerra dos Bárbaros (1680–1713) e foram aldeados por jesuítas em Monte-mor-o-Velho, origem da atual Pacajus.",
-		"fonte": "Prefeitura de Horizonte; IBGE Cidades; Livro Horizonte, p. 72–73 e 117."
-	},
-	"cazuza": {
-		"titulo": "Cazuza e o Alto Alegre",
-		"texto": "Pela memória oral do Alto Alegre, Cazuza fugiu de um navio negreiro na Barra do Ceará, foi capturado e castigado em Pacajus e acolhido pelos Paiacus, onde formou família. Seus descendentes vivem no Alto Alegre, Alto da Estrela, Cajueiro da Malhada e na Base (Pacajus). A comunidade foi reconhecida como quilombola pela Fundação Palmares em 2005.",
-		"fonte": "Projeto Bordando Memórias / Coletivo Bordando Resistência; SANTOS, M. P. (UFC, 2012); Prefeitura de Horizonte."
-	},
-	"emancipacao": {
-		"titulo": "A luta pela emancipação",
-		"texto": "Em 1963 uma lei criou o município de Horizonte, mas ela foi derrubada pela ditadura em 1964 e 1965. Anos depois, a Sociedade dos Amigos de Horizonte (Sahori) liderou um plebiscito: 2.273 votos a favor e 182 contra. A Lei nº 11.300, de 6 de março de 1987, criou o município, que foi instalado em 1º de janeiro de 1989.",
-		"fonte": "Mapa Mental da História de Horizonte (Lei nº 11.300 e instalação em 1989); Livro Horizonte: Do Olho d'Água do Venâncio ao Horizonte das Indústrias (plebiscito e lei de 1963, a confirmar na página)."
-	},
-	"primeira_eleicao": {
-		"titulo": "A primeira eleição de Horizonte",
-		"texto": "Em 1988 Horizonte escolheu, pela primeira vez, o prefeito e os vereadores da cidade. O voto era dado numa cédula de papel, e a contagem era feita à mão, à vista dos fiscais. O primeiro prefeito, Francisco César de Sousa, tomou posse em 1º de janeiro de 1989, quando o município foi instalado.",
-		"fonte": "Livro Horizonte (primeiro prefeito); Mapa Mental da História de Horizonte (posse em 1º/1/1989). O detalhe da cédula e da contagem manual é o padrão das eleições brasileiras da época: a verificar com a Justiça Eleitoral."
-	},
-	"personagens_emancipacao": {
-		"titulo": "Quem fez Horizonte",
-		"texto": "Venâncio Raimundo de Sousa: dono das terras da nascente que deu nome ao lugar. Raimunda Duarte Teixeira: professora que sugeriu o nome Horizonte, em 1938. Virgílio Távora: governador na época da primeira lei de criação do município, em 1963, derrubada pela ditadura. Gonzaga Mota: governador que sancionou a Lei nº 11.300, em 6 de março de 1987. Francisco César de Sousa: primeiro prefeito, empossado em 1º de janeiro de 1989.",
-		"fonte": "IBGE Cidades; Prefeitura de Horizonte; Mapa Mental da História de Horizonte; Livro Horizonte (lei de 1963 e nome de 1938, a confirmar na página)."
-	},
-	"quem_governa": {
-		"titulo": "Quem governa Horizonte hoje",
-		"texto": "Nezinho Farias (Manoel Gomes de Farias Neto) é o prefeito de Horizonte, reeleito em 2024. Jô Farias é primeira-dama de Horizonte e deputada estadual na Assembleia Legislativa do Ceará. O primeiro prefeito, Francisco César de Sousa, tomou posse em 1º de janeiro de 1989.",
-		"fonte": "O Povo e Diário do Nordeste (eleição de 2024 e filiação partidária); Assembleia Legislativa do Ceará (projeto de lei de 2025 de autoria da deputada); informação da comunidade local (primeira-dama); Mapa Mental da História de Horizonte (primeiro prefeito)."
-	},
-	"festa_padroeiro": {
-		"titulo": "A festa de São João Batista",
-		"texto": "São João Batista é o padroeiro de Horizonte, e o dia 24 de junho é dedicado a ele. A festa tem procissão, hasteamento das bandeiras e a benção da fogueira na praça da Matriz, seguidos de celebrações religiosas. A Igreja Matriz de São João Batista está ligada à Paróquia São João Batista e à Arquidiocese de Fortaleza.",
-		"fonte": "Mapa Mental da História de Horizonte (data do padroeiro); programação da festa do padroeiro, Arquidiocese de Fortaleza (2017); site da Prefeitura de Horizonte (missa de ação de graças pelos 37 anos da cidade)."
-	},
-	"zilmar_do_horizonte": {
-		"titulo": "Zilmar do Horizonte",
-		"texto": "Repentista, violeiro, poeta e cordelista natural de Horizonte. Leva a cultura do cordel às escolas da cidade, conversando com os alunos e cantando com eles. Parte dos seus poemas está reunida no livro ALESPE, Sertão e Poesia.",
-		"fonte": "Mapa Cultural do Ceará (perfil do agente cultural); Escola em Tempo Integral Joaquim Antônio da Silva (projeto pedagógico sobre cordel, 2012)."
-	},
-	"horizonte_hoje": {
-		"titulo": "Horizonte hoje",
-		"texto": "Hoje Horizonte tem mais de 55 mil habitantes. A agricultura é uma das principais fontes de renda, com destaque para a cajucultura. No Alto Alegre, a comunidade quilombola foi reconhecida pela Fundação Palmares em maio de 2005.",
-		"fonte": "Mapa Mental da História de Horizonte (população e atividades); README do projeto (reconhecimento do Alto Alegre, Fundação Palmares, 2005)."
-	},
-	"coleta_seletiva": {
-		"titulo": "A coleta seletiva",
-		"texto": "Separar o lixo em papel, plástico, metal, vidro e orgânicos facilita a reciclagem. Os orgânicos, como restos de comida e cascas de fruta, podem virar adubo. Cada material separado é matéria-prima que não vai para o aterro.",
-		"fonte": "Conhecimento geral sobre coleta seletiva. A verificar com a Prefeitura de Horizonte os dias e pontos de coleta locais."
-	},
-	"distrito_industrial": {
-		"titulo": "O Distrito Industrial",
-		"texto": "Em 9 de fevereiro de 1990, a Lei nº 032 criou a Companhia de Desenvolvimento Industrial de Horizonte. Hoje a cidade tem mais de 40 indústrias, nos setores têxtil, de calçados, de granito e automotivo, e cerca de 20 mil empregos diretos.",
-		"fonte": "Livro Horizonte (Lei nº 032/1990); Mapa Mental da História de Horizonte (indústrias e empregos)."
-	},
-	"nome_horizonte": {
-		"titulo": "De Olho d'Água a Horizonte",
-		"texto": "O distrito de Olho d'Água pertenceu a Aquiraz até 1935, quando passou ao município de Guarani (atual Pacajus). Pelo Decreto Estadual nº 448, de 20/12/1938, passou a se chamar Horizonte, nome sugerido pela professora Raimunda Duarte Teixeira: o lugar que a vista não alcança.",
-		"fonte": "IBGE Cidades (Formação Administrativa); Prefeitura de Horizonte; Livro Horizonte, p. 28."
-	}
+ "tropeiros": {
+  "titulo": "Tropeiros e rapadura",
+  "texto": "Antes das rodovias, a produção da região seguia em lombo de burros e jumentos. A rapadura dos engenhos de Aquiraz, Pacajus, Olho d'Água e Dourado abastecia Pacoti, Fortaleza e outras localidades. Mais tarde, a farinha do Alto Alegre também seguia em tropas de jumentos até Fortaleza.",
+  "fonte": "Livro Horizonte: Do Olho d'Água do Venâncio ao Horizonte das Indústrias, p. 89; SANTOS, M. P. (UFC, 2012)."
+ },
+ "roca": {
+  "titulo": "O roçado e o trabalho de a meia",
+  "texto": "Muitas famílias plantavam em terra alheia no sistema de a meia: quem plantava entrava com todo o trabalho e dividia a colheita com o dono da terra. Se a safra se perdia na seca, o prejuízo era só de quem plantou. Nos roçados havia mandioca, feijão, milho, macaxeira e, no Ceará, também algodão.",
+  "fonte": "SANTOS, M. P. Incursões na história e memória da comunidade de quilombo de Alto-Alegre. UFC, 2012."
+ },
+ "olho_dagua": {
+  "titulo": "Olho d'Água do Venâncio",
+  "texto": "Olho d'água é o lugar onde a água do subsolo brota sozinha, sem precisar cavar. O primeiro nome de Horizonte veio de uma nascente nas terras de Venâncio Raimundo de Sousa (1894), agropecuarista que também produzia rapadura e cal, e foi inspetor escolar e vereador. O antigo casarão da família é patrimônio cultural da cidade.",
+  "fonte": "Livro Horizonte, p. 27; IBGE Cidades; Prefeitura de Horizonte."
+ },
+ "preguica_gigante": {
+  "titulo": "A preguiça-gigante",
+  "texto": "No início da década de 1930, Chico Moreira, dono de um sítio na Lagoa do Ipu, encontrou ao cavar um poço a ossada de uma preguiça-gigante, com cerca de 9 metros de comprimento e 3 de altura. O fóssil foi para o Museu Nacional, na Quinta da Boa Vista, Rio de Janeiro.",
+  "fonte": "Prefeitura de Horizonte (Curiosidades); Mapa Mental da História de Horizonte."
+ },
+ "taipa_carnauba": {
+  "titulo": "Casa de taipa e carnaúba",
+  "texto": "A casa de taipa, ou pau a pique, é feita de uma grade de varas amarradas e preenchida com barro amassado à mão. A carnaúba, comum perto dos rios da região, dava palha para cobrir casas, tronco para vigas e cera. Em Horizonte há cajueiros, coqueiros, mangueiras e trechos de carnaubais.",
+  "fonte": "SANTOS, M. P. (UFC, 2012), p. 32; conhecimento tradicional cearense."
+ },
+ "paiacus": {
+  "titulo": "Os Paiacus",
+  "texto": "Os primeiros habitantes da região foram os índios Paiacus, que viviam da caça, da pesca e do plantio, e já cultivavam a mandioca antes da chegada dos portugueses. Resistiram à tomada de suas terras na Guerra dos Bárbaros (1680–1713) e foram aldeados por jesuítas em Monte-mor-o-Velho, origem da atual Pacajus.",
+  "fonte": "Prefeitura de Horizonte; IBGE Cidades; Livro Horizonte, p. 72–73 e 117."
+ },
+ "cazuza": {
+  "titulo": "Cazuza e o Alto Alegre",
+  "texto": "Pela memória oral do Alto Alegre, Cazuza fugiu de um navio negreiro na Barra do Ceará, foi capturado e castigado em Pacajus e acolhido pelos Paiacus, onde formou família. Seus descendentes vivem no Alto Alegre, Alto da Estrela, Cajueiro da Malhada e na Base (Pacajus). A comunidade foi reconhecida como quilombola pela Fundação Palmares em 2005.",
+  "fonte": "Projeto Bordando Memórias / Coletivo Bordando Resistência; SANTOS, M. P. (UFC, 2012); Prefeitura de Horizonte."
+ },
+ "emancipacao": {
+  "titulo": "A luta pela emancipação",
+  "texto": "Em 1963 uma lei criou o município de Horizonte, mas ela foi derrubada pela ditadura em 1964 e 1965. Anos depois, a Sociedade dos Amigos de Horizonte (Sahori) liderou um plebiscito: 2.273 votos a favor e 182 contra. A Lei nº 11.300, de 6 de março de 1987, criou o município, que foi instalado em 1º de janeiro de 1989.",
+  "fonte": "Mapa Mental da História de Horizonte (Lei nº 11.300 e instalação em 1989); Livro Horizonte: Do Olho d'Água do Venâncio ao Horizonte das Indústrias (plebiscito e lei de 1963, a confirmar na página)."
+ },
+ "primeira_eleicao": {
+  "titulo": "A primeira eleição de Horizonte",
+  "texto": "Em 1988 Horizonte escolheu, pela primeira vez, o prefeito e os vereadores da cidade. O voto era dado numa cédula de papel, e a contagem era feita à mão, à vista dos fiscais. O primeiro prefeito, Francisco César de Sousa, tomou posse em 1º de janeiro de 1989, quando o município foi instalado.",
+  "fonte": "Livro Horizonte (primeiro prefeito); Mapa Mental da História de Horizonte (posse em 1º/1/1989). O detalhe da cédula e da contagem manual é o padrão das eleições brasileiras da época: a verificar com a Justiça Eleitoral."
+ },
+ "personagens_emancipacao": {
+  "titulo": "Quem fez Horizonte",
+  "texto": "Venâncio Raimundo de Sousa: dono das terras da nascente que deu nome ao lugar. Raimunda Duarte Teixeira: professora que sugeriu o nome Horizonte, em 1938. Virgílio Távora: governador na época da primeira lei de criação do município, em 1963, derrubada pela ditadura. Gonzaga Mota: governador que sancionou a Lei nº 11.300, em 6 de março de 1987. Francisco César de Sousa: primeiro prefeito, empossado em 1º de janeiro de 1989.",
+  "fonte": "IBGE Cidades; Prefeitura de Horizonte; Mapa Mental da História de Horizonte; Livro Horizonte (lei de 1963 e nome de 1938, a confirmar na página)."
+ },
+ "quem_governa": {
+  "titulo": "Quem governa Horizonte hoje",
+  "texto": "Nezinho Farias (Manoel Gomes de Farias Neto) é o prefeito de Horizonte, reeleito em 2024. Jô Farias é primeira-dama de Horizonte e deputada estadual na Assembleia Legislativa do Ceará. O primeiro prefeito, Francisco César de Sousa, tomou posse em 1º de janeiro de 1989. Jaime Ribeiro do Nascimento é o secretário de Planejamento e Administração da Prefeitura, reconduzido para a gestão de 2025.",
+  "fonte": "O Povo e Diário do Nordeste (eleição de 2024 e filiação partidária); Assembleia Legislativa do Ceará (projeto de lei de 2025 de autoria da deputada); informação da comunidade local (primeira-dama); Mapa Mental da História de Horizonte (primeiro prefeito). Site oficial da Prefeitura de Horizonte (página da Secretaria de Planejamento e Administração)."
+ },
+ "festa_padroeiro": {
+  "titulo": "A festa de São João Batista",
+  "texto": "São João Batista é o padroeiro de Horizonte, e o dia 24 de junho é dedicado a ele. A festa tem procissão, hasteamento das bandeiras e a benção da fogueira na praça da Matriz, seguidos de celebrações religiosas. A Igreja Matriz de São João Batista está ligada à Paróquia São João Batista e à Arquidiocese de Fortaleza.",
+  "fonte": "Mapa Mental da História de Horizonte (data do padroeiro); programação da festa do padroeiro, Arquidiocese de Fortaleza (2017); site da Prefeitura de Horizonte (missa de ação de graças pelos 37 anos da cidade)."
+ },
+ "zilmar_do_horizonte": {
+  "titulo": "Zilmar do Horizonte",
+  "texto": "Repentista, violeiro, poeta e cordelista natural de Horizonte. Leva a cultura do cordel às escolas da cidade, conversando com os alunos e cantando com eles. Parte dos seus poemas está reunida no livro ALESPE, Sertão e Poesia.",
+  "fonte": "Mapa Cultural do Ceará (perfil do agente cultural); Escola em Tempo Integral Joaquim Antônio da Silva (projeto pedagógico sobre cordel, 2012)."
+ },
+ "horizonte_hoje": {
+  "titulo": "Horizonte hoje",
+  "texto": "Hoje Horizonte tem mais de 55 mil habitantes. A agricultura é uma das principais fontes de renda, com destaque para a cajucultura. No Alto Alegre, a comunidade quilombola foi reconhecida pela Fundação Palmares em maio de 2005.",
+  "fonte": "Mapa Mental da História de Horizonte (população e atividades); README do projeto (reconhecimento do Alto Alegre, Fundação Palmares, 2005)."
+ },
+ "coleta_seletiva": {
+  "titulo": "A coleta seletiva",
+  "texto": "Separar o lixo em papel, plástico, metal, vidro e orgânicos facilita a reciclagem. Os orgânicos, como restos de comida e cascas de fruta, podem virar adubo. Cada material separado é matéria-prima que não vai para o aterro.",
+  "fonte": "Conhecimento geral sobre coleta seletiva. A verificar com a Prefeitura de Horizonte os dias e pontos de coleta locais."
+ },
+ "distrito_industrial": {
+  "titulo": "O Distrito Industrial",
+  "texto": "Em 9 de fevereiro de 1990, a Lei nº 032 criou a Companhia de Desenvolvimento Industrial de Horizonte. Hoje a cidade tem mais de 40 indústrias, nos setores têxtil, de calçados, de granito e automotivo, e cerca de 20 mil empregos diretos.",
+  "fonte": "Livro Horizonte (Lei nº 032/1990); Mapa Mental da História de Horizonte (indústrias e empregos)."
+ },
+ "nome_horizonte": {
+  "titulo": "De Olho d'Água a Horizonte",
+  "texto": "O distrito de Olho d'Água pertenceu a Aquiraz até 1935, quando passou ao município de Guarani (atual Pacajus). Pelo Decreto Estadual nº 448, de 20/12/1938, passou a se chamar Horizonte, nome sugerido pela professora Raimunda Duarte Teixeira: o lugar que a vista não alcança.",
+  "fonte": "IBGE Cidades (Formação Administrativa); Prefeitura de Horizonte; Livro Horizonte, p. 28."
+ },
+ "troller_polo": {
+  "titulo": "Da Troller ao polo automotivo",
+  "texto": "A fábrica da Troller funcionou em Horizonte desde 1995 e foi reaberta em 2014, com investimento da Ford. Em 2021 a Ford anunciou o fechamento e cerca de 470 trabalhadores ficaram sem emprego. Em dezembro de 2025, o presidente Lula inaugurou no mesmo terreno o Polo Automotivo do Ceará, com a primeira montagem da Spark da GM.",
+  "fonte": "O Povo (fechamento da Troller, 2021; inauguração do polo, 3/12/2025); Diário do Nordeste (investimento da Ford em 2014). Datas de encerramento variam entre setembro e dezembro de 2021 nas reportagens."
+ },
+ "seculo_xxi": {
+  "titulo": "Horizonte no século XXI",
+  "texto": "Entre 2000 e 2010, a população de Horizonte cresceu cerca de 65%, segundo o IBGE, com muitas pessoas vindas de outras regiões do Ceará em busca de trabalho. Em 2022 foi criado o Parque Estadual das Águas, que protege os mananciais do Pacoti, do Riachão e do Gavião. Em 2025, uma vereadora quilombola tomou posse na Câmara Municipal, a primeira da comunidade a ocupar uma cadeira.",
+  "fonte": "IBGE (crescimento populacional, citado em portal de notícias local); Portal IN e decreto estadual (Parque Estadual das Águas, 2022); O Povo (posse da vereadora, 4/8/2025)."
+ },
+ "raimundo_nogueira": {
+  "titulo": "Raimundo Nogueira Lopes",
+  "texto": "Agricultor nascido em Queimadas, em 1902, então município de Pacajus. Foi o primeiro produtor rural da região a ter energia elétrica, geladeira, rádio, caminhão e televisão. Nomeado inspetor escolar, ajudou a construir a escola isolada de Queimadas. A primeira escola estadual de Horizonte recebeu seu nome, pelo decreto de 1977.",
+  "fonte": "Blog da Escola Raimundo Nogueira (biografia escrita em 2015). Os fatos ainda precisam ser conferidos no Diário Oficial do Ceará (decreto de 1977)."
+ },
+ "nomes_dos_bairros": {
+  "titulo": "De onde vêm os nomes dos bairros",
+  "texto": "Catolé vem das muitas palmeiras catolé, também chamadas de coco babão, da região. Queimadas, segundo a memória oral da família Nogueira, vem das queimadas feitas para plantar milho, feijão e mandioca. Aningas viria do tupi \"aniga\", planta de flores coloridas e raízes comestíveis. Da origem de Dourados não encontramos registro: é um nome a pesquisar com os moradores. Ao sul de Horizonte, a área urbana tem 19 bairros, como Centro, Gameleira, Mal Cozinhado e Planalto Horizonte.",
+  "fonte": "Mapeamento Cultural de Horizonte (relato oral, citado pelo blog Baixo Jaguaribe, 2024); Prefeitura de Horizonte (origem de Aningas); Wikipédia (lista de bairros, a confirmar). Origem de Dourados: sem fonte encontrada."
+ }
 }

@@ -82,7 +82,7 @@ func _ready() -> void:
 	await frames(5)
 	var hud: Node = fase.get_node("HUD")
 	check(hud._tela_fim.visible and get_tree().paused, "fim da Fase 4 aparece com o jogo pausado")
-	check(hud._tela_fim.proxima_cena == "", "Fase 4 é a última do protótipo")
+	check(hud._tela_fim.proxima_cena == "res://scenes/levels/fase5.tscn", "Fase 4 leva à Fase 5")
 	hud._tela_fim._continuar()
 	check(not get_tree().paused, "continuar explorando despausa o jogo")
 

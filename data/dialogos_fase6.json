@@ -1,0 +1,250 @@
+{
+ "abertura": {
+  "nome": "Livro do Tempo",
+  "inicio": "a1",
+  "nos": {
+   "a1": {
+    "quem": "Livro do Tempo",
+    "fala": "Horizonte nasceu de um olho d'água. Hoje a água da região abastece a cidade e a capital.",
+    "proximo": "a2"
+   },
+   "a2": {
+    "quem": "{nome}",
+    "fala": "E quem cuida dessas nascentes?",
+    "proximo": "a3"
+   },
+   "a3": {
+    "quem": "Livro do Tempo",
+    "fala": "Converse com o guarda do parque e com a comunidade do Alto Alegre, responda ao quiz das águas e descubra como cuidar do que é de todos.",
+    "proximo": null
+   }
+  }
+ },
+ "guarda_parque": {
+  "nome": "Seu Antônio (guarda do parque)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "quiz_parque_ok",
+    "no": "ja"
+   },
+   {
+    "flag": "falou_guarda",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Sou guarda do Parque Estadual das Águas. Ele foi criado por decreto em 2022, para proteger os mananciais da região.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "O que você quer saber?",
+    "opcoes": [
+     {
+      "texto": "Quais cidades o parque abrange?",
+      "proximo": "p1"
+     },
+     {
+      "texto": "Qual é o sistema de águas protegido?",
+      "proximo": "p2"
+     },
+     {
+      "texto": "Quero responder ao quiz das águas",
+      "proximo": "q1"
+     },
+     {
+      "texto": "Obrigado, Seu Antônio",
+      "flag": "falou_guarda",
+      "proximo": "fim"
+     }
+    ]
+   },
+   "p1": {
+    "fala": "Seis municípios: Aquiraz, Guaiúba, Horizonte, Itaitinga, Pacajus e Pacatuba.",
+    "proximo": "i2"
+   },
+   "p2": {
+    "fala": "O sistema Pacoti, Riachão e Gavião, que abastece a região metropolitana de Fortaleza.",
+    "proximo": "i2"
+   },
+   "q1": {
+    "fala": "Quantos municípios o Parque Estadual das Águas abrange?",
+    "opcoes": [
+     {
+      "texto": "4",
+      "proximo": "e1"
+     },
+     {
+      "texto": "6",
+      "flag": "quiz_parque_ok",
+      "proximo": "q2"
+     },
+     {
+      "texto": "9",
+      "proximo": "e1"
+     }
+    ]
+   },
+   "e1": {
+    "fala": "Não é esse número. Releia o que eu disse sobre as cidades.",
+    "proximo": "q1"
+   },
+   "q2": {
+    "fala": "Quem assinou o decreto que criou o parque, em 2022?",
+    "opcoes": [
+     {
+      "texto": "Izolda Cela",
+      "flag": "quiz_parque_ok",
+      "proximo": "fim2"
+     },
+     {
+      "texto": "Elmano de Freitas",
+      "proximo": "e2"
+     },
+     {
+      "texto": "Camilo Santana",
+      "proximo": "e2"
+     }
+    ]
+   },
+   "e2": {
+    "fala": "Quase! Pense na governadora que estava no cargo em 2022.",
+    "proximo": "q2"
+   },
+   "fim2": {
+    "fala": "Muito bem! Você sabe cuidar das nossas águas.",
+    "recompensa": {
+     "sementes": 10
+    },
+    "proximo": null
+   },
+   "fim": {
+    "fala": "Guarde essa história, {nome}. A água é de todos.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já conversamos. Falta o quiz das águas.",
+    "proximo": null
+   },
+   "ja": {
+    "fala": "Você já respondeu o quiz. Obrigado pela ajuda!",
+    "proximo": null
+   }
+  }
+ },
+ "dona_maria_alto_alegre": {
+  "nome": "Dona Maria (Alto Alegre)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "falou_alto_alegre",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Eu sou do Alto Alegre, comunidade quilombola. A nossa história vem do Cazuza, que resistiu e não se entregou.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Quer saber mais?",
+    "opcoes": [
+     {
+      "texto": "Quando o Alto Alegre foi reconhecido?",
+      "proximo": "r1"
+     },
+     {
+      "texto": "Obrigado pela história",
+      "flag": "falou_alto_alegre",
+      "recompensa": {
+       "pagina": "horizonte_hoje"
+      },
+      "proximo": "fim"
+     }
+    ]
+   },
+   "r1": {
+    "fala": "A Fundação Palmares reconheceu a nossa comunidade em maio de 2005. Ser reconhecido é lembrar de quem veio antes.",
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Passe essa história para frente, {nome}.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já conversamos sobre o Alto Alegre. Obrigada por ouvir.",
+    "proximo": null
+   }
+  }
+ },
+ "seu_chico_bairros": {
+  "nome": "Seu Chico (morador de Queimadas)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "falou_bairros",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Cada nome de bairro daqui guarda uma história. Quer ouvir algumas?",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Qual bairro você quer conhecer?",
+    "opcoes": [
+     {
+      "texto": "Catolé",
+      "proximo": "c1"
+     },
+     {
+      "texto": "Queimadas",
+      "proximo": "c2"
+     },
+     {
+      "texto": "Aningas",
+      "proximo": "c3"
+     },
+     {
+      "texto": "Dourados",
+      "proximo": "c4"
+     },
+     {
+      "texto": "Obrigado, Seu Chico",
+      "flag": "falou_bairros",
+      "recompensa": {
+       "pagina": "nomes_dos_bairros"
+      },
+      "proximo": "fim"
+     }
+    ]
+   },
+   "c1": {
+    "fala": "O Catolé tem muitas palmeiras catolé. Por isso o bairro ganhou esse nome.",
+    "proximo": "i2"
+   },
+   "c2": {
+    "fala": "Queimadas vem das queimadas que a família Nogueira fazia para plantar milho, feijão e mandioca.",
+    "proximo": "i2"
+   },
+   "c3": {
+    "fala": "Aningas, dizem, vem de uma planta de flores coloridas, do tupi. Vale conferir com os mais velhos.",
+    "proximo": "i2"
+   },
+   "c4": {
+    "fala": "Dourados eu não sei dizer a origem do nome. Esse é um bom tema para você pesquisar com os moradores.",
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Cada bairro é um pedaço da cidade, {nome}. Guarde o nome de cada um.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já contei a história de alguns bairros. Pergunte de novo se quiser ouvir mais.",
+    "proximo": null
+   }
+  }
+ }
+}

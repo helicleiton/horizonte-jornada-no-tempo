@@ -1,0 +1,80 @@
+{
+	"abertura": {
+		"nome": "Livro do Tempo",
+		"inicio": "a1",
+		"nos": {
+			"a1": {"quem": "Livro do Tempo", "fala": "Estamos nos anos 2000. Horizonte cresce depressa: muita gente chega de outras cidades em busca de trabalho.", "proximo": "a2"},
+			"a2": {"quem": "{nome}", "fala": "E o que aconteceu com as fábricas de hoje?", "proximo": "a3"},
+			"a3": {"quem": "Livro do Tempo", "fala": "Converse com quem viveu essas mudanças, responda à estudante Bia e descubra como a cidade se reinventou.", "proximo": null}
+		}
+	},
+
+	"raimundo_troller": {
+		"nome": "Seu Raimundo (ex-operário)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "falou_raimundo", "no": "repete"}
+		],
+		"nos": {
+			"inicio": {"fala": "Eu trabalhei muitos anos na fábrica da Troller. Quando ela foi reaberta em 2014, foi uma alegria para a família toda.", "proximo": "i2"},
+			"i2": {"fala": "Quer saber o que aconteceu depois?", "opcoes": [
+				{"texto": "O que aconteceu com a fábrica?", "proximo": "f1"},
+				{"texto": "Obrigado pelo relato", "flag": "falou_raimundo", "proximo": "fim"}
+			]},
+			"f1": {"fala": "Em 2021 a Ford anunciou o fechamento. Cerca de 470 pessoas perderam o emprego, e o terreno ficou parado por um tempo.", "proximo": "i2"},
+			"fim": {"fala": "Guarde essa história, {nome}. Ela mostra como uma cidade depende do trabalho de sua gente.", "proximo": null},
+			"repete": {"fala": "Já conversamos sobre a fábrica. Vá conhecer o polo com a Dona Terezinha.", "proximo": null}
+		}
+	},
+
+	"terezinha_polo": {
+		"nome": "Dona Terezinha (operária do polo)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "falou_terezinha", "no": "repete"}
+		],
+		"nos": {
+			"inicio": {"fala": "Agora o polo automotivo funciona no mesmo lugar. Os primeiros carros saíram no fim de 2025.", "proximo": "i2"},
+			"i2": {"fala": "O que você quer saber sobre o polo?", "opcoes": [
+				{"texto": "Qual foi o primeiro carro produzido?", "proximo": "c1"},
+				{"texto": "Quem inaugurou o polo?", "proximo": "c2"},
+				{"texto": "Obrigado, Dona Terezinha", "flag": "falou_terezinha", "proximo": "fim"}
+			]},
+			"c1": {"fala": "A primeira montagem foi do Chevrolet Spark EUV, da GM.", "proximo": "i2"},
+			"c2": {"fala": "Foi o presidente Lula, em 3 de dezembro de 2025. O polo também busca outras marcas e fábricas de peças.", "proximo": "i2"},
+			"fim": {"fala": "Cada geração encontra seu jeito de trabalhar, {nome}. A cidade segue em frente.", "proximo": null},
+			"repete": {"fala": "Já conversamos sobre o polo. Agora falta responder à Bia.", "proximo": null}
+		}
+	},
+
+	"bia_quiz": {
+		"nome": "Estudante Bia",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "quiz_crescimento_ok", "no": "ja"}
+		],
+		"nos": {
+			"inicio": {"fala": "Estou fazendo um trabalho sobre a cidade. Responde três perguntas comigo? Se errar, eu repito com uma dica.", "proximo": "q1"},
+			"q1": {"fala": "Qual fábrica fechou em 2021, deixando cerca de 470 trabalhadores sem emprego?", "opcoes": [
+				{"texto": "A Troller", "proximo": "q2"},
+				{"texto": "A Ford do Pecém", "proximo": "e1"},
+				{"texto": "A Cascavel Motors", "proximo": "e1"}
+			]},
+			"e1": {"fala": "Pense na fábrica que ficava no terreno onde hoje funciona o polo automotivo.", "proximo": "q1"},
+			"q2": {"fala": "Quem inaugurou o Polo Automotivo do Ceará, em Horizonte, em dezembro de 2025?", "opcoes": [
+				{"texto": "O presidente Lula", "proximo": "q3"},
+				{"texto": "O governador Camilo Santana", "proximo": "e2"},
+				{"texto": "A prefeita da cidade", "proximo": "e2"}
+			]},
+			"e2": {"fala": "Quase! Pense no presidente da República que esteve na cidade no fim de 2025.", "proximo": "q2"},
+			"q3": {"fala": "Qual foi o primeiro modelo montado no polo?", "opcoes": [
+				{"texto": "Chevrolet Spark EUV", "flag": "quiz_crescimento_ok", "proximo": "fim"},
+				{"texto": "Jeep Renegade", "proximo": "e3"},
+				{"texto": "Fiat Uno", "proximo": "e3"}
+			]},
+			"e3": {"fala": "Não foi esse. O primeiro modelo foi da GM, montado no novo polo.", "proximo": "q3"},
+			"fim": {"fala": "Você acertou tudo! Vou escrever isso no meu trabalho. Obrigada, {nome}.", "recompensa": {"sementes": 10}, "proximo": null},
+			"ja": {"fala": "Já respondemos as perguntas. Obrigada pela ajuda!", "proximo": null}
+		}
+	}
+}

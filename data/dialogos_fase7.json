@@ -1,0 +1,144 @@
+{
+ "abertura": {
+  "nome": "Livro do Tempo",
+  "inicio": "a1",
+  "nos": {
+   "a1": {
+    "quem": "Livro do Tempo",
+    "fala": "Todo dia 24 de junho, Horizonte se veste de festa para São João Batista, o padroeiro da cidade.",
+    "proximo": "a2"
+   },
+   "a2": {
+    "quem": "{nome}",
+    "fala": "Como é essa festa?",
+    "proximo": "a3"
+   },
+   "a3": {
+    "quem": "Livro do Tempo",
+    "fala": "Converse com o mestre da quadrilha, junte bandeirinhas para a festa, entregue-as a Dona Filó e fale com o Seu Antônio sobre a procissão.",
+    "proximo": null
+   }
+  }
+ },
+ "mestre_quadrilha": {
+  "nome": "Mestre da quadrilha",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "falou_mestre",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Na festa junina tem quadrilha: a dança em que os pares fazem o marcador e o mestre chama a marcação.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Quer aprender a festa?",
+    "opcoes": [
+     {
+      "texto": "E a fogueira, o que ela significa?",
+      "proximo": "f1"
+     },
+     {
+      "texto": "Vou ajudar com as bandeirinhas",
+      "flag": "falou_mestre",
+      "proximo": "fim"
+     }
+    ]
+   },
+   "f1": {
+    "fala": "Na tradição cristã, a fogueira junina está ligada ao anúncio do nascimento de João Batista. Por isso ela é benzida na praça.",
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Junte cinco bandeirinhas e leve para a Dona Filó. Ela monta a decoração da praça.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já falamos da festa. Ainda faltam as bandeirinhas.",
+    "proximo": null
+   }
+  }
+ },
+ "dona_filo": {
+  "nome": "Dona Filó (decoração)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "item": "bandeirinha",
+    "min": 5,
+    "no": "entrega"
+   },
+   {
+    "flag": "falou_filo",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Eu monto as bandeirinhas da praça. Quando traz cinco, a festa fica bonita.",
+    "proximo": null
+   },
+   "entrega": {
+    "fala": "Cinco bandeirinhas! A praça vai ficar linda. Obrigada, {nome}.",
+    "flag": "entregou_bandeirinhas",
+    "remover_item": {
+     "id": "bandeirinha",
+     "quantidade": 5
+    },
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já conversamos. Traga as bandeirinhas quando tiver.",
+    "proximo": null
+   }
+  }
+ },
+ "seu_antonio_procissao": {
+  "nome": "Seu Antônio (devoto)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "falou_antonio",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Todo ano tem procissão, hasteamento das bandeiras e a bênção da fogueira na praça da Matriz. Depois vem a missa.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Quer saber mais?",
+    "opcoes": [
+     {
+      "texto": "Quem é o padroeiro?",
+      "proximo": "p1"
+     },
+     {
+      "texto": "Obrigado, Seu Antônio",
+      "flag": "falou_antonio",
+      "recompensa": {
+       "pagina": "festa_padroeiro"
+      },
+      "proximo": "fim"
+     }
+    ]
+   },
+   "p1": {
+    "fala": "São João Batista. O dia 24 de junho é dedicado a ele, e a cidade inteira participa.",
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Boa festa, {nome}! Horizonte celebra junto.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já falamos da festa. Até a próxima procissão!",
+    "proximo": null
+   }
+  }
+ }
+}

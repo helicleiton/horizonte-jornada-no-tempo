@@ -14,6 +14,9 @@ const FASE_2 := "res://scenes/levels/fase2.tscn"
 const FASE_2B := "res://scenes/levels/fase2b.tscn"
 const FASE_3 := "res://scenes/levels/fase3.tscn"
 const FASE_4 := "res://scenes/levels/fase4.tscn"
+const FASE_5 := "res://scenes/levels/fase5.tscn"
+const FASE_6 := "res://scenes/levels/fase6.tscn"
+const FASE_7 := "res://scenes/levels/fase7.tscn"
 
 ## Nome de cada fase, como aparece na lista de fases do menu.
 const FASES := [
@@ -22,6 +25,9 @@ const FASES := [
 	[FASE_2B, "2b · A primeira eleição (1988)"],
 	[FASE_3, "3 · O polo industrial (1990)"],
 	[FASE_4, "4 · Plantar o futuro (hoje)"],
+	[FASE_5, "5 · A cidade que se reinventa (2000–hoje)"],
+	[FASE_6, "6 · As águas de Horizonte"],
+	[FASE_7, "7 · A festa de São João"],
 ]
 
 
@@ -69,11 +75,23 @@ func _on_jogar_pressed() -> void:
 ## Lista de fases com nome, para o aluno escolher por onde começar.
 func _construir_fases() -> void:
 	_selecao_fases = _tela_cobrindo_tudo(Color(0.08, 0.05, 0.03))
-	var vbox := _coluna_centralizada(_selecao_fases)
+	# Lista com rolagem: a tela de 320x180 não cabe todas as fases de uma vez.
+	var rolagem := ScrollContainer.new()
+	rolagem.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	rolagem.offset_left = 60
+	rolagem.offset_right = -60
+	rolagem.offset_top = 8
+	rolagem.offset_bottom = -8
+	_selecao_fases.add_child(rolagem)
+	var vbox := VBoxContainer.new()
+	vbox.custom_minimum_size = Vector2(200, 0)
+	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	rolagem.add_child(vbox)
 	_rotulo(vbox, "Escolha a fase:", Color(1.0, 0.85, 0.3), HORIZONTAL_ALIGNMENT_CENTER)
 	_espaco(vbox, 4)
 	for fase in FASES:
 		_botao(vbox, fase[1], _escolher_fase.bind(fase[0]))
+	_botao(vbox, "JOGO DA MEMÓRIA", func() -> void: get_tree().change_scene_to_file("res://scenes/ui/memoria.tscn"))
 	_botao(vbox, "Voltar", func() -> void: _selecao_fases.visible = false)
 
 

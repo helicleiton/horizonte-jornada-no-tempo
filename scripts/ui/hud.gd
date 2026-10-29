@@ -10,10 +10,13 @@ const TEXTO_FIM := {
 	1: "Você restaurou o Fragmento de Memória 1. A próxima parada é 1987: a emancipação de Horizonte.",
 	2: "Você restaurou o Fragmento de Memória 2. A próxima parada é a primeira eleição, em 1988.",
 	3: "Você restaurou o Fragmento de Memória 3. A próxima parada é o presente: plantar o futuro.",
-	4: "Você restaurou o último Fragmento de Memória. Esta é a última fase do protótipo.",
+	4: "Você restaurou o último Fragmento de Memória. A próxima parada é a cidade de hoje.",
+	6: "Você viu como Horizonte se reinventou no século XXI. A próxima parada são as águas de Horizonte.",
+	7: "Você conheceu as águas de Horizonte. A próxima parada é a festa de São João.",
+	8: "Você viveu a festa de São João de Horizonte. Esta é a última fase do protótipo.",
 	5: "Você viu como nasceu a primeira eleição de Horizonte. A próxima parada são os anos 1990.",
 }
-const ROTULO_FASE := {5: "2b"}
+const ROTULO_FASE := {5: "2b", 6: "5", 7: "6", 8: "7"}
 
 var _paginas := {}
 var _barra_cajus: BarraCajus

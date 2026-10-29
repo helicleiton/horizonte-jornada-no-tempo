@@ -1,94 +1,839 @@
 {
-	"abertura": {
-		"nome": "Livro do Tempo",
-		"inicio": "a1",
-		"nos": {
-			"a1": {"quem": "Livro do Tempo", "fala": "Hoje Horizonte tem mais de 55 mil habitantes. A cidade cresceu com a indústria, o comércio e a agricultura.", "proximo": "a2"},
-			"a2": {"quem": "{nome}", "fala": "Então a história já está quase toda contada. O que ainda falta?", "proximo": "a3"},
-			"a3": {"quem": "Livro do Tempo", "fala": "Cuidar do lugar onde a gente vive. Plantar mudas, separar o lixo certo e levar a memória de Horizonte para a escola.", "proximo": "a4"},
-			"a4": {"quem": "Livro do Tempo", "fala": "Converse com o Seu Tião, a Dona Marta e a professora Helena. Plante as mudas, separe o lixo e restaure o último fragmento.", "proximo": null}
-		}
-	},
-
-	"tiao_plantio": {
-		"nome": "Seu Tião (agente ambiental)",
-		"inicio": "inicio",
-		"condicoes": [
-			{"flag": "plantio_ok", "no": "ja"},
-			{"item": "muda_plantio", "min": 4, "no": "entrega"},
-			{"flag": "falou_tiao", "no": "repete"}
-		],
-		"nos": {
-			"inicio": {"fala": "Sou o Seu Tião, agente ambiental. Quem planta uma muda cuida da sombra e da água de amanhã.", "proximo": "i2"},
-			"i2": {"fala": "Quer aprender a plantar?", "opcoes": [
-				{"texto": "Como se planta uma muda?", "proximo": "c1"},
-				{"texto": "Vou trazer as mudas", "flag": "falou_tiao", "proximo": "fim"}
-			]},
-			"c1": {"fala": "Escolha um lugar com sol, cave um buraco, coloque a muda e regue. No sertão, água é cuidado de todo dia.", "proximo": "i2"},
-			"fim": {"fala": "Ótimo! Traga quatro mudas. Vamos plantar no pátio da escola.", "proximo": null},
-			"repete": {"fala": "Já conversamos. Ainda faltam as quatro mudas.", "proximo": null},
-			"entrega": {"fala": "Quatro mudas! Vamos plantar hoje mesmo. Obrigado, {nome}.", "flag": "plantio_ok", "remover_item": {"id": "muda_plantio", "quantidade": 4}, "proximo": "e2"},
-			"e2": {"fala": "Cada árvore dessas vai dar sombra para quem vem depois.", "proximo": null},
-			"ja": {"fala": "As mudas já estão na terra. Obrigado!", "proximo": null}
-		}
-	},
-
-	"marta_coleta": {
-		"nome": "Dona Marta (coleta seletiva)",
-		"inicio": "inicio",
-		"condicoes": [
-			{"flag": "coleta_ok", "no": "ja"}
-		],
-		"nos": {
-			"inicio": {"fala": "Eu cuido da coleta seletiva do bairro. Separar o lixo facilita a reciclagem. Quer testar?", "proximo": "q"},
-			"q": {"fala": "Onde vai uma garrafa de plástico?", "opcoes": [
-				{"texto": "Na lixeira de plástico", "flag": "coleta_ok", "proximo": "acertou"},
-				{"texto": "Na lixeira de orgânicos", "proximo": "errou1"},
-				{"texto": "Na lixeira de papel", "proximo": "errou2"}
-			]},
-			"errou1": {"fala": "Não! Orgânico é resto de comida e casca de fruta. Pense no material da garrafa.", "proximo": "q"},
-			"errou2": {"fala": "Papel é outro material. A garrafa é de plástico.", "proximo": "q"},
-			"acertou": {"fala": "Isso! O plástico vai na lixeira de plástico, e a casca de caju vai na de orgânicos. Separado, o lixo vira matéria-prima.", "recompensa": {"pagina": "coleta_seletiva"}, "proximo": null},
-			"ja": {"fala": "O lixo já está separado direitinho. Obrigada!", "proximo": null}
-		}
-	},
-
-	"zilmar_cordel": {
-		"nome": "Zilmar do Horizonte (cordelista)",
-		"inicio": "inicio",
-		"condicoes": [
-			{"flag": "falou_zilmar", "no": "repete"}
-		],
-		"nos": {
-			"inicio": {"fala": "Eu sou Zilmar do Horizonte, repentista e cordelista. Quem conta a história da cidade, conta do jeito que o povo entende: com rima.", "proximo": "i2"},
-			"i2": {"fala": "Quer saber o que é o cordel?", "opcoes": [
-				{"texto": "O que é o cordel?", "proximo": "c1"},
-				{"texto": "Conte uma história do lugar", "flag": "falou_zilmar", "recompensa": {"pagina": "zilmar_do_horizonte"}, "proximo": "fim"}
-			]},
-			"c1": {"fala": "É a literatura popular do sertão: histórias em versos, impressas em folhetos e vendidas nas feiras, muitas vezes penduradas num cordão.", "proximo": "i2"},
-			"fim": {"fala": "Pois então leve essa página com você. Quem lê também conta.", "proximo": null},
-			"repete": {"fala": "Já trocamos versos, lembra? Vá cuidar das mudas e do lixo.", "proximo": null}
-		}
-	},
-
-	"helena_escola": {
-		"nome": "Professora Helena (escola)",
-		"inicio": "inicio",
-		"condicoes": [
-			{"flags": ["plantio_ok", "coleta_ok", "falou_helena"], "no": "entrega"},
-			{"flag": "falou_helena", "no": "repete"}
-		],
-		"nos": {
-			"inicio": {"fala": "Eu sou a professora Helena. Meus alunos estudam a história de Horizonte e querem cuidar dela.", "proximo": "i2"},
-			"i2": {"fala": "O que a gente deve guardar dessa história?", "opcoes": [
-				{"texto": "Qual é a história que devemos guardar?", "proximo": "h1"},
-				{"texto": "Vamos cuidar do futuro", "flag": "falou_helena", "proximo": "fim"}
-			]},
-			"h1": {"fala": "O olho d'água, a luta pela emancipação, a primeira eleição e as fábricas. Cada geração conta a sua parte.", "proximo": "i2"},
-			"fim": {"fala": "Então volte quando tiver plantado as mudas e separado o lixo. Aí eu entrego o último fragmento.", "proximo": null},
-			"repete": {"fala": "Ainda falta plantar as mudas e separar o lixo antes do último fragmento.", "proximo": null},
-			"entrega": {"fala": "Você plantou, separou e lembrou. Esse é o Fragmento de Memória 4, o último. Horizonte guarda sua história e a leva adiante.", "recompensa": {"fragmento": 4}, "proximo": "e2"},
-			"e2": {"fala": "Fim da jornada, {nome}. Horizonte nasceu de um olho d'água e segue crescendo com as mãos de quem cuida dela.", "proximo": null}
-		}
-	}
+ "abertura": {
+  "nome": "Livro do Tempo",
+  "inicio": "a1",
+  "nos": {
+   "a1": {
+    "quem": "Livro do Tempo",
+    "fala": "Hoje Horizonte tem mais de 55 mil habitantes. A cidade cresceu com a indústria, o comércio e a agricultura.",
+    "proximo": "a2"
+   },
+   "a2": {
+    "quem": "{nome}",
+    "fala": "Então a história já está quase toda contada. O que ainda falta?",
+    "proximo": "a3"
+   },
+   "a3": {
+    "quem": "Livro do Tempo",
+    "fala": "Cuidar do lugar onde a gente vive. Plantar mudas, separar o lixo certo e levar a memória de Horizonte para a escola.",
+    "proximo": "a4"
+   },
+   "a4": {
+    "quem": "Livro do Tempo",
+    "fala": "Converse com o Seu Tião, a Dona Marta e a professora Helena. Plante as mudas, separe o lixo e restaure o último fragmento.",
+    "proximo": null
+   }
+  }
+ },
+ "tiao_plantio": {
+  "nome": "Seu Tião (agente ambiental)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "plantio_ok",
+    "no": "ja"
+   },
+   {
+    "item": "muda_plantio",
+    "min": 4,
+    "no": "entrega"
+   },
+   {
+    "flag": "falou_tiao",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Sou o Seu Tião, agente ambiental. Quem planta uma muda cuida da sombra e da água de amanhã.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Quer aprender a plantar?",
+    "opcoes": [
+     {
+      "texto": "Como se planta uma muda?",
+      "proximo": "c1"
+     },
+     {
+      "texto": "Vou trazer as mudas",
+      "flag": "falou_tiao",
+      "proximo": "fim"
+     }
+    ]
+   },
+   "c1": {
+    "fala": "Escolha um lugar com sol, cave um buraco, coloque a muda e regue. No sertão, água é cuidado de todo dia.",
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Ótimo! Traga quatro mudas. Vamos plantar no pátio da escola.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já conversamos. Ainda faltam as quatro mudas.",
+    "proximo": null
+   },
+   "entrega": {
+    "fala": "Quatro mudas! Vamos plantar hoje mesmo. Obrigado, {nome}.",
+    "flag": "plantio_ok",
+    "remover_item": {
+     "id": "muda_plantio",
+     "quantidade": 4
+    },
+    "proximo": "e2"
+   },
+   "e2": {
+    "fala": "Cada árvore dessas vai dar sombra para quem vem depois.",
+    "proximo": null
+   },
+   "ja": {
+    "fala": "As mudas já estão na terra. Obrigado!",
+    "proximo": null
+   }
+  }
+ },
+ "marta_coleta": {
+  "nome": "Dona Marta (coleta seletiva)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "coleta_ok",
+    "no": "ja"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Eu cuido da coleta seletiva do bairro. Separar o lixo facilita a reciclagem. Quer testar?",
+    "proximo": "q"
+   },
+   "q": {
+    "fala": "Onde vai uma garrafa de plástico?",
+    "opcoes": [
+     {
+      "texto": "Na lixeira de plástico",
+      "flag": "coleta_ok",
+      "proximo": "acertou"
+     },
+     {
+      "texto": "Na lixeira de orgânicos",
+      "proximo": "errou1"
+     },
+     {
+      "texto": "Na lixeira de papel",
+      "proximo": "errou2"
+     }
+    ]
+   },
+   "errou1": {
+    "fala": "Não! Orgânico é resto de comida e casca de fruta. Pense no material da garrafa.",
+    "proximo": "q"
+   },
+   "errou2": {
+    "fala": "Papel é outro material. A garrafa é de plástico.",
+    "proximo": "q"
+   },
+   "acertou": {
+    "fala": "Isso! O plástico vai na lixeira de plástico, e a casca de caju vai na de orgânicos. Separado, o lixo vira matéria-prima.",
+    "recompensa": {
+     "pagina": "coleta_seletiva"
+    },
+    "proximo": null
+   },
+   "ja": {
+    "fala": "O lixo já está separado direitinho. Obrigada!",
+    "proximo": null
+   }
+  }
+ },
+ "zilmar_cordel": {
+  "nome": "Zilmar do Horizonte (cordelista)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "falou_zilmar",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Eu sou Zilmar do Horizonte, repentista e cordelista. Quem conta a história da cidade, conta do jeito que o povo entende: com rima.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Quer saber o que é o cordel?",
+    "opcoes": [
+     {
+      "texto": "O que é o cordel?",
+      "proximo": "c1"
+     },
+     {
+      "texto": "Conte uma história do lugar",
+      "flag": "falou_zilmar",
+      "recompensa": {
+       "pagina": "zilmar_do_horizonte"
+      },
+      "proximo": "fim"
+     }
+    ]
+   },
+   "c1": {
+    "fala": "É a literatura popular do sertão: histórias em versos, impressas em folhetos e vendidas nas feiras, muitas vezes penduradas num cordão.",
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Pois então leve essa página com você. Quem lê também conta.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já trocamos versos, lembra? Vá cuidar das mudas e do lixo.",
+    "proximo": null
+   }
+  }
+ },
+ "desafio_historia": {
+  "nome": "Professor Gilberto (desafio)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "desafio_historia_ok",
+    "no": "ja"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Quer testar o que você aprendeu sobre Horizonte? São seis perguntas. Errou, eu repito com uma dica.",
+    "proximo": "q1"
+   },
+   "q1": {
+    "fala": "Qual político português foi responsável pela saída dos jesuítas de Portugal e de suas colônias?",
+    "opcoes": [
+     {
+      "texto": "Barão de Cotegipe",
+      "proximo": "e1"
+     },
+     {
+      "texto": "Marquês de Pombal",
+      "proximo": "q2"
+     },
+     {
+      "texto": "Conde d'Eu",
+      "proximo": "e1"
+     },
+     {
+      "texto": "Maurício de Nassau",
+      "proximo": "e1"
+     }
+    ]
+   },
+   "e1": {
+    "fala": "Não foi esse. Pense no ministro que reformou o Estado português no século XVIII.",
+    "proximo": "q1"
+   },
+   "q2": {
+    "fala": "Quando o Olho d'Água do Venâncio se chamou Horizonte, ele pertencia a qual cidade?",
+    "opcoes": [
+     {
+      "texto": "Pacajus",
+      "proximo": "e2"
+     },
+     {
+      "texto": "Caucaia",
+      "proximo": "e2"
+     },
+     {
+      "texto": "Cascavel",
+      "proximo": "e2"
+     },
+     {
+      "texto": "Guarani",
+      "proximo": "q3"
+     }
+    ]
+   },
+   "e2": {
+    "fala": "Quase! O nome da cidade foi trocado depois. Pense no nome que ela tinha antes de Pacajus.",
+    "proximo": "q2"
+   },
+   "q3": {
+    "fala": "Quem sugeriu o nome Horizonte, em 1938?",
+    "opcoes": [
+     {
+      "texto": "Rachel de Queiroz",
+      "proximo": "e3"
+     },
+     {
+      "texto": "Raimunda Duarte Teixeira",
+      "proximo": "q4"
+     },
+     {
+      "texto": "Bárbara de Alencar",
+      "proximo": "e3"
+     },
+     {
+      "texto": "Zibia Gasparetto",
+      "proximo": "e3"
+     }
+    ]
+   },
+   "e3": {
+    "fala": "Não foi ela. A sugestão veio de uma professora da própria terra.",
+    "proximo": "q3"
+   },
+   "q4": {
+    "fala": "Qual associação organizou o plebiscito que levou à emancipação de Horizonte?",
+    "opcoes": [
+     {
+      "texto": "Midema",
+      "proximo": "e4"
+     },
+     {
+      "texto": "Fapema",
+      "proximo": "e4"
+     },
+     {
+      "texto": "Sahori",
+      "proximo": "q5"
+     },
+     {
+      "texto": "Amho",
+      "proximo": "e4"
+     }
+    ]
+   },
+   "e4": {
+    "fala": "Não é essa. O nome começa com S e tem o sentido de Sociedade dos Amigos de Horizonte.",
+    "proximo": "q4"
+   },
+   "q5": {
+    "fala": "Qual governador assinou a Lei nº 11.300, que criou o município de Horizonte em 1987?",
+    "opcoes": [
+     {
+      "texto": "Ciro Gomes",
+      "proximo": "e5"
+     },
+     {
+      "texto": "Gonzaga Mota",
+      "proximo": "q6"
+     },
+     {
+      "texto": "Virgílio Távora",
+      "proximo": "e5"
+     },
+     {
+      "texto": "Castelo Branco",
+      "proximo": "e5"
+     }
+    ]
+   },
+   "e5": {
+    "fala": "Não foi ele. A lei foi sancionada no Palácio da Abolição, em março de 1987.",
+    "proximo": "q5"
+   },
+   "q6": {
+    "fala": "Qual governador autorizou a criação de Horizonte em 1963, e teve o ato cassado logo após o golpe militar?",
+    "opcoes": [
+     {
+      "texto": "Adalto Bezerra",
+      "proximo": "e6"
+     },
+     {
+      "texto": "Menezes Pimentel",
+      "proximo": "e6"
+     },
+     {
+      "texto": "César Cals Neto",
+      "proximo": "e6"
+     },
+     {
+      "texto": "Virgílio Távora",
+      "proximo": "fim"
+     }
+    ]
+   },
+   "e6": {
+    "fala": "Não foi esse. Pense no governador que apareceu na lei de 1963 que criou o município.",
+    "proximo": "q6"
+   },
+   "fim": {
+    "fala": "Você acertou todas! Sua memória de Horizonte está afiada.",
+    "flag": "desafio_historia_ok",
+    "recompensa": {
+     "sementes": 10
+    },
+    "proximo": "mais"
+   },
+   "ja": {
+    "fala": "Você já fez o desafio. Parabéns!",
+    "proximo": null
+   },
+   "mais": {
+    "fala": "Você mandou bem! Quer mais um desafio, com perguntas de geografia e história?",
+    "opcoes": [
+     {
+      "texto": "Sim, vamos lá",
+      "proximo": "s2q0"
+     },
+     {
+      "texto": "Agora não",
+      "proximo": null
+     }
+    ]
+   },
+   "s2q0": {
+    "fala": "Qual é o gentílico de quem nasce em Horizonte?",
+    "opcoes": [
+     {
+      "texto": "horizontiano",
+      "proximo": "s2e0"
+     },
+     {
+      "texto": "horizontiense",
+      "proximo": "s2e0"
+     },
+     {
+      "texto": "horizontino",
+      "proximo": "s2q1"
+     },
+     {
+      "texto": "horientiense",
+      "proximo": "s2e0"
+     }
+    ]
+   },
+   "s2e0": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s2q0"
+   },
+   "s2q1": {
+    "fala": "O nome Horizonte, segundo a tradição, significa:",
+    "opcoes": [
+     {
+      "texto": "lugar que a flecha alcança",
+      "proximo": "s2e1"
+     },
+     {
+      "texto": "lugar de sol forte",
+      "proximo": "s2e1"
+     },
+     {
+      "texto": "lugar de verdes mares",
+      "proximo": "s2e1"
+     },
+     {
+      "texto": "lugar que a vista não alcança",
+      "proximo": "s2q2"
+     }
+    ]
+   },
+   "s2e1": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s2q1"
+   },
+   "s2q2": {
+    "fala": "Horizonte fica em qual hemisfério?",
+    "opcoes": [
+     {
+      "texto": "Setentrional",
+      "proximo": "s2e2"
+     },
+     {
+      "texto": "Austral",
+      "proximo": "s2q3"
+     },
+     {
+      "texto": "Leste",
+      "proximo": "s2e2"
+     },
+     {
+      "texto": "Oriental",
+      "proximo": "s2e2"
+     }
+    ]
+   },
+   "s2e2": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s2q2"
+   },
+   "s2q3": {
+    "fala": "Qual comunidade quilombola de Horizonte foi certificada pela Fundação Cultural Palmares?",
+    "opcoes": [
+     {
+      "texto": "Quilombo Alto Alegre",
+      "proximo": "s2q4"
+     },
+     {
+      "texto": "Quilombo Horizontino",
+      "proximo": "s2e3"
+     },
+     {
+      "texto": "Quilombo São Benedito",
+      "proximo": "s2e3"
+     },
+     {
+      "texto": "Quilombo da Resistência Horizontina",
+      "proximo": "s2e3"
+     }
+    ]
+   },
+   "s2e3": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s2q3"
+   },
+   "s2q4": {
+    "fala": "Antes de pertencer a Pacajus, o distrito de Olho d'Água pertencia ao município de:",
+    "opcoes": [
+     {
+      "texto": "Cascavel",
+      "proximo": "s2e4"
+     },
+     {
+      "texto": "Pindoretama",
+      "proximo": "s2e4"
+     },
+     {
+      "texto": "Fortaleza",
+      "proximo": "s2e4"
+     },
+     {
+      "texto": "Aquiraz",
+      "proximo": "s2q5"
+     }
+    ]
+   },
+   "s2e4": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s2q4"
+   },
+   "s2q5": {
+    "fala": "A denominação mais antiga do território de Horizonte é:",
+    "opcoes": [
+     {
+      "texto": "Lajedo do Calcário",
+      "proximo": "s2e5"
+     },
+     {
+      "texto": "Aningas da Pedra",
+      "proximo": "s2e5"
+     },
+     {
+      "texto": "Olho d'água",
+      "proximo": "s2q6"
+     },
+     {
+      "texto": "Lagoa Seca",
+      "proximo": "s2e5"
+     }
+    ]
+   },
+   "s2e5": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s2q5"
+   },
+   "s2q6": {
+    "fala": "Quem foi eleito prefeito de Horizonte em 2020?",
+    "opcoes": [
+     {
+      "texto": "Graco Melo Viana Filho",
+      "proximo": "s2e6"
+     },
+     {
+      "texto": "Naselmo de Sousa Ferreira",
+      "proximo": "s2e6"
+     },
+     {
+      "texto": "Igor Ciriaco da Costa",
+      "proximo": "s2e6"
+     },
+     {
+      "texto": "Manoel Gomes de Farias Neto",
+      "proximo": "s2q7"
+     }
+    ]
+   },
+   "s2e6": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s2q6"
+   },
+   "s2q7": {
+    "fala": "Qual vegetação NÃO aparece no território de Horizonte?",
+    "opcoes": [
+     {
+      "texto": "Litorâneo",
+      "proximo": "s2e7"
+     },
+     {
+      "texto": "Mata das Araucárias",
+      "proximo": "s2fim"
+     },
+     {
+      "texto": "Cerrado",
+      "proximo": "s2e7"
+     },
+     {
+      "texto": "Caatinga",
+      "proximo": "s2e7"
+     }
+    ]
+   },
+   "s2e7": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s2q7"
+   },
+   "s2fim": {
+    "fala": "Muito bem! Você respondeu o desafio inteiro.",
+    "proximo": "mais3",
+    "recompensa": {
+     "sementes": 10
+    }
+   },
+   "mais3": {
+    "fala": "Ainda tem fôlego? Mais um desafio, com obras, política e cultura de Horizonte.",
+    "opcoes": [
+     {
+      "texto": "Vamos nessa",
+      "proximo": "s3q0"
+     },
+     {
+      "texto": "Por hoje basta",
+      "proximo": null
+     }
+    ]
+   },
+   "s3q0": {
+    "fala": "Qual canal, criado em 1993, levou água do açude Orós para Fortaleza durante uma seca?",
+    "opcoes": [
+     {
+      "texto": "Canal do Trabalhador",
+      "proximo": "s3q1"
+     },
+     {
+      "texto": "Canal do Governador",
+      "proximo": "s3e0"
+     },
+     {
+      "texto": "Canal da Integração",
+      "proximo": "s3e0"
+     },
+     {
+      "texto": "Castanhão",
+      "proximo": "s3e0"
+     }
+    ]
+   },
+   "s3e0": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s3q0"
+   },
+   "s3q1": {
+    "fala": "A comunidade quilombola do Alto Alegre fica em qual distrito de Horizonte?",
+    "opcoes": [
+     {
+      "texto": "Queimadas",
+      "proximo": "s3q2"
+     },
+     {
+      "texto": "Horizonte",
+      "proximo": "s3e1"
+     },
+     {
+      "texto": "Aningas",
+      "proximo": "s3e1"
+     },
+     {
+      "texto": "Dourados",
+      "proximo": "s3e1"
+     }
+    ]
+   },
+   "s3e1": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s3q1"
+   },
+   "s3q2": {
+    "fala": "Qual município fica ao sul de Horizonte?",
+    "opcoes": [
+     {
+      "texto": "Pacajus",
+      "proximo": "s3q3"
+     },
+     {
+      "texto": "Guaiúba",
+      "proximo": "s3e2"
+     },
+     {
+      "texto": "Cascavel",
+      "proximo": "s3e2"
+     },
+     {
+      "texto": "Guarani",
+      "proximo": "s3e2"
+     }
+    ]
+   },
+   "s3e2": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s3q2"
+   },
+   "s3q3": {
+    "fala": "Qual é o nome simbólico da 37ª Unidade de Conservação de Horizonte?",
+    "opcoes": [
+     {
+      "texto": "Cintura das Águas",
+      "proximo": "s3e3"
+     },
+     {
+      "texto": "Fonte das Águas",
+      "proximo": "s3e3"
+     },
+     {
+      "texto": "Parque das Águas",
+      "proximo": "s3q4"
+     },
+     {
+      "texto": "Olho d'Água",
+      "proximo": "s3e3"
+     }
+    ]
+   },
+   "s3e3": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s3q3"
+   },
+   "s3q4": {
+    "fala": "Em qual espaço artístico do Centro Cultural Tasso Jereissati se apresentam os artistas da cidade?",
+    "opcoes": [
+     {
+      "texto": "Nego Cardoso",
+      "proximo": "s3q5"
+     },
+     {
+      "texto": "Ceare",
+      "proximo": "s3e4"
+     },
+     {
+      "texto": "Cia. Seart",
+      "proximo": "s3e4"
+     },
+     {
+      "texto": "Dorian Samapaio",
+      "proximo": "s3e4"
+     }
+    ]
+   },
+   "s3e4": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s3q4"
+   },
+   "s3q5": {
+    "fala": "Quem é a autora do Hino de Horizonte?",
+    "opcoes": [
+     {
+      "texto": "Dóris Mendes Ramos",
+      "proximo": "s3e5"
+     },
+     {
+      "texto": "Chiquinha Gonzaga",
+      "proximo": "s3e5"
+     },
+     {
+      "texto": "Mirian Carlos Moreira de Souza",
+      "proximo": "s3fim"
+     },
+     {
+      "texto": "Regina Barbosa",
+      "proximo": "s3e5"
+     }
+    ]
+   },
+   "s3e5": {
+    "fala": "Não é essa. Releia a pergunta com calma e tente de novo.",
+    "proximo": "s3q5"
+   },
+   "s3fim": {
+    "fala": "Muito bem! Você respondeu o desafio inteiro.",
+    "proximo": "mais3fim",
+    "recompensa": {
+     "sementes": 10
+    }
+   },
+   "mais3fim": {
+    "fala": "Você completou os três desafios de Horizonte! Horizonte agradece.",
+    "flag": "desafio_completo",
+    "proximo": null
+   }
+  }
+ },
+ "helena_escola": {
+  "nome": "Professora Helena (escola)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flags": [
+     "plantio_ok",
+     "coleta_ok",
+     "falou_helena"
+    ],
+    "no": "entrega"
+   },
+   {
+    "flag": "falou_helena",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Eu sou a professora Helena. Meus alunos estudam a história de Horizonte e querem cuidar dela.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "O que a gente deve guardar dessa história?",
+    "opcoes": [
+     {
+      "texto": "Qual é a história que devemos guardar?",
+      "proximo": "h1"
+     },
+     {
+      "texto": "Vamos cuidar do futuro",
+      "flag": "falou_helena",
+      "proximo": "fim"
+     },
+     {
+      "texto": "Quem foi Raimundo Nogueira?",
+      "proximo": "rn1"
+     }
+    ]
+   },
+   "h1": {
+    "fala": "O olho d'água, a luta pela emancipação, a primeira eleição e as fábricas. Cada geração conta a sua parte.",
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Então volte quando tiver plantado as mudas e separado o lixo. Aí eu entrego o último fragmento.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Ainda falta plantar as mudas e separar o lixo antes do último fragmento.",
+    "proximo": null
+   },
+   "entrega": {
+    "fala": "Você plantou, separou e lembrou. Esse é o Fragmento de Memória 4, o último. Horizonte guarda sua história e a leva adiante.",
+    "recompensa": {
+     "fragmento": 4
+    },
+    "proximo": "e2"
+   },
+   "e2": {
+    "fala": "Fim da jornada, {nome}. Horizonte nasceu de um olho d'água e segue crescendo com as mãos de quem cuida dela.",
+    "proximo": null
+   },
+   "rn1": {
+    "fala": "Raimundo Nogueira Lopes foi um agricultor de Queimadas que trouxe energia elétrica e rádio para a região, e ajudou a abrir a escola da comunidade. A escola estadual da cidade leva o nome dele.",
+    "recompensa": {
+     "pagina": "raimundo_nogueira"
+    },
+    "proximo": "i2"
+   }
+  }
+ }
 }

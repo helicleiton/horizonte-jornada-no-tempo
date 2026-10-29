@@ -80,7 +80,38 @@ func _avaliar() -> Array[Dictionary]:
 			return _objetivos_fase4()
 		5:
 			return _objetivos_fase2b()
+		6:
+			return _objetivos_fase5()
+		7:
+			return _objetivos_fase6()
+		8:
+			return _objetivos_fase7()
 	return _objetivos_fase1()
+
+
+func _objetivos_fase6() -> Array[Dictionary]:
+	return [
+		{"texto": "Converse com o guarda do parque", "feito": GameState.get_flag("falou_guarda")},
+		{"texto": "Ouça a comunidade do Alto Alegre", "feito": GameState.get_flag("falou_alto_alegre")},
+		{"texto": "Responda ao quiz das águas", "feito": GameState.get_flag("quiz_parque_ok")},
+	]
+
+
+func _objetivos_fase7() -> Array[Dictionary]:
+	var bandeirinhas := GameState.quantidade_item("bandeirinha")
+	return [
+		{"texto": "Converse com o mestre da quadrilha", "feito": GameState.get_flag("falou_mestre")},
+		{"texto": "Junte 5 bandeirinhas (%d/5)" % mini(bandeirinhas, 5), "feito": GameState.get_flag("entregou_bandeirinhas")},
+		{"texto": "Fale com Seu Antônio sobre a procissão", "feito": GameState.get_flag("falou_antonio")},
+	]
+
+
+func _objetivos_fase5() -> Array[Dictionary]:
+	return [
+		{"texto": "Ouça a história da Troller com Seu Raimundo", "feito": GameState.get_flag("falou_raimundo")},
+		{"texto": "Conheça o polo com Dona Terezinha", "feito": GameState.get_flag("falou_terezinha")},
+		{"texto": "Responda às perguntas da estudante Bia", "feito": GameState.get_flag("quiz_crescimento_ok")},
+	]
 
 
 func _objetivos_fase4() -> Array[Dictionary]:
