@@ -9,6 +9,7 @@ var _selecao_personagem: Control
 var _selecao_fases: Control
 var _proxima_fase := FASE_1
 
+const CONTATO := "https://wa.me/5585994252561"
 const FASE_1 := "res://scenes/levels/fase_teste.tscn"
 const FASE_2 := "res://scenes/levels/fase2.tscn"
 const FASE_2B := "res://scenes/levels/fase2b.tscn"
@@ -45,7 +46,7 @@ func _ready() -> void:
 	var vbox := _coluna_centralizada(self)
 	var titulo := _rotulo(vbox, "HORIZONTE", Color(1.0, 0.85, 0.3), HORIZONTAL_ALIGNMENT_CENTER)
 	titulo.add_theme_font_size_override("font_size", 16)
-	_rotulo(vbox, "Jornada Através do Tempo", Color(0.9, 0.9, 0.9), HORIZONTAL_ALIGNMENT_CENTER)
+	_rotulo(vbox, "Jornada Através do Tempo · em desenvolvimento", Color(0.9, 0.9, 0.9), HORIZONTAL_ALIGNMENT_CENTER)
 	_espaco(vbox, 6)
 	_botao(vbox, "JOGAR (FASE 1)", _on_jogar_pressed)
 	_botao(vbox, "ESCOLHER FASE", _mostrar_fases)
@@ -184,13 +185,18 @@ CONTEÚDO HISTÓRICO E FONTES:
 
 DESENVOLVIMENTO:
 • Desenvolvido por @helicleiton.
-• Criado para a comunidade e estudantes de Horizonte-CE."""
+• Criado para a comunidade e estudantes de Horizonte-CE.
+
+EM DESENVOLVIMENTO:
+• Novas fases e personagens estão sendo criados. Sugestões de tema ou personagem: WhatsApp 85 99425-2561."""
 	texto.autowrap_mode = TextServer.AUTOWRAP_WORD
 	texto.custom_minimum_size = Vector2(270, 0)
 	texto.add_theme_color_override("font_color", Color(0.9, 0.9, 0.9))
 	rolagem.add_child(texto)
 
 	_espaco(vbox, 5)
+	_botao(vbox, "SUGERIR TEMA OU PERSONAGEM", func() -> void:
+		OS.shell_open(CONTATO))
 	_botao(vbox, "VOLTAR", func() -> void:
 		AudioManager.tocar("escolha")
 		_painel_creditos.visible = false)
