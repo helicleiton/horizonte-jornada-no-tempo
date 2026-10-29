@@ -18,6 +18,7 @@ const FASE_4 := "res://scenes/levels/fase4.tscn"
 const FASE_5 := "res://scenes/levels/fase5.tscn"
 const FASE_6 := "res://scenes/levels/fase6.tscn"
 const FASE_7 := "res://scenes/levels/fase7.tscn"
+const FASE_CARRO := "res://scenes/levels/fase_carro.tscn"
 
 ## Nome de cada fase, como aparece na lista de fases do menu.
 const FASES := [
@@ -29,6 +30,7 @@ const FASES := [
 	[FASE_5, "5 · A cidade que se reinventa (2000–hoje)"],
 	[FASE_6, "6 · As águas de Horizonte"],
 	[FASE_7, "7 · A festa de São João"],
+	[FASE_CARRO, "8 · Dirigindo pela cidade (Demutran)"],
 ]
 
 

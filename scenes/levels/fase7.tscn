@@ -97,6 +97,7 @@ position = Vector2(40, 160)
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("6")
 fase = 8
+proxima_cena = "res://scenes/levels/fase_carro.tscn"
 
 [node name="Mestre" parent="." instance=ExtResource("3")]
 position = Vector2(480, 160)
@@ -126,26 +127,31 @@ cor = Color(0.4,0.6,0.35, 1)
 position = Vector2(260, 145)
 tipo = 1
 id = "bandeirinha"
+imagem = "res://assets/sprites/bandeirinha.png"
 
 [node name="Bandeirinha2" parent="." instance=ExtResource("4")]
 position = Vector2(420, 145)
 tipo = 1
 id = "bandeirinha"
+imagem = "res://assets/sprites/bandeirinha.png"
 
 [node name="Bandeirinha3" parent="." instance=ExtResource("4")]
 position = Vector2(600, 145)
 tipo = 1
 id = "bandeirinha"
+imagem = "res://assets/sprites/bandeirinha.png"
 
 [node name="Bandeirinha4" parent="." instance=ExtResource("4")]
 position = Vector2(760, 145)
 tipo = 1
 id = "bandeirinha"
+imagem = "res://assets/sprites/bandeirinha.png"
 
 [node name="Bandeirinha5" parent="." instance=ExtResource("4")]
 position = Vector2(1040, 145)
 tipo = 1
 id = "bandeirinha"
+imagem = "res://assets/sprites/bandeirinha.png"
 
 [node name="Xique1" parent="." instance=ExtResource("5")]
 position = Vector2(680, 160)

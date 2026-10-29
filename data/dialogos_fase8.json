@@ -1,0 +1,145 @@
+{
+ "abertura": {
+  "nome": "Livro do Tempo",
+  "inicio": "a1",
+  "nos": {
+   "a1": {
+    "quem": "Livro do Tempo",
+    "fala": "Agora você vai dirigir pela cidade. Acelere com a seta para a direita e freie com a seta para a esquerda.",
+    "proximo": "a2"
+   },
+   "a2": {
+    "quem": "{nome}",
+    "fala": "Cuidado com os cones na pista!",
+    "proximo": null
+   }
+  }
+ },
+ "agente_demutran": {
+  "nome": "Agente do Demutran",
+  "inicio": "inicio",
+  "nos": {
+   "inicio": {
+    "fala": "Sou agente do DEMUTRAN, o Departamento Municipal de Trânsito e Transporte de Horizonte. Oriento motoristas e pedestres e fiscalizo as ruas.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Quer saber mais?",
+    "opcoes": [
+     {
+      "texto": "Quem o Demutran faz parte?",
+      "proximo": "p1"
+     },
+     {
+      "texto": "O que vocês fazem na cidade?",
+      "proximo": "p2"
+     },
+     {
+      "texto": "Obrigado, agente",
+      "flag": "falou_agente",
+      "proximo": null
+     }
+    ]
+   },
+   "p1": {
+    "fala": "O Demutran faz parte da Secretaria de Segurança, Cidadania, Trânsito e Transporte da Prefeitura.",
+    "proximo": "i2"
+   },
+   "p2": {
+    "fala": "Fazemos blitze educativas, como as do Carnaval, e cuidamos da sinalização das ruas.",
+    "proximo": "i2"
+   }
+  }
+ },
+ "quiz_transito": {
+  "nome": "Agente do Demutran",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "quiz_transito_ok",
+    "no": "ja"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Vamos a três perguntas sobre trânsito. Errou, eu repito com uma dica.",
+    "proximo": "q1"
+   },
+   "q1": {
+    "fala": "Qual órgão cuida do trânsito municipal em Horizonte?",
+    "opcoes": [
+     {
+      "texto": "O DEMUTRAN",
+      "proximo": "q2"
+     },
+     {
+      "texto": "A Secretaria de Educação",
+      "proximo": "e1"
+     },
+     {
+      "texto": "A Câmara dos Vereadores",
+      "proximo": "e1"
+     }
+    ]
+   },
+   "e1": {
+    "fala": "Não é esse. Pense no departamento que cuida das ruas e dos motoristas.",
+    "proximo": "q1"
+   },
+   "q2": {
+    "fala": "Diante de uma faixa de pedestres, o que o motorista deve fazer?",
+    "opcoes": [
+     {
+      "texto": "Acelerar para passar logo",
+      "proximo": "e2"
+     },
+     {
+      "texto": "Dar passagem ao pedestre",
+      "proximo": "q3"
+     },
+     {
+      "texto": "Buzinar para ele sair",
+      "proximo": "e2"
+     }
+    ]
+   },
+   "e2": {
+    "fala": "Quase! A faixa é do pedestre. Reduza e espere ele atravessar.",
+    "proximo": "q2"
+   },
+   "q3": {
+    "fala": "E ao ver um cone na pista?",
+    "opcoes": [
+     {
+      "texto": "Reduzir e desviar com cuidado",
+      "flag": "quiz_transito_ok",
+      "proximo": "fim"
+     },
+     {
+      "texto": "Passar em alta velocidade",
+      "proximo": "e3"
+     },
+     {
+      "texto": "Parar no meio da pista",
+      "proximo": "e3"
+     }
+    ]
+   },
+   "e3": {
+    "fala": "Não é isso. O cone sinaliza perigo: reduza e desvie com segurança.",
+    "proximo": "q3"
+   },
+   "fim": {
+    "fala": "Você acertou tudo! Dirija sempre com cuidado.",
+    "recompensa": {
+     "sementes": 10
+    },
+    "proximo": null
+   },
+   "ja": {
+    "fala": "Você já respondeu o quiz. Boa viagem!",
+    "proximo": null
+   }
+  }
+ }
+}

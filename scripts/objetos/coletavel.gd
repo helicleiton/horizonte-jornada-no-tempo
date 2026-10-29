@@ -22,6 +22,8 @@ const SPRITES := {
 ## Número da fase (tipo FRAGMENTO).
 @export var fase := 1
 @export var flutuar := true
+## Imagem própria (ex.: bandeirinha). Vazio = ícone padrão do tipo.
+@export_file("*.png") var imagem := ""
 
 var _tempo := 0.0
 var _y_inicial := 0.0
@@ -31,7 +33,7 @@ var _sprite: Sprite2D
 func _ready() -> void:
 	_y_inicial = position.y
 	_tempo = randf() * TAU
-	var caminho := "res://assets/sprites/%s.png" % SPRITES[tipo]
+	var caminho := imagem if imagem != "" else "res://assets/sprites/%s.png" % SPRITES[tipo]
 	if ResourceLoader.exists(caminho):
 		_sprite = Sprite2D.new()
 		_sprite.texture = load(caminho)

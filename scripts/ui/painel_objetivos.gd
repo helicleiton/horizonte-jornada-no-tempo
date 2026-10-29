@@ -86,6 +86,8 @@ func _avaliar() -> Array[Dictionary]:
 			return _objetivos_fase6()
 		8:
 			return _objetivos_fase7()
+		9:
+			return _objetivos_fase8()
 	return _objetivos_fase1()
 
 
@@ -103,6 +105,14 @@ func _objetivos_fase7() -> Array[Dictionary]:
 		{"texto": "Converse com o mestre da quadrilha", "feito": GameState.get_flag("falou_mestre")},
 		{"texto": "Junte 5 bandeirinhas (%d/5)" % mini(bandeirinhas, 5), "feito": GameState.get_flag("entregou_bandeirinhas")},
 		{"texto": "Fale com Seu Antônio sobre a procissão", "feito": GameState.get_flag("falou_antonio")},
+	]
+
+
+func _objetivos_fase8() -> Array[Dictionary]:
+	return [
+		{"texto": "Converse com o agente do Demutran", "feito": GameState.get_flag("falou_agente")},
+		{"texto": "Responda às perguntas de trânsito", "feito": GameState.get_flag("quiz_transito_ok")},
+		{"texto": "Chegue ao fim da rua", "feito": GameState.get_flag("chegou_destino")},
 	]
 
 
