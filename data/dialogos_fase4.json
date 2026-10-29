@@ -1,0 +1,94 @@
+{
+	"abertura": {
+		"nome": "Livro do Tempo",
+		"inicio": "a1",
+		"nos": {
+			"a1": {"quem": "Livro do Tempo", "fala": "Hoje Horizonte tem mais de 55 mil habitantes. A cidade cresceu com a indústria, o comércio e a agricultura.", "proximo": "a2"},
+			"a2": {"quem": "{nome}", "fala": "Então a história já está quase toda contada. O que ainda falta?", "proximo": "a3"},
+			"a3": {"quem": "Livro do Tempo", "fala": "Cuidar do lugar onde a gente vive. Plantar mudas, separar o lixo certo e levar a memória de Horizonte para a escola.", "proximo": "a4"},
+			"a4": {"quem": "Livro do Tempo", "fala": "Converse com o Seu Tião, a Dona Marta e a professora Helena. Plante as mudas, separe o lixo e restaure o último fragmento.", "proximo": null}
+		}
+	},
+
+	"tiao_plantio": {
+		"nome": "Seu Tião (agente ambiental)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "plantio_ok", "no": "ja"},
+			{"item": "muda_plantio", "min": 4, "no": "entrega"},
+			{"flag": "falou_tiao", "no": "repete"}
+		],
+		"nos": {
+			"inicio": {"fala": "Sou o Seu Tião, agente ambiental. Quem planta uma muda cuida da sombra e da água de amanhã.", "proximo": "i2"},
+			"i2": {"fala": "Quer aprender a plantar?", "opcoes": [
+				{"texto": "Como se planta uma muda?", "proximo": "c1"},
+				{"texto": "Vou trazer as mudas", "flag": "falou_tiao", "proximo": "fim"}
+			]},
+			"c1": {"fala": "Escolha um lugar com sol, cave um buraco, coloque a muda e regue. No sertão, água é cuidado de todo dia.", "proximo": "i2"},
+			"fim": {"fala": "Ótimo! Traga quatro mudas. Vamos plantar no pátio da escola.", "proximo": null},
+			"repete": {"fala": "Já conversamos. Ainda faltam as quatro mudas.", "proximo": null},
+			"entrega": {"fala": "Quatro mudas! Vamos plantar hoje mesmo. Obrigado, {nome}.", "flag": "plantio_ok", "remover_item": {"id": "muda_plantio", "quantidade": 4}, "proximo": "e2"},
+			"e2": {"fala": "Cada árvore dessas vai dar sombra para quem vem depois.", "proximo": null},
+			"ja": {"fala": "As mudas já estão na terra. Obrigado!", "proximo": null}
+		}
+	},
+
+	"marta_coleta": {
+		"nome": "Dona Marta (coleta seletiva)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "coleta_ok", "no": "ja"}
+		],
+		"nos": {
+			"inicio": {"fala": "Eu cuido da coleta seletiva do bairro. Separar o lixo facilita a reciclagem. Quer testar?", "proximo": "q"},
+			"q": {"fala": "Onde vai uma garrafa de plástico?", "opcoes": [
+				{"texto": "Na lixeira de plástico", "flag": "coleta_ok", "proximo": "acertou"},
+				{"texto": "Na lixeira de orgânicos", "proximo": "errou1"},
+				{"texto": "Na lixeira de papel", "proximo": "errou2"}
+			]},
+			"errou1": {"fala": "Não! Orgânico é resto de comida e casca de fruta. Pense no material da garrafa.", "proximo": "q"},
+			"errou2": {"fala": "Papel é outro material. A garrafa é de plástico.", "proximo": "q"},
+			"acertou": {"fala": "Isso! O plástico vai na lixeira de plástico, e a casca de caju vai na de orgânicos. Separado, o lixo vira matéria-prima.", "recompensa": {"pagina": "coleta_seletiva"}, "proximo": null},
+			"ja": {"fala": "O lixo já está separado direitinho. Obrigada!", "proximo": null}
+		}
+	},
+
+	"zilmar_cordel": {
+		"nome": "Zilmar do Horizonte (cordelista)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "falou_zilmar", "no": "repete"}
+		],
+		"nos": {
+			"inicio": {"fala": "Eu sou Zilmar do Horizonte, repentista e cordelista. Quem conta a história da cidade, conta do jeito que o povo entende: com rima.", "proximo": "i2"},
+			"i2": {"fala": "Quer saber o que é o cordel?", "opcoes": [
+				{"texto": "O que é o cordel?", "proximo": "c1"},
+				{"texto": "Conte uma história do lugar", "flag": "falou_zilmar", "recompensa": {"pagina": "zilmar_do_horizonte"}, "proximo": "fim"}
+			]},
+			"c1": {"fala": "É a literatura popular do sertão: histórias em versos, impressas em folhetos e vendidas nas feiras, muitas vezes penduradas num cordão.", "proximo": "i2"},
+			"fim": {"fala": "Pois então leve essa página com você. Quem lê também conta.", "proximo": null},
+			"repete": {"fala": "Já trocamos versos, lembra? Vá cuidar das mudas e do lixo.", "proximo": null}
+		}
+	},
+
+	"helena_escola": {
+		"nome": "Professora Helena (escola)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flags": ["plantio_ok", "coleta_ok", "falou_helena"], "no": "entrega"},
+			{"flag": "falou_helena", "no": "repete"}
+		],
+		"nos": {
+			"inicio": {"fala": "Eu sou a professora Helena. Meus alunos estudam a história de Horizonte e querem cuidar dela.", "proximo": "i2"},
+			"i2": {"fala": "O que a gente deve guardar dessa história?", "opcoes": [
+				{"texto": "Qual é a história que devemos guardar?", "proximo": "h1"},
+				{"texto": "Vamos cuidar do futuro", "flag": "falou_helena", "proximo": "fim"}
+			]},
+			"h1": {"fala": "O olho d'água, a luta pela emancipação, a primeira eleição e as fábricas. Cada geração conta a sua parte.", "proximo": "i2"},
+			"fim": {"fala": "Então volte quando tiver plantado as mudas e separado o lixo. Aí eu entrego o último fragmento.", "proximo": null},
+			"repete": {"fala": "Ainda falta plantar as mudas e separar o lixo antes do último fragmento.", "proximo": null},
+			"entrega": {"fala": "Você plantou, separou e lembrou. Esse é o Fragmento de Memória 4, o último. Horizonte guarda sua história e a leva adiante.", "recompensa": {"fragmento": 4}, "proximo": "e2"},
+			"e2": {"fala": "Fim da jornada, {nome}. Horizonte nasceu de um olho d'água e segue crescendo com as mãos de quem cuida dela.", "proximo": null}
+		}
+	}
+}

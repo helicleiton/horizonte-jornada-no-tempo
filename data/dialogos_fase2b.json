@@ -53,6 +53,24 @@
 		}
 	},
 
+	"nezinho_prefeito": {
+		"nome": "Nezinho Farias (prefeito)",
+		"inicio": "inicio",
+		"condicoes": [
+			{"flag": "falou_prefeito", "no": "ja"}
+		],
+		"nos": {
+			"inicio": {"fala": "Eu sou Nezinho Farias, prefeito de Horizonte. Fui reeleito para governar a cidade em 2024.", "proximo": "i2"},
+			"i2": {"fala": "O que você quer saber sobre a prefeitura?", "opcoes": [
+				{"texto": "Qual é o papel do prefeito?", "proximo": "p1"},
+				{"texto": "Quem foi o primeiro prefeito?", "proximo": "p2"}
+			]},
+			"p1": {"fala": "O prefeito administra a cidade: saúde, educação, obras e estradas. Os vereadores fazem as leis junto com ele.", "proximo": "i2"},
+			"p2": {"fala": "Foi Francisco César de Sousa, que tomou posse em 1º de janeiro de 1989, quando Horizonte virou município.", "flag": "falou_prefeito", "recompensa": {"pagina": "quem_governa"}, "proximo": "i2"},
+			"ja": {"fala": "Já conversamos sobre a cidade. Boa jornada, {nome}!", "proximo": null}
+		}
+	},
+
 	"nonato_vereador": {
 		"nome": "Seu Nonato (candidato a vereador)",
 		"inicio": "inicio",

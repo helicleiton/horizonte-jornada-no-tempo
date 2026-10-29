@@ -76,9 +76,21 @@ func _avaliar() -> Array[Dictionary]:
 			return _objetivos_fase2()
 		3:
 			return _objetivos_fase3()
+		4:
+			return _objetivos_fase4()
 		5:
 			return _objetivos_fase2b()
 	return _objetivos_fase1()
+
+
+func _objetivos_fase4() -> Array[Dictionary]:
+	var mudas := GameState.quantidade_item("muda_plantio")
+	return [
+		{"texto": "Recolha 4 mudas para plantar (%d/4)" % mini(mudas, 4), "feito": mudas >= 4 or GameState.get_flag("plantio_ok")},
+		{"texto": "Entregue as mudas ao Seu Tião", "feito": GameState.get_flag("plantio_ok")},
+		{"texto": "Separe o lixo certo com a Dona Marta", "feito": GameState.get_flag("coleta_ok")},
+		{"texto": "Receba o Fragmento de Memória 4 da professora Helena", "feito": GameState.fragmentos.has(4)},
+	]
 
 
 func _objetivos_fase2b() -> Array[Dictionary]:

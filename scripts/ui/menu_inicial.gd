@@ -6,12 +6,23 @@ var _botao_som: Button
 var _botao_narracao: Button
 var _painel_creditos: Control
 var _selecao_personagem: Control
+var _selecao_fases: Control
 var _proxima_fase := FASE_1
 
 const FASE_1 := "res://scenes/levels/fase_teste.tscn"
 const FASE_2 := "res://scenes/levels/fase2.tscn"
 const FASE_2B := "res://scenes/levels/fase2b.tscn"
 const FASE_3 := "res://scenes/levels/fase3.tscn"
+const FASE_4 := "res://scenes/levels/fase4.tscn"
+
+## Nome de cada fase, como aparece na lista de fases do menu.
+const FASES := [
+	[FASE_1, "1 · O Olho d'Água (1932)"],
+	[FASE_2, "2 · A emancipação (1987)"],
+	[FASE_2B, "2b · A primeira eleição (1988)"],
+	[FASE_3, "3 · O polo industrial (1990)"],
+	[FASE_4, "4 · Plantar o futuro (hoje)"],
+]
 
 
 func _ready() -> void:
@@ -30,12 +41,8 @@ func _ready() -> void:
 	titulo.add_theme_font_size_override("font_size", 16)
 	_rotulo(vbox, "Jornada Através do Tempo", Color(0.9, 0.9, 0.9), HORIZONTAL_ALIGNMENT_CENTER)
 	_espaco(vbox, 6)
-	_botao(vbox, "JOGAR", _on_jogar_pressed)
-	var atalhos := HBoxContainer.new()
-	vbox.add_child(atalhos)
-	_botao_atalho(atalhos, "FASE 2", FASE_2)
-	_botao_atalho(atalhos, "ELEIÇÃO", FASE_2B)
-	_botao_atalho(atalhos, "FASE 3", FASE_3)
+	_botao(vbox, "JOGAR (FASE 1)", _on_jogar_pressed)
+	_botao(vbox, "ESCOLHER FASE", _mostrar_fases)
 	_botao(vbox, "CRÉDITO & FONTES", _on_creditos_pressed)
 	var linha_opcoes := HBoxContainer.new()
 	vbox.add_child(linha_opcoes)
@@ -45,6 +52,7 @@ func _ready() -> void:
 	_atualizar_opcoes()
 
 	_construir_selecao()
+	_construir_fases()
 	_construir_creditos()
 
 
@@ -58,15 +66,27 @@ func _on_jogar_pressed() -> void:
 	_selecao_personagem.visible = true
 
 
-## Atalho para uma fase direto pelo menu (a fase também abre ao terminar a anterior).
-func _botao_atalho(pai: Node, texto: String, fase: String) -> void:
-	var botao := Button.new()
-	botao.text = texto
-	botao.custom_minimum_size = Vector2(66, 18)
-	botao.pressed.connect(func() -> void:
-		_proxima_fase = fase
-		_on_jogar_pressed())
-	pai.add_child(botao)
+## Lista de fases com nome, para o aluno escolher por onde começar.
+func _construir_fases() -> void:
+	_selecao_fases = _tela_cobrindo_tudo(Color(0.08, 0.05, 0.03))
+	var vbox := _coluna_centralizada(_selecao_fases)
+	_rotulo(vbox, "Escolha a fase:", Color(1.0, 0.85, 0.3), HORIZONTAL_ALIGNMENT_CENTER)
+	_espaco(vbox, 4)
+	for fase in FASES:
+		_botao(vbox, fase[1], _escolher_fase.bind(fase[0]))
+	_botao(vbox, "Voltar", func() -> void: _selecao_fases.visible = false)
+
+
+func _mostrar_fases() -> void:
+	AudioManager.tocar("escolha")
+	_selecao_fases.visible = true
+
+
+## Escolhida a fase, pede o protagonista e depois abre a fase.
+func _escolher_fase(caminho: String) -> void:
+	_selecao_fases.visible = false
+	_proxima_fase = caminho
+	_on_jogar_pressed()
 
 
 func _on_creditos_pressed() -> void:

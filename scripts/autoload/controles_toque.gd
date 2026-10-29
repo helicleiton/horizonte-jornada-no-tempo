@@ -11,6 +11,7 @@ const SPR := "res://assets/sprites/toque_%s.png"
 var _movimento: Array[TouchScreenButton] = []
 var _falar: TouchScreenButton
 var _almanaque: TouchScreenButton
+var _pausa: TouchScreenButton
 var _tela_cheia: TouchScreenButton
 
 
@@ -26,6 +27,8 @@ func _ready() -> void:
 	_falar = _botao("falar", "interagir", Vector2(256, 152))
 	_movimento.append(_falar)
 	_almanaque = _botao("almanaque", "almanaque", Vector2(294, 3))
+	# Pausa: a mesma ação da tecla Esc (abre o menu de pausa).
+	_pausa = _botao("pausa", "ui_cancel", Vector2(250, 3))
 	_tela_cheia = _botao("tela_cheia", "", Vector2(274, 5))
 	_tela_cheia.pressed.connect(_alternar_tela_cheia)
 	# Esquerda e direita: dá para deslizar o dedo de um botão para o outro.
@@ -42,6 +45,7 @@ func _process(_delta: float) -> void:
 		botao.visible = not (em_dialogo or pausado)
 	# O diálogo avança tocando na própria caixa de texto.
 	_almanaque.visible = not em_dialogo
+	_pausa.visible = not em_dialogo
 	var jogador := get_tree().get_first_node_in_group("jogador")
 	var perto: bool = jogador != null and jogador.has_method("pode_interagir") and jogador.pode_interagir()
 	_falar.modulate.a = 1.0 if perto else 0.35

@@ -9,7 +9,8 @@ const ICONES := "res://assets/sprites/"
 const TEXTO_FIM := {
 	1: "Você restaurou o Fragmento de Memória 1. A próxima parada é 1987: a emancipação de Horizonte.",
 	2: "Você restaurou o Fragmento de Memória 2. A próxima parada é a primeira eleição, em 1988.",
-	3: "Você restaurou o Fragmento de Memória 3. A Fase 4 ainda está em construção.",
+	3: "Você restaurou o Fragmento de Memória 3. A próxima parada é o presente: plantar o futuro.",
+	4: "Você restaurou o último Fragmento de Memória. Esta é a última fase do protótipo.",
 	5: "Você viu como nasceu a primeira eleição de Horizonte. A próxima parada são os anos 1990.",
 }
 const ROTULO_FASE := {5: "2b"}

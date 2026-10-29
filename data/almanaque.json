@@ -49,6 +49,31 @@
 		"texto": "Venâncio Raimundo de Sousa: dono das terras da nascente que deu nome ao lugar. Raimunda Duarte Teixeira: professora que sugeriu o nome Horizonte, em 1938. Virgílio Távora: governador na época da primeira lei de criação do município, em 1963, derrubada pela ditadura. Gonzaga Mota: governador que sancionou a Lei nº 11.300, em 6 de março de 1987. Francisco César de Sousa: primeiro prefeito, empossado em 1º de janeiro de 1989.",
 		"fonte": "IBGE Cidades; Prefeitura de Horizonte; Mapa Mental da História de Horizonte; Livro Horizonte (lei de 1963 e nome de 1938, a confirmar na página)."
 	},
+	"quem_governa": {
+		"titulo": "Quem governa Horizonte hoje",
+		"texto": "Nezinho Farias (Manoel Gomes de Farias Neto) é o prefeito de Horizonte, reeleito em 2024. Jô Farias é primeira-dama de Horizonte e deputada estadual na Assembleia Legislativa do Ceará. O primeiro prefeito, Francisco César de Sousa, tomou posse em 1º de janeiro de 1989.",
+		"fonte": "O Povo e Diário do Nordeste (eleição de 2024 e filiação partidária); Assembleia Legislativa do Ceará (projeto de lei de 2025 de autoria da deputada); informação da comunidade local (primeira-dama); Mapa Mental da História de Horizonte (primeiro prefeito)."
+	},
+	"festa_padroeiro": {
+		"titulo": "A festa de São João Batista",
+		"texto": "São João Batista é o padroeiro de Horizonte, e o dia 24 de junho é dedicado a ele. A festa tem procissão, hasteamento das bandeiras e a benção da fogueira na praça da Matriz, seguidos de celebrações religiosas. A Igreja Matriz de São João Batista está ligada à Paróquia São João Batista e à Arquidiocese de Fortaleza.",
+		"fonte": "Mapa Mental da História de Horizonte (data do padroeiro); programação da festa do padroeiro, Arquidiocese de Fortaleza (2017); site da Prefeitura de Horizonte (missa de ação de graças pelos 37 anos da cidade)."
+	},
+	"zilmar_do_horizonte": {
+		"titulo": "Zilmar do Horizonte",
+		"texto": "Repentista, violeiro, poeta e cordelista natural de Horizonte. Leva a cultura do cordel às escolas da cidade, conversando com os alunos e cantando com eles. Parte dos seus poemas está reunida no livro ALESPE, Sertão e Poesia.",
+		"fonte": "Mapa Cultural do Ceará (perfil do agente cultural); Escola em Tempo Integral Joaquim Antônio da Silva (projeto pedagógico sobre cordel, 2012)."
+	},
+	"horizonte_hoje": {
+		"titulo": "Horizonte hoje",
+		"texto": "Hoje Horizonte tem mais de 55 mil habitantes. A agricultura é uma das principais fontes de renda, com destaque para a cajucultura. No Alto Alegre, a comunidade quilombola foi reconhecida pela Fundação Palmares em maio de 2005.",
+		"fonte": "Mapa Mental da História de Horizonte (população e atividades); README do projeto (reconhecimento do Alto Alegre, Fundação Palmares, 2005)."
+	},
+	"coleta_seletiva": {
+		"titulo": "A coleta seletiva",
+		"texto": "Separar o lixo em papel, plástico, metal, vidro e orgânicos facilita a reciclagem. Os orgânicos, como restos de comida e cascas de fruta, podem virar adubo. Cada material separado é matéria-prima que não vai para o aterro.",
+		"fonte": "Conhecimento geral sobre coleta seletiva. A verificar com a Prefeitura de Horizonte os dias e pontos de coleta locais."
+	},
 	"distrito_industrial": {
 		"titulo": "O Distrito Industrial",
 		"texto": "Em 9 de fevereiro de 1990, a Lei nº 032 criou a Companhia de Desenvolvimento Industrial de Horizonte. Hoje a cidade tem mais de 40 indústrias, nos setores têxtil, de calçados, de granito e automotivo, e cerca de 20 mil empregos diretos.",
