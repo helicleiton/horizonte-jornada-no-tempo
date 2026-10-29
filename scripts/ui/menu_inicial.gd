@@ -25,15 +25,15 @@ const FASE_CARRO := "res://scenes/levels/fase_carro.tscn"
 
 ## Nome de cada fase, como aparece na lista de fases do menu.
 const FASES := [
-	[FASE_1, "1 · O Olho d'Água (1932)"],
-	[FASE_2, "2 · A emancipação (1987)"],
-	[FASE_2B, "2b · A primeira eleição (1988)"],
-	[FASE_3, "3 · O polo industrial (1990)"],
-	[FASE_4, "4 · Plantar o futuro (hoje)"],
-	[FASE_5, "5 · A cidade que se reinventa (2000–hoje)"],
-	[FASE_6, "6 · As águas de Horizonte"],
-	[FASE_7, "7 · A festa de São João"],
-	[FASE_CARRO, "8 · Dirigindo pela cidade (Demutran)"],
+	[FASE_1, "Fase 1 · Onde tudo começou (1932)"],
+	[FASE_2, "Fase 2 · A luta pela cidade (1987)"],
+	[FASE_2B, "Fase 2b · A primeira eleição (1988)"],
+	[FASE_3, "Fase 3 · Fábricas e trabalho (1990)"],
+	[FASE_4, "Fase 4 · Plantar o futuro (hoje)"],
+	[FASE_5, "Fase 5 · A cidade que se reinventa"],
+	[FASE_6, "Fase 6 · As águas de Horizonte"],
+	[FASE_7, "Fase 7 · Festa de São João"],
+	[FASE_CARRO, "Fase 8 · Dirigindo pela cidade"],
 ]
 
 
@@ -169,11 +169,11 @@ func _construir_fases() -> void:
 	vbox.custom_minimum_size = Vector2(200, 0)
 	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	rolagem.add_child(vbox)
-	_rotulo(vbox, "Escolha a fase:", Color(1.0, 0.85, 0.3), HORIZONTAL_ALIGNMENT_CENTER)
+	_rotulo(vbox, "Qual parte da história você quer viver?", Color(1.0, 0.85, 0.3), HORIZONTAL_ALIGNMENT_CENTER)
 	_espaco(vbox, 4)
 	for fase in FASES:
 		_botao(vbox, fase[1], _escolher_fase.bind(fase[0]))
-	_botao(vbox, "JOGO DA MEMÓRIA", func() -> void: get_tree().change_scene_to_file("res://scenes/ui/memoria.tscn"))
+	_botao(vbox, "Jogo da memória: teste o que sabe", func() -> void: get_tree().change_scene_to_file("res://scenes/ui/memoria.tscn"))
 	_botao(vbox, "Voltar", func() -> void: _selecao_fases.visible = false)
 
 
