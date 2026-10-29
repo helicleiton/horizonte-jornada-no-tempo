@@ -10,7 +10,11 @@ const DIALOGOS := "res://data/dialogos_fase8.json"
 var _x := 40.0
 var _velocidade := 0.0
 var _camera: Camera2D
-var _cones := [220.0, 480.0, 640.0, 930.0, 1180.0]
+## Duas faixas: 0 = de cima, 1 = de baixo. Cada cone fica em uma faixa.
+const FAIXAS_Y := [138.0, 166.0]
+var _faixa := 0
+var _y_carro := FAIXAS_Y[0]
+var _cones := [[220.0, 0], [480.0, 1], [640.0, 0], [930.0, 1], [1180.0, 0]]
 var _atingidos := {}
 var _gatilhos := {
 	300.0: ["agente_demutran"],
@@ -46,6 +50,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		_velocidade = move_toward(_velocidade, 0.0, 300.0 * delta)
 	_x = clampf(_x + _velocidade * delta, 0.0, LIMITE)
+	# Troca de faixa com a tecla de pular (Espaço, W ou seta para cima).
+	if not DialogueBox.ativo and Input.is_action_just_pressed("pular"):
+		_faixa = 1 - _faixa
+	_y_carro = lerpf(_y_carro, FAIXAS_Y[_faixa], minf(1.0, delta * 12.0))
 	_camera.position = Vector2(_x + 16.0, 90.0)
 	_verificar_eventos()
 	_piscar += delta
@@ -55,8 +63,10 @@ func _physics_process(delta: float) -> void:
 ## Batidas nos cones e gatilhos de conversa ao passar pelos agentes.
 func _verificar_eventos() -> void:
 	for cone in _cones:
-		if not _atingidos.has(cone) and absf(_x - cone) < 10.0:
-			_atingidos[cone] = true
+		var pos: float = cone[0]
+		var faixa: int = cone[1]
+		if not _atingidos.has(pos) and faixa == _faixa and absf(_x - pos) < 10.0:
+			_atingidos[pos] = true
 			GameState.perder_caju()
 			_velocidade = 0.0
 	for pos in _gatilhos:
@@ -73,11 +83,11 @@ func _draw() -> void:
 	_desenhar_ceu_e_predios()
 	_desenhar_rua()
 	for cone in _cones:
-		_desenhar_cone(cone)
+		_desenhar_cone(cone[0], FAIXAS_Y[cone[1]])
 	for pos in _gatilhos:
 		_desenhar_agente(pos)
 	_desenhar_destino()
-	_desenhar_carro(_x, 124.0)
+	_desenhar_carro(_x, _y_carro)
 
 
 func _desenhar_ceu_e_predios() -> void:
@@ -121,10 +131,10 @@ func _desenhar_rua() -> void:
 		draw_rect(Rect2(i * 26.0, 150, 12, 3), Color("f4e7b0"))
 
 
-func _desenhar_cone(x: float) -> void:
-	draw_rect(Rect2(x - 4, 138, 8, 2), Color("1a1a1a"))
-	draw_colored_polygon(PackedVector2Array([Vector2(x - 3, 138), Vector2(x + 3, 138), Vector2(x + 1, 127), Vector2(x - 1, 127)]), Color("e8702a"))
-	draw_rect(Rect2(x - 2, 131, 4, 2), Color("f5f5f0"))
+func _desenhar_cone(x: float, base: float) -> void:
+	draw_rect(Rect2(x - 4, base, 8, 2), Color("1a1a1a"))
+	draw_colored_polygon(PackedVector2Array([Vector2(x - 3, base), Vector2(x + 3, base), Vector2(x + 1, base - 11), Vector2(x - 1, base - 11)]), Color("e8702a"))
+	draw_rect(Rect2(x - 2, base - 7, 4, 2), Color("f5f5f0"))
 
 
 func _desenhar_agente(x: float) -> void:
