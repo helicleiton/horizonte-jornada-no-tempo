@@ -21,14 +21,6 @@ func _montar_fundo() -> void:
 	ceu.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	fundo.add_child(ceu)
 
-	# Névoa de poluição logo acima do horizonte.
-	var nevoa := ColorRect.new()
-	nevoa.color = Color(0.5, 0.46, 0.44, 0.5)
-	nevoa.anchor_right = 1.0
-	nevoa.offset_top = 96.0
-	nevoa.offset_bottom = 124.0
-	fundo.add_child(nevoa)
-
 	var cidade := Parallax2D.new()
 	cidade.scroll_scale = Vector2(0.35, 1.0)
 	cidade.repeat_size = Vector2(Perfil.LARGURA, 0)

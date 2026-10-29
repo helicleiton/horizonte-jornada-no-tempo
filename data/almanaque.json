@@ -103,5 +103,25 @@
   "titulo": "De onde vêm os nomes dos bairros",
   "texto": "Catolé vem das muitas palmeiras catolé, também chamadas de coco babão, da região. Queimadas, segundo a memória oral da família Nogueira, vem das queimadas feitas para plantar milho, feijão e mandioca. Aningas viria do tupi \"aniga\", planta de flores coloridas e raízes comestíveis. Da origem de Dourados não encontramos registro: é um nome a pesquisar com os moradores. Ao sul de Horizonte, a área urbana tem 19 bairros, como Centro, Gameleira, Mal Cozinhado e Planalto Horizonte.",
   "fonte": "Mapeamento Cultural de Horizonte (relato oral, citado pelo blog Baixo Jaguaribe, 2024); Prefeitura de Horizonte (origem de Aningas); Wikipédia (lista de bairros, a confirmar). Origem de Dourados: sem fonte encontrada."
+ },
+ "vulcabras": {
+  "titulo": "A Vulcabras em Horizonte",
+  "texto": "A Vulcabras, fundada em São Paulo em 1952, tem em Horizonte sua principal fábrica de calçados, em operação desde 1996. A unidade já passou por várias ampliações e produz os tênis das marcas Olympikus, Mizuno e Under Armour. Em 2025 a empresa anunciou novo investimento de cerca de R$ 300 milhões na fábrica.",
+  "fonte": "Diário do Nordeste (expansões da fábrica de Horizonte); Vulcabras (história da empresa, via economicnewsbrasil.com.br). Número de pares e de empregos varia entre as reportagens, por isso não foi usado."
+ },
+ "santana_textil": {
+  "titulo": "A Santana Textil",
+  "texto": "A Santana Textil começou em Jaguaruana, no Ceará, com a produção de redes. A sua sede hoje fica em Horizonte. Em 1995 a empresa começou a produzir tecido jeans (denim) na unidade de Horizonte, e hoje atua em fios e tecidos em vários estados e na Argentina.",
+  "fonte": "Santana Textiles (história da empresa); Diário do Nordeste (coluna sobre a empresa). Há divergência sobre o ano de fundação (1958 ou 1963), por isso o texto não o informa."
+ },
+ "supermercado_moranguinho": {
+  "titulo": "Supermercado Moranguinho",
+  "texto": "A rede Moranguinho começou em 2002 como uma mercearia em Pacajus, vizinha de Horizonte. Sua unidade em Horizonte surgiu quando uma loja da bandeira Jangada passou a se chamar Moranguinho. Em 2024 a rede faturou cerca de R$ 546 milhões e planeja chegar a trinta lojas em cinco anos. Uma das marcas da rede é vender fiado para os clientes de confiança.",
+  "fonte": "Diário do Nordeste (faturamento de 2024 e planos de expansão; coluna sobre a rede); Times Brasil (história do fundador). A data da troca de bandeira em Horizonte não foi confirmada."
+ },
+ "estatua_sao_joao": {
+  "titulo": "A estátua de São João Batista",
+  "texto": "Em julho de 2009, o artista Franciné Mararo Diniz construiu, na praça da Igreja Matriz, uma estátua de São João Batista com cerca de 15 metros de altura. Na noite de 4 de maio de 2015 ela desabou. Não houve feridos. Moradores relataram rachaduras antes da queda, atribuídas ao sol e à chuva. A Prefeitura investigou a causa.",
+  "fonte": "Diário do Nordeste, notícia de 5/5/2015 (com imagens enviadas por moradores). A causa oficial e a reconstrução não foram confirmadas nessa notícia."
  }
 }

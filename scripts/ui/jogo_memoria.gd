@@ -45,7 +45,7 @@ func _ready() -> void:
 	coluna.add_child(titulo)
 
 	var grade := GridContainer.new()
-	grade.columns = 4
+	grade.columns = 3
 	grade.add_theme_constant_override("h_separation", 4)
 	grade.add_theme_constant_override("v_separation", 4)
 	coluna.add_child(grade)
@@ -58,7 +58,8 @@ func _ready() -> void:
 	for i in valores.size():
 		var carta := Button.new()
 		carta.text = "?"
-		carta.custom_minimum_size = Vector2(70, 30)
+		carta.custom_minimum_size = Vector2(92, 26)
+		carta.add_theme_font_size_override("font_size", 6)
 		carta.pressed.connect(_virar.bind(i))
 		grade.add_child(carta)
 		_cartas.append(carta)
@@ -66,6 +67,8 @@ func _ready() -> void:
 
 	_aviso = Label.new()
 	_aviso.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_aviso.autowrap_mode = TextServer.AUTOWRAP_WORD
+	_aviso.custom_minimum_size = Vector2(300, 0)
 	_aviso.add_theme_color_override("font_color", Color("f0e2b6"))
 	coluna.add_child(_aviso)
 

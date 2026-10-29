@@ -124,6 +124,10 @@
        "pagina": "festa_padroeiro"
       },
       "proximo": "fim"
+     },
+     {
+      "texto": "Aconteceu algo com a estátua da praça?",
+      "proximo": "est1"
      }
     ]
    },
@@ -138,6 +142,13 @@
    "repete": {
     "fala": "Já falamos da festa. Até a próxima procissão!",
     "proximo": null
+   },
+   "est1": {
+    "fala": "Em 2015 a estátua de São João Batista, na praça da Matriz, desabou à noite. Ninguém se feriu, mas foi um choque para o povo. A prefeitura investigou a causa.",
+    "recompensa": {
+     "pagina": "estatua_sao_joao"
+    },
+    "proximo": "i2"
    }
   }
  }
