@@ -45,6 +45,15 @@ func _ready() -> void:
 	fundo.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(fundo)
 
+	# Bandeira de Horizonte em pixel art, no canto da tela de abertura.
+	var bandeira := TextureRect.new()
+	bandeira.texture = load("res://assets/sprites/bandeira_horizonte.png")
+	bandeira.position = Vector2(6, 6)
+	bandeira.size = Vector2(48, 36)
+	bandeira.stretch_mode = TextureRect.STRETCH_SCALE
+	bandeira.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	add_child(bandeira)
+
 	var vbox := _coluna_centralizada(self)
 	var titulo := _rotulo(vbox, "HORIZONTE", Color(1.0, 0.85, 0.3), HORIZONTAL_ALIGNMENT_CENTER)
 	titulo.add_theme_font_size_override("font_size", 16)
