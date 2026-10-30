@@ -17,6 +17,15 @@ const DESTINOS := {
 	"res://scenes/levels/fase9.tscn": "2020 a 2026 · Os anos recentes",
 }
 
+## Fotos reais da cidade por fase: arquivo em assets/fotos e crédito da licença.
+const FOTOS := {
+	"res://scenes/levels/fase4.tscn": ["horizonte_cidade.jpg", "Foto: Macílio Gomes (CC BY 3.0), Wikimedia Commons"],
+	"res://scenes/levels/fase6.tscn": ["por_do_sol.jpg", "Foto: Migmeus AC (CC BY-SA 3.0), Wikimedia Commons"],
+	"res://scenes/levels/fase7.tscn": ["igreja_matriz.jpg", "Foto: Macílio Gomes (CC BY 3.0), Wikimedia Commons"],
+	"res://scenes/levels/fase_carro.tscn": ["horizonte_cidade.jpg", "Foto: Macílio Gomes (CC BY 3.0), Wikimedia Commons"],
+	"res://scenes/levels/fase9.tscn": ["estadio_clenilsao.jpg", "Foto: Mansueto77 (domínio público), Wikimedia Commons"],
+}
+
 var caminho := ""
 var _progresso := 0.0
 var _viajante: TextureRect
@@ -24,6 +33,8 @@ var _legenda: Label
 var _veu: ColorRect
 var _flash: ColorRect
 var _aneis: Aneis
+var _foto: TextureRect
+var _credito: Label
 
 
 func _ready() -> void:
@@ -65,6 +76,22 @@ func _ready() -> void:
 	_aneis.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_aneis)
 
+	_foto = TextureRect.new()
+	_foto.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_foto.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_foto.offset_top = 40
+	_foto.offset_bottom = -30
+	_foto.modulate.a = 0.0
+	add_child(_foto)
+	_credito = Label.new()
+	_credito.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_credito.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+	_credito.offset_top = -22
+	_credito.add_theme_font_size_override("font_size", 8)
+	_credito.add_theme_color_override("font_color", Color("f0e2b6"))
+	_credito.modulate.a = 0.0
+	add_child(_credito)
+
 	_flash = ColorRect.new()
 	_flash.color = Color(1, 1, 1, 0.0)
 	_flash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -77,6 +104,18 @@ func _ready() -> void:
 	sequencia.parallel().tween_property(_viajante, "scale", Vector2(1, 1), 0.9).set_trans(Tween.TRANS_BACK)
 	sequencia.tween_property(_legenda, "modulate:a", 1.0, 0.4)
 	sequencia.tween_interval(0.5)
+	if FOTOS.has(caminho):
+		var dados: Array = FOTOS[caminho]
+		_foto.texture = load("res://assets/fotos/%s" % dados[0])
+		_credito.text = dados[1]
+		sequencia.tween_property(_veu, "color:a", 0.92, 0.3)
+		sequencia.parallel().tween_property(_viajante, "modulate:a", 0.0, 0.3)
+		sequencia.parallel().tween_property(_legenda, "modulate:a", 0.0, 0.3)
+		sequencia.tween_property(_foto, "modulate:a", 1.0, 0.5)
+		sequencia.parallel().tween_property(_credito, "modulate:a", 1.0, 0.5)
+		sequencia.tween_interval(2.2)
+		sequencia.tween_property(_foto, "modulate:a", 0.0, 0.4)
+		sequencia.parallel().tween_property(_credito, "modulate:a", 0.0, 0.4)
 	sequencia.tween_property(_flash, "color:a", 1.0, 0.25)
 	sequencia.tween_callback(_trocar)
 

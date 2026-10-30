@@ -72,6 +72,11 @@ class Perfil extends Node2D:
 	const LARGURA := 320.0
 	const SEMENTE := 7
 	const BASE_Y := 128.0
+	var _tempo := 0.0
+
+	func _process(delta: float) -> void:
+		_tempo += delta
+		queue_redraw()
 
 	func _draw() -> void:
 		var sorteio := RandomNumberGenerator.new()
@@ -102,5 +107,6 @@ class Perfil extends Node2D:
 		var altura := sorteio.randf_range(8.0, 14.0)
 		draw_rect(Rect2(x, topo - altura, 4.0, altura), Color("5a4c48"))
 		for i in 3:
-			var raio := 2.0 + i * 1.5
-			draw_circle(Vector2(x + 2.0 - i * 3.0, topo - altura - 3.0 - i * 4.0), raio, Color(0.8, 0.78, 0.76, 0.5))
+			var raio := 2.0 + i * 1.5 + sin(_tempo * 2.0 + x) * 0.4
+			var deriva := sin(_tempo + i) * 1.5
+			draw_circle(Vector2(x + 2.0 - i * 3.0 + deriva, topo - altura - 3.0 - i * 4.0 - fmod(_tempo * 3.0, 6.0)), raio, Color(0.8, 0.78, 0.76, 0.5))

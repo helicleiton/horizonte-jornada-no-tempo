@@ -14,6 +14,7 @@ extends Area2D
 
 var _indicador: Label
 var _sprite: AnimatedSprite2D
+var _tempo := 0.0
 
 
 func _ready() -> void:
@@ -36,6 +37,16 @@ func _ready() -> void:
 	add_child(_indicador)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+
+
+func _process(delta: float) -> void:
+	# Respiração leve em repouso; balanço mais vivo quando a pessoa está falando.
+	_tempo += delta
+	if _sprite:
+		var falando := DialogueBox.ativo and DialogueBox._id == id_dialogo
+		var velocidade := 9.0 if falando else 2.5
+		var amplitude := 0.6 if falando else 0.25
+		_sprite.position.y = -17.0 + sin(_tempo * velocidade) * amplitude
 
 
 func interagir(jogador: Node) -> void:

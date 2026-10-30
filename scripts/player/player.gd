@@ -66,9 +66,13 @@ var _passo_alternado := false
 @onready var _area_interacao: Area2D = $AreaInteracao
 
 
+var _poeira: CPUParticles2D
+
+
 func _ready() -> void:
 	add_to_group("jogador")
 	_calcular_fisica_do_pulo()
+	_criar_poeira()
 	GameState.jogador_morreu.connect(_on_jogador_morreu)
 	_criar_sprite()
 	pulou.connect(func() -> void: AudioManager.tocar("pulo"))
@@ -92,6 +96,29 @@ func _calcular_fisica_do_pulo() -> void:
 	_velocidade_pulo = -2.0 * altura_pulo / tempo_subida
 	_gravidade_subida = 2.0 * altura_pulo / pow(tempo_subida, 2)
 	_gravidade_descida = 2.0 * altura_pulo / pow(tempo_descida, 2)
+
+
+## Pequenas nuvens de poeira enquanto o jogador corre pelo chão.
+func _criar_poeira() -> void:
+	_poeira = CPUParticles2D.new()
+	_poeira.position = Vector2(0, -2)
+	_poeira.amount = 6
+	_poeira.lifetime = 0.45
+	_poeira.emitting = false
+	_poeira.direction = Vector2(0, -1)
+	_poeira.spread = 40.0
+	_poeira.initial_velocity_min = 8.0
+	_poeira.initial_velocity_max = 18.0
+	_poeira.gravity = Vector2(0, 30)
+	_poeira.scale_amount_min = 1.0
+	_poeira.scale_amount_max = 2.0
+	_poeira.color = Color(0.75, 0.6, 0.45, 0.7)
+	add_child(_poeira)
+
+
+func _process(_delta: float) -> void:
+	if _poeira:
+		_poeira.emitting = is_on_floor() and absf(velocity.x) > 60.0 and estado == Estado.NORMAL
 
 
 func _physics_process(delta: float) -> void:

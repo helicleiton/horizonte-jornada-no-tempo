@@ -26,6 +26,7 @@ func _ready() -> void:
 	camera.limit_right = limite_direito
 	camera.limit_bottom = 200
 	GameState.jogador_morreu.connect(_on_jogador_morreu)
+	add_child(LuzDoDia.new())
 	_montar_fundo()
 	_decorar_terreno()
 	_colocar_cenario()
@@ -79,9 +80,13 @@ func _montar_fundo() -> void:
 		return
 	for filho in fundo.get_children():
 		filho.queue_free()
-	var ceu := TextureRect.new()
-	ceu.texture = _tex("ceu")
-	fundo.add_child(ceu)
+	# Céu em degradê: do azul claro do alto ao tom quente do horizonte.
+	for i in 12:
+		var faixa := ColorRect.new()
+		faixa.color = Color("b9d6ee").lerp(Color("f6d39a"), i / 11.0)
+		faixa.position = Vector2(0, i * 15.0)
+		faixa.size = Vector2(320, 16.0)
+		fundo.add_child(faixa)
 	var sol := TextureRect.new()
 	sol.texture = _tex("sol")
 	sol.position = Vector2(232, 22)
@@ -156,6 +161,14 @@ func _prop(nome: String, x: float, base_y := CHAO_Y, z := -5, espelhar := false)
 	s.flip_h = espelhar
 	s.z_index = z
 	add_child(s)
+	# Sombra no chão, embaixo do objeto, para ele não parecer flutuar.
+	var sombra := ColorRect.new()
+	var largura := textura.get_width() * 0.7
+	sombra.color = Color(0, 0, 0, 0.22)
+	sombra.position = Vector2(x - largura / 2.0, base_y - 2.0)
+	sombra.size = Vector2(largura, 3.0)
+	sombra.z_index = z - 1
+	add_child(sombra)
 
 
 func _colocar_cenario() -> void:

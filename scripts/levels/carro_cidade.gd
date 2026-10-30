@@ -23,6 +23,13 @@ var _gatilhos := {
 var _disparados := {}
 var _destino_marcado := false
 var _piscar := 0.0
+## Carros de outras pessoas na outra faixa, só para dar movimento à rua.
+var _trafego := [
+	{"x": 120.0, "faixa": 1, "v": -60.0, "cor": Color("3b6ea5")},
+	{"x": 460.0, "faixa": 1, "v": -45.0, "cor": Color("e8e2d0")},
+	{"x": 780.0, "faixa": 1, "v": -70.0, "cor": Color("2f7d4f")},
+	{"x": 1100.0, "faixa": 0, "v": -55.0, "cor": Color("d9a13b")},
+]
 
 
 func _ready() -> void:
@@ -34,6 +41,7 @@ func _ready() -> void:
 	_camera.limit_bottom = 200
 	add_child(_camera)
 	_camera.make_current()
+	add_child(LuzDoDia.new())
 	AudioManager.tocar_musica(MusicaFase.caminho(), -9.0)
 	AudioManager.tocar_ambiente("res://assets/audio/ambiente/dia_sertao.ogg", -15.0)
 	DialogueBox.iniciar(DIALOGOS, "abertura")
@@ -57,6 +65,8 @@ func _physics_process(delta: float) -> void:
 	_camera.position = Vector2(_x + 16.0, 90.0)
 	_verificar_eventos()
 	_piscar += delta
+	for carro in _trafego:
+		carro["x"] = wrapf(float(carro["x"]) + float(carro["v"]) * delta, 0.0, LIMITE)
 	queue_redraw()
 
 
@@ -87,12 +97,17 @@ func _draw() -> void:
 	for pos in _gatilhos:
 		_desenhar_agente(pos)
 	_desenhar_destino()
+	for carro in _trafego:
+		_desenhar_carro(float(carro["x"]), FAIXAS_Y[int(carro["faixa"])], carro["cor"])
 	_desenhar_carro(_x, _y_carro)
 
 
 func _desenhar_ceu_e_predios() -> void:
-	draw_rect(Rect2(0, 0, LIMITE, 60), Color("f3c98b"))
-	draw_rect(Rect2(0, 60, LIMITE, 50), Color("eab67a"))
+	# Céu em degradê, do topo mais azulado até o horizonte quente.
+	for i in 22:
+		var t := i / 21.0
+		var cor := Color("c9dcef").lerp(Color("f3c98b"), t)
+		draw_rect(Rect2(0, i * 6.0, LIMITE, 6.0), cor)
 	var cores := [Color("8a6f63"), Color("a08072"), Color("6f5a52"), Color("b58f7c")]
 	for i in 30:
 		var x := i * 52.0
@@ -158,12 +173,12 @@ func _desenhar_destino() -> void:
 				draw_rect(Rect2(x + 2 + i * 4, 102 + j * 4, 4, 4), Color("1a1a1a"))
 
 
-func _desenhar_carro(x: float, y: float) -> void:
+func _desenhar_carro(x: float, y: float, cor: Color = Color("b8322a")) -> void:
 	# sombra no asfalto
 	draw_rect(Rect2(x - 17, y + 6, 34, 3), Color(0, 0, 0, 0.35))
 	# carroceria
-	draw_rect(Rect2(x - 16, y - 9, 32, 11), Color("b8322a"))
-	draw_rect(Rect2(x - 16, y - 9, 32, 2), Color("d9554b"))
+	draw_rect(Rect2(x - 16, y - 9, 32, 11), cor)
+	draw_rect(Rect2(x - 16, y - 9, 32, 2), cor.lightened(0.2))
 	# cabine e vidros
 	draw_rect(Rect2(x - 9, y - 16, 18, 8), Color("8e2a20"))
 	draw_rect(Rect2(x - 7, y - 14, 6, 5), Color("9fd3ea"))
