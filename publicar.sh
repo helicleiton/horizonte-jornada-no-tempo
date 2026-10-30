@@ -29,6 +29,9 @@ p='public/historiadehorizonte/index.html'
 s=open(p,encoding='utf-8').read()
 if '<base' not in s:
     s=s.replace('<head>','<head>\n<base href=\"/historiadehorizonte/\">',1)
+if '/_vercel/insights/script.js' not in s:
+    s=s.replace('</head>','<script defer src="/_vercel/insights/script.js"></script>
+</head>',1)
 open(p,'w',encoding='utf-8').write(s)
 "
 
