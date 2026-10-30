@@ -9,3 +9,4 @@ script = ExtResource("1")
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("2")
 fase = 9
+proxima_cena = "res://scenes/levels/fase9.tscn"

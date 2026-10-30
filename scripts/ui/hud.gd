@@ -14,10 +14,11 @@ const TEXTO_FIM := {
 	6: "Você viu como Horizonte se reinventou no século XXI. A próxima parada são as águas de Horizonte.",
 	7: "Você conheceu as águas de Horizonte. A próxima parada é a festa de São João.",
 	8: "Você viveu a festa de São João de Horizonte. A próxima parada é o trânsito da cidade.",
-	9: "Você dirigiu pela cidade e conheceu o trabalho do Demutran. Esta é a última fase do protótipo.",
+	9: "Você dirigiu pela cidade e conheceu o trabalho do Demutran. A próxima parada são os anos recentes.",
+	10: "Você conheceu os anos recentes de Horizonte. Esta é a última fase do protótipo.",
 	5: "Você viu como nasceu a primeira eleição de Horizonte. A próxima parada são os anos 1990.",
 }
-const ROTULO_FASE := {5: "2b", 6: "5", 7: "6", 8: "7", 9: "8"}
+const ROTULO_FASE := {5: "2b", 6: "5", 7: "6", 8: "7", 9: "8", 10: "9"}
 
 var _paginas := {}
 var _barra_cajus: BarraCajus

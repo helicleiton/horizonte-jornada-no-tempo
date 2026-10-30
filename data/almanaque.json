@@ -106,7 +106,7 @@
  },
  "vulcabras": {
   "titulo": "A Vulcabras em Horizonte",
-  "texto": "A Vulcabras, fundada em São Paulo em 1952, tem em Horizonte sua principal fábrica de calçados, em operação desde 1996. A unidade já passou por várias ampliações e produz os tênis das marcas Olympikus, Mizuno e Under Armour. Em 2025 a empresa anunciou novo investimento de cerca de R$ 300 milhões na fábrica.",
+  "texto": "A Vulcabras, fundada em São Paulo em 1952, tem em Horizonte sua principal fábrica de calçados, em operação desde 1996. A unidade já passou por várias ampliações e produz os tênis das marcas Olympikus, Mizuno e Under Armour. Em 2026 a empresa anunciou novo investimento de cerca de R$ 300 milhões na fábrica.",
   "fonte": "Diário do Nordeste (expansões da fábrica de Horizonte); Vulcabras (história da empresa, via economicnewsbrasil.com.br). Número de pares e de empregos varia entre as reportagens, por isso não foi usado."
  },
  "santana_textil": {
@@ -123,5 +123,10 @@
   "titulo": "A estátua de São João Batista",
   "texto": "Em julho de 2009, o artista Franciné Mararo Diniz construiu, na praça da Igreja Matriz, uma estátua de São João Batista com cerca de 15 metros de altura. Na noite de 4 de maio de 2015 ela desabou. Não houve feridos. Moradores relataram rachaduras antes da queda, atribuídas ao sol e à chuva. A Prefeitura investigou a causa.",
   "fonte": "Diário do Nordeste, notícia de 5/5/2015 (com imagens enviadas por moradores). A causa oficial e a reconstrução não foram confirmadas nessa notícia."
+ },
+ "anos_2020_2026": {
+  "titulo": "Horizonte de 2020 a 2026",
+  "texto": "Em 2020, a eleição municipal foi adiada pela pandemia de Covid-19, e Nezinho Farias foi eleito prefeito pela quarta vez. Em 2021, a Ford anunciou o fechamento da fábrica da Troller. Em 2022, o Governo do Ceará criou o Parque Estadual das Águas, e a Vulcabras inaugurou uma ampliação de sua fábrica. Em 2024, Nezinho Farias foi reeleito. Em 2025, a primeira escola quilombola de tempo integral do Ceará foi inaugurada em Horizonte, uma vereadora quilombola tomou posse na Câmara e o Polo Automotivo começou a produzir. Em 2026, o Governo do Ceará inaugurou o Terminal Rodoviário de Horizonte, com investimento de R$ 4,7 milhões, e a prefeitura criou o Progredih, programa de redesenvolvimento industrial.",
+  "fonte": "Prefeitura de Horizonte (eleição de 2020, segundo o site oficial); Gazeta do Povo e Diário do Nordeste (eleições de 2020 e 2024); Mercado&Consumo (ampliação da Vulcabras, 2022); Correio da Manhã (escola quilombola, 2025); Diário do Transporte (terminal rodoviário, 2026); Diário do Nordeste (Progredih, 2026)."
  }
 }

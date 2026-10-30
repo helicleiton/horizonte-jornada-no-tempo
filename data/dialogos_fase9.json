@@ -1,0 +1,201 @@
+{
+ "abertura": {
+  "nome": "Livro do Tempo",
+  "inicio": "a1",
+  "nos": {
+   "a1": {
+    "quem": "Livro do Tempo",
+    "fala": "Chegamos aos anos recentes. De 2020 até hoje, Horizonte passou por uma pandemia, pela mudança da indústria e por novas obras.",
+    "proximo": "a2"
+   },
+   "a2": {
+    "quem": "{nome}",
+    "fala": "O que mudou na vida das pessoas?",
+    "proximo": "a3"
+   },
+   "a3": {
+    "quem": "Livro do Tempo",
+    "fala": "Converse com as pessoas daqui, responda ao quiz sobre esses anos e veja como a cidade continua a se transformar.",
+    "proximo": null
+   }
+  }
+ },
+ "rosa_saude": {
+  "nome": "Dona Rosa (agente de saúde)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "falou_rosa",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Em 2020 a pandemia de Covid-19 mudou tudo. As aulas pararam, a eleição foi adiada e a gente visitava as casas com cuidado.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "O que você quer saber?",
+    "opcoes": [
+     {
+      "texto": "Por que a eleição foi adiada?",
+      "proximo": "p1"
+     },
+     {
+      "texto": "Obrigado, Dona Rosa",
+      "flag": "falou_rosa",
+      "proximo": "fim"
+     }
+    ]
+   },
+   "p1": {
+    "fala": "Por causa da pandemia, a votação de 2020 foi remarcada para novembro, com cuidados para proteger a população.",
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Cuidar uns dos outros foi a lição mais forte daqueles anos, {nome}.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já conversamos sobre aqueles anos. Obrigada por ouvir.",
+    "proximo": null
+   }
+  }
+ },
+ "lauro_polo": {
+  "nome": "Seu Lauro (operário do polo)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "falou_lauro",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Em dezembro de 2025 o Polo Automotivo começou a produzir aqui. Foi uma vitória para a cidade inteira.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Quer saber mais?",
+    "opcoes": [
+     {
+      "texto": "Quem inaugurou o polo?",
+      "proximo": "p1"
+     },
+     {
+      "texto": "Obrigado, Seu Lauro",
+      "flag": "falou_lauro",
+      "recompensa": {
+       "pagina": "anos_2020_2026"
+      },
+      "proximo": "fim"
+     }
+    ]
+   },
+   "p1": {
+    "fala": "O presidente Lula inaugurou o polo em 3 de dezembro de 2025, numa fábrica que antes era da Troller.",
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Quem vem depois vai contar essa história, {nome}.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já falamos do polo. Boa sorte na estrada!",
+    "proximo": null
+   }
+  }
+ },
+ "estudante_quiz": {
+  "nome": "Professora Lia (quiz dos anos recentes)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "quiz_recente_ok",
+    "no": "ja"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Vamos a três perguntas sobre os últimos anos. Errou, eu repito com uma dica.",
+    "proximo": "q1"
+   },
+   "q1": {
+    "fala": "Em que ano a fábrica da Troller foi anunciada como fechada?",
+    "opcoes": [
+     {
+      "texto": "2021",
+      "proximo": "q2"
+     },
+     {
+      "texto": "2018",
+      "proximo": "e1"
+     },
+     {
+      "texto": "2025",
+      "proximo": "e1"
+     }
+    ]
+   },
+   "e1": {
+    "fala": "Não foi esse ano. Pense no ano em que a Ford anunciou o fechamento.",
+    "proximo": "q1"
+   },
+   "q2": {
+    "fala": "Quanto foi investido no Terminal Rodoviário de Horizonte, entregue em 2026?",
+    "opcoes": [
+     {
+      "texto": "Cerca de R$ 4,7 milhões",
+      "proximo": "q3"
+     },
+     {
+      "texto": "Cerca de R$ 47 mil",
+      "proximo": "e2"
+     },
+     {
+      "texto": "Cerca de R$ 470 milhões",
+      "proximo": "e2"
+     }
+    ]
+   },
+   "e2": {
+    "fala": "Quase! O valor foi de alguns milhões de reais. Pense no número de milhões.",
+    "proximo": "q2"
+   },
+   "q3": {
+    "fala": "Qual foi a primeira escola do Ceará em tempo integral voltada para comunidades quilombolas, inaugurada em Horizonte?",
+    "opcoes": [
+     {
+      "texto": "Escola de tempo integral quilombola",
+      "flag": "quiz_recente_ok",
+      "proximo": "fim"
+     },
+     {
+      "texto": "Uma escola de idiomas",
+      "proximo": "e3"
+     },
+     {
+      "texto": "Uma escola de música",
+      "proximo": "e3"
+     }
+    ]
+   },
+   "e3": {
+    "fala": "Pense no que foi inaugurado em 2025: uma escola para a comunidade do Alto Alegre.",
+    "proximo": "q3"
+   },
+   "fim": {
+    "fala": "Você acertou! Agora você conhece os anos recentes de Horizonte.",
+    "recompensa": {
+     "sementes": 10
+    },
+    "proximo": null
+   },
+   "ja": {
+    "fala": "Você já respondeu o quiz. Obrigada!",
+    "proximo": null
+   }
+  }
+ }
+}
