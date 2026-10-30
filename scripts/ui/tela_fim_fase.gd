@@ -83,7 +83,9 @@ func _continuar() -> void:
 
 func _trocar_cena(caminho: String) -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file(caminho)
+	var viagem := TransicaoTempo.new()
+	viagem.caminho = caminho
+	get_tree().root.add_child(viagem)
 
 
 func _botao(texto: String, acao: Callable) -> void:

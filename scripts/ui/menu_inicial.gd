@@ -344,4 +344,6 @@ func _botao(pai: Node, texto: String, acao: Callable) -> Button:
 func _iniciar_jogo(nome: String) -> void:
 	GameState.nome_protagonista = nome
 	AudioManager.tocar("escolha")
-	get_tree().change_scene_to_file(_proxima_fase)
+	var viagem := TransicaoTempo.new()
+	viagem.caminho = _proxima_fase
+	get_tree().root.add_child(viagem)
