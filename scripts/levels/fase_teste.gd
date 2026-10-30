@@ -26,7 +26,9 @@ func _ready() -> void:
 	camera.limit_right = limite_direito
 	camera.limit_bottom = 200
 	GameState.jogador_morreu.connect(_on_jogador_morreu)
-	add_child(LuzDoDia.new())
+	var luz := LuzDoDia.new()
+	luz.tom = _tom_luz()
+	add_child(luz)
 	_montar_fundo()
 	_decorar_terreno()
 	_colocar_cenario()
@@ -243,3 +245,8 @@ func _zurrar_de_vez_em_quando(posicao: Vector2) -> void:
 			zurro.play()
 		timer.start(randf_range(14.0, 26.0)))
 	timer.start(randf_range(6.0, 12.0))
+
+
+## Tom de luz da fase; cada fase pode sobrescrever para ter sua própria atmosfera.
+func _tom_luz() -> Color:
+	return Color(1.0, 0.7, 0.45, 0.2)

@@ -41,7 +41,9 @@ func _ready() -> void:
 	_camera.limit_bottom = 200
 	add_child(_camera)
 	_camera.make_current()
-	add_child(LuzDoDia.new())
+	var luz := LuzDoDia.new()
+	luz.tom = Color(1.0, 0.5, 0.3, 0.18)
+	add_child(luz)
 	AudioManager.tocar_musica(MusicaFase.caminho(), -9.0)
 	AudioManager.tocar_ambiente("res://assets/audio/ambiente/dia_sertao.ogg", -15.0)
 	DialogueBox.iniciar(DIALOGOS, "abertura")

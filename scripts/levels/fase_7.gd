@@ -23,3 +23,7 @@ func _colocar_cenario() -> void:
 func _iniciar_audio() -> void:
 	AudioManager.tocar_musica(HINO if ResourceLoader.exists(HINO) else MUSICA, -9.0)
 	AudioManager.tocar_ambiente(AMBIENTE, -15.0)
+
+
+func _tom_luz() -> Color:
+	return Color(1.0, 0.55, 0.3, 0.22)

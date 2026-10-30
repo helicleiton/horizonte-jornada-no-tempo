@@ -33,3 +33,7 @@ func _iniciar_audio() -> void:
 		agua.volume_db = -4.0
 		add_child(agua)
 		agua.play()
+
+
+func _tom_luz() -> Color:
+	return Color(0.6, 0.85, 0.8, 0.16)

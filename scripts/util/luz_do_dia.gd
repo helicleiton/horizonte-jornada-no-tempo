@@ -5,6 +5,8 @@ extends CanvasLayer
 
 ## Tempo, em segundos, para a luz chegar ao meio-dia.
 @export var duracao := 150.0
+## Cor e força do tom de luz da fase (o alfa diminui até o meio-dia).
+var tom := Color(1.0, 0.7, 0.45, 0.2)
 
 var _tempo := 0.0
 var _brilho: TextureRect
@@ -48,7 +50,7 @@ func _process(delta: float) -> void:
 	_tempo += delta
 	_brilho.modulate.a = 0.75 + sin(_tempo * 1.2) * 0.15
 	var t := clampf(_tempo / duracao, 0.0, 1.0)
-	_tinta.color = Color(1.0, 0.7, 0.45, 0.2 * (1.0 - t))
+	_tinta.color = Color(tom.r, tom.g, tom.b, tom.a * (1.0 - t))
 	for i in _nevoa.size():
 		var pico := 1.0 - absf((i - 4.5) / 5.0)
 		_nevoa[i].color.a = 0.35 * pico * (1.0 - t)

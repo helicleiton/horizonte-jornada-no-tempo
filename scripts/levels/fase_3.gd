@@ -110,3 +110,7 @@ class Perfil extends Node2D:
 			var raio := 2.0 + i * 1.5 + sin(_tempo * 2.0 + x) * 0.4
 			var deriva := sin(_tempo + i) * 1.5
 			draw_circle(Vector2(x + 2.0 - i * 3.0 + deriva, topo - altura - 3.0 - i * 4.0 - fmod(_tempo * 3.0, 6.0)), raio, Color(0.8, 0.78, 0.76, 0.5))
+
+
+func _tom_luz() -> Color:
+	return Color(0.6, 0.6, 0.62, 0.22)
