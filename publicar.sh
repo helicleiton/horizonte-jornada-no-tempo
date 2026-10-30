@@ -24,16 +24,7 @@ cd "$SITE"
 rm -rf public/historiadehorizonte
 mkdir public/historiadehorizonte
 cp -r "$JOGO/build/web/." public/historiadehorizonte/
-python -c "
-p='public/historiadehorizonte/index.html'
-s=open(p,encoding='utf-8').read()
-if '<base' not in s:
-    s=s.replace('<head>','<head>\n<base href=\"/historiadehorizonte/\">',1)
-if '/_vercel/insights/script.js' not in s:
-    s=s.replace('</head>','<script defer src="/_vercel/insights/script.js"></script>
-</head>',1)
-open(p,'w',encoding='utf-8').write(s)
-"
+python "$JOGO/publicar_ajustes.py" public/historiadehorizonte/index.html
 
 echo "== 4/5 Conferindo o build do site"
 npx next build >/dev/null 2>&1 || { echo "Falhou: build do site"; exit 1; }
