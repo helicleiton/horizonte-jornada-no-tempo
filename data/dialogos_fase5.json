@@ -5,7 +5,7 @@
   "nos": {
    "a1": {
     "quem": "Livro do Tempo",
-    "fala": "Estamos nos anos 2000. Horizonte cresce depressa: muita gente chega de outras cidades em busca de trabalho.",
+    "fala": "Outro salto no tempo: {nome} chega aos anos 2000. Estamos nos anos 2000. Horizonte cresce depressa: muita gente chega de outras cidades em busca de trabalho.",
     "proximo": "a2"
    },
    "a2": {

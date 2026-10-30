@@ -94,6 +94,8 @@ func _avaliar() -> Array[Dictionary]:
 			return _objetivos_fase8()
 		10:
 			return _objetivos_fase9()
+		11:
+			return _objetivos_fase10()
 	return _objetivos_fase1()
 
 
@@ -127,6 +129,13 @@ func _objetivos_fase9() -> Array[Dictionary]:
 		{"texto": "Converse com Dona Rosa sobre a pandemia", "feito": GameState.get_flag("falou_rosa")},
 		{"texto": "Ouça Seu Lauro sobre o polo", "feito": GameState.get_flag("falou_lauro")},
 		{"texto": "Responda ao quiz com a Professora Lia", "feito": GameState.get_flag("quiz_recente_ok")},
+	]
+
+
+func _objetivos_fase10() -> Array[Dictionary]:
+	return [
+		{"texto": "Ouça a guardiã da memória", "feito": GameState.get_flag("falou_guardia")},
+		{"texto": "Responda ao quiz das lideranças", "feito": GameState.get_flag("quiz_lideres_ok")},
 	]
 
 

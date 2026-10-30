@@ -5,7 +5,7 @@
   "nos": {
    "a1": {
     "quem": "Livro do Tempo",
-    "fala": "Estamos nos anos 1990. Em 9 de fevereiro de 1990, a Lei nº 032 criou a Companhia de Desenvolvimento Industrial de Horizonte.",
+    "fala": "O clarão azul leva {nome} para os anos 1990. Estamos nos anos 1990. Em 9 de fevereiro de 1990, a Lei nº 032 criou a Companhia de Desenvolvimento Industrial de Horizonte.",
     "proximo": "a2"
    },
    "a2": {

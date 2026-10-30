@@ -5,7 +5,7 @@
   "nos": {
    "a1": {
     "quem": "Livro do Tempo",
-    "fala": "Hoje Horizonte tem mais de 55 mil habitantes. A cidade cresceu com a indústria, o comércio e a agricultura.",
+    "fala": "Mais um salto: {nome} chega ao presente. Hoje Horizonte tem mais de 55 mil habitantes. A cidade cresceu com a indústria, o comércio e a agricultura.",
     "proximo": "a2"
    },
    "a2": {

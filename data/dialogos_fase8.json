@@ -5,7 +5,7 @@
   "nos": {
    "a1": {
     "quem": "Livro do Tempo",
-    "fala": "Agora você vai dirigir pela cidade. Acelere com a seta para a direita e freie com a seta para a esquerda. Para trocar de faixa e desviar dos cones, use Espaço ou a seta para cima.",
+    "fala": "{nome} chega às ruas de hoje. Agora você vai dirigir pela cidade. Acelere com a seta para a direita e freie com a seta para a esquerda. Para trocar de faixa e desviar dos cones, use Espaço ou a seta para cima.",
     "proximo": "a2"
    },
    "a2": {

@@ -23,6 +23,7 @@ const FASE_6 := "res://scenes/levels/fase6.tscn"
 const FASE_7 := "res://scenes/levels/fase7.tscn"
 const FASE_CARRO := "res://scenes/levels/fase_carro.tscn"
 const FASE_9 := "res://scenes/levels/fase9.tscn"
+const FASE_10 := "res://scenes/levels/fase10.tscn"
 
 ## Nome de cada fase, como aparece na lista de fases do menu.
 const FASES := [
@@ -36,6 +37,7 @@ const FASES := [
 	[FASE_7, "Fase 7 · Festa de São João"],
 	[FASE_CARRO, "Fase 8 · Dirigindo pela cidade"],
 	[FASE_9, "Fase 9 · Os anos recentes (2020–2026)"],
+	[FASE_10, "Fase 10 · Quem faz a cidade"],
 ]
 
 

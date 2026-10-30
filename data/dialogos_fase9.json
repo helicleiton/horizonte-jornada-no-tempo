@@ -5,7 +5,7 @@
   "nos": {
    "a1": {
     "quem": "Livro do Tempo",
-    "fala": "Chegamos aos anos recentes. De 2020 até hoje, Horizonte passou por uma pandemia, pela mudança da indústria e por novas obras.",
+    "fala": "O último salto: {nome} chega aos anos recentes. Chegamos aos anos recentes. De 2020 até hoje, Horizonte passou por uma pandemia, pela mudança da indústria e por novas obras.",
     "proximo": "a2"
    },
    "a2": {
@@ -45,6 +45,10 @@
       "texto": "Obrigado, Dona Rosa",
       "flag": "falou_rosa",
       "proximo": "fim"
+     },
+     {
+      "texto": "A prefeitura ajudou as famílias?",
+      "proximo": "ajuda1"
      }
     ]
    },
@@ -59,6 +63,13 @@
    "repete": {
     "fala": "Já conversamos sobre aqueles anos. Obrigada por ouvir.",
     "proximo": null
+   },
+   "ajuda1": {
+    "fala": "Ajudou com cestas básicas para as famílias mais vulneráveis, para que ficassem em casa seguindo as orientações de saúde.",
+    "recompensa": {
+     "pagina": "pandemia_horizonte"
+    },
+    "proximo": "i2"
    }
   }
  },

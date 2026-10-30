@@ -5,7 +5,7 @@
   "nos": {
    "a1": {
     "quem": "Livro do Tempo",
-    "fala": "1987. A Lei nº 11.300, de 6 de março, sancionada pelo governador Gonzaga Mota no Palácio da Abolição, cria o município de Horizonte.",
+    "fala": "Mais um salto no tempo: {nome} chega a 1988. 1987. A Lei nº 11.300, de 6 de março, sancionada pelo governador Gonzaga Mota no Palácio da Abolição, cria o município de Horizonte.",
     "proximo": "a2"
    },
    "a2": {

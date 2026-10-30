@@ -5,7 +5,7 @@
   "nos": {
    "a1": {
     "quem": "Livro do Tempo",
-    "fala": "Horizonte nasceu de um olho d'água. Hoje a água da região abastece a cidade e a capital.",
+    "fala": "{nome} chega às nascentes de hoje. Horizonte nasceu de um olho d'água. Hoje a água da região abastece a cidade e a capital.",
     "proximo": "a2"
    },
    "a2": {
@@ -212,6 +212,10 @@
       "proximo": "c4"
      },
      {
+      "texto": "Quais são os lugares da cidade?",
+      "proximo": "mapa1"
+     },
+     {
       "texto": "Obrigado, Seu Chico",
       "flag": "falou_bairros",
       "recompensa": {
@@ -244,6 +248,13 @@
    "repete": {
     "fala": "Já contei a história de alguns bairros. Pergunte de novo se quiser ouvir mais.",
     "proximo": null
+   },
+   "mapa1": {
+    "fala": "Tem o Catu, os Dourados, a Lagoinha, o Catolé e o Alto Alegre, cortados pelos rios e riachos da região. O mapa municipal mostra tudo.",
+    "recompensa": {
+     "pagina": "mapa_localidades"
+    },
+    "proximo": "i2"
    }
   }
  }

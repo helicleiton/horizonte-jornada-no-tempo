@@ -1,64 +1,161 @@
 {
-	"abertura": {
-		"nome": "Livro do Tempo",
-		"inicio": "a1",
-		"nos": {
-			"a1": {"quem": "Livro do Tempo", "fala": "Estamos em 1987. Horizonte ainda é distrito de Pacajus, mas o povo quer ser município.", "proximo": "a2"},
-			"a2": {"quem": "{nome}", "fala": "Pacajus? Eu achava que aqui já era cidade...", "proximo": "a3"},
-			"a3": {"quem": "Livro do Tempo", "fala": "Uma lei de 1963 chegou a criar o município, mas foi derrubada na ditadura. Agora a Sahori luta para que o povo decida de novo.", "proximo": "a4"},
-			"a4": {"quem": "Livro do Tempo", "fala": "Junte os votos de apoio pelas ruas, converse com a Sahori, responda à professora e restaure o Fragmento 2.", "proximo": null}
-		}
-	},
-
-	"expedito_sahori": {
-		"nome": "Seu Expedito (Sahori)",
-		"inicio": "inicio",
-		"condicoes": [
-			{"item": "voto_apoio", "min": 3, "flag": "enigma_lei_ok", "no": "entrega"},
-			{"item": "voto_apoio", "min": 3, "no": "quase"},
-			{"flag": "falou_expedito", "no": "repete"}
-		],
-		"nos": {
-			"inicio": {"fala": "Ô, moço! Você é de fora? Eu sou Expedito, da Sahori: a gente quer que Horizonte deixe de ser distrito de Pacajus.", "proximo": "i2"},
-			"i2": {"fala": "Pra isso precisamos de votos de apoio. Junte três pela cidade e volte aqui. Quer saber mais antes?", "opcoes": [
-				{"texto": "O que é um plebiscito?", "proximo": "p1"},
-				{"texto": "Vou juntar os votos", "flag": "falou_expedito", "proximo": "fim_inicio"}
-			]},
-			"p1": {"fala": "É quando o povo inteiro vota numa pergunta só. A Sahori organizou o plebiscito: 2.273 votos a favor e 182 contra. A lei que criou o município é a nº 11.300, de 1987.", "proximo": "i2"},
-			"fim_inicio": {"fala": "Ótimo! Vá de porta em porta. Quando tiver os três votos, volte aqui.", "proximo": null},
-			"repete": {"fala": "Já achou os votos? Ainda falta juntar os três de apoio.", "proximo": null},
-			"quase": {"fala": "Os votos estão com você! Falta só a professora confirmar a data da lei. Pergunte à Dona Lúcia.", "proximo": null},
-			"entrega": {"fala": "Você trouxe os votos! Esse é o Fragmento de Memória 2. Guarde esta história com carinho.", "recompensa": {"fragmento": 2, "pagina": "emancipacao"}, "proximo": "e2"},
-			"e2": {"fala": "Agora Horizonte tem voz, {nome}. Ainda há muita história pela frente.", "proximo": null}
-		}
-	},
-
-	"lucia_professora": {
-		"nome": "Dona Lúcia (professora)",
-		"inicio": "inicio",
-		"condicoes": [
-			{"flag": "enigma_lei_ok", "no": "ja"}
-		],
-		"nos": {
-			"inicio": {"fala": "Sou professora aqui na escola. Meus alunos estudam a história da cidade. Quer testar seus conhecimentos?", "proximo": "q"},
-			"q": {"fala": "Em que data a Lei nº 11.300 criou o município de Horizonte?", "opcoes": [
-				{"texto": "6 de março de 1987", "flag": "enigma_lei_ok", "proximo": "acertou"},
-				{"texto": "1º de janeiro de 1989", "proximo": "errou1"},
-				{"texto": "20 de dezembro de 1938", "proximo": "errou2"}
-			]},
-			"errou1": {"fala": "Quase! A cidade só foi instalada em 1989, mas a lei é de antes. Pense no ano em que ela foi aprovada.", "proximo": "q"},
-			"errou2": {"fala": "Esse é o ano em que o nome Horizonte foi dado. Tente de novo, pensando na lei de criação do município.", "proximo": "q"},
-			"acertou": {"fala": "Isso! Lei nº 11.300, de 6 de março de 1987. A instalação só veio em 1º de janeiro de 1989, com o primeiro prefeito.", "proximo": "a2"},
-			"a2": {"fala": "Quando o povo fala junto, a lei muda. Leve isso pro Seu Expedito.", "proximo": null},
-			"ja": {"fala": "Já respondemos, lembra? Vá lá com a Sahori.", "proximo": null}
-		}
-	},
-
-	"ze_praca": {
-		"nome": "Zé da praça",
-		"inicio": "inicio",
-		"nos": {
-			"inicio": {"fala": "Oi! Cuidado com os xique-xiques da praça, eles machucam. Dizem que a Sahori deixou papeizinhos de apoio pelo caminho.", "proximo": null}
-		}
-	}
+ "abertura": {
+  "nome": "Livro do Tempo",
+  "inicio": "a1",
+  "nos": {
+   "a1": {
+    "quem": "Livro do Tempo",
+    "fala": "Um clarão azul: {nome}, o viajante do tempo, chega a 1987. Estamos em 1987. Horizonte ainda é distrito de Pacajus, mas o povo quer ser município.",
+    "proximo": "a2"
+   },
+   "a2": {
+    "quem": "{nome}",
+    "fala": "Pacajus? Eu achava que aqui já era cidade...",
+    "proximo": "a3"
+   },
+   "a3": {
+    "quem": "Livro do Tempo",
+    "fala": "Uma lei de 1963 chegou a criar o município, mas foi derrubada na ditadura. Agora a Sahori luta para que o povo decida de novo.",
+    "proximo": "a4"
+   },
+   "a4": {
+    "quem": "Livro do Tempo",
+    "fala": "Junte os votos de apoio pelas ruas, converse com a Sahori, responda à professora e restaure o Fragmento 2.",
+    "proximo": null
+   }
+  }
+ },
+ "expedito_sahori": {
+  "nome": "Seu Expedito (Sahori)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "item": "voto_apoio",
+    "min": 3,
+    "flag": "enigma_lei_ok",
+    "no": "entrega"
+   },
+   {
+    "item": "voto_apoio",
+    "min": 3,
+    "no": "quase"
+   },
+   {
+    "flag": "falou_expedito",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Ô, moço! Você é de fora? Eu sou Expedito, da Sahori: a gente quer que Horizonte deixe de ser distrito de Pacajus.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Pra isso precisamos de votos de apoio. Junte três pela cidade e volte aqui. Quer saber mais antes?",
+    "opcoes": [
+     {
+      "texto": "O que é um plebiscito?",
+      "proximo": "p1"
+     },
+     {
+      "texto": "Vou juntar os votos",
+      "flag": "falou_expedito",
+      "proximo": "fim_inicio"
+     }
+    ]
+   },
+   "p1": {
+    "fala": "É quando o povo inteiro vota numa pergunta só. A Sahori organizou o plebiscito: 2.273 votos a favor e 182 contra. A lei que criou o município é a nº 11.300, de 1987.",
+    "proximo": "i2"
+   },
+   "fim_inicio": {
+    "fala": "Ótimo! Vá de porta em porta. Quando tiver os três votos, volte aqui.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já achou os votos? Ainda falta juntar os três de apoio.",
+    "proximo": null
+   },
+   "quase": {
+    "fala": "Os votos estão com você! Falta só a professora confirmar a data da lei. Pergunte à Dona Lúcia.",
+    "proximo": null
+   },
+   "entrega": {
+    "fala": "Você trouxe os votos! Esse é o Fragmento de Memória 2. Guarde esta história com carinho.",
+    "recompensa": {
+     "fragmento": 2,
+     "pagina": "emancipacao"
+    },
+    "proximo": "e2"
+   },
+   "e2": {
+    "fala": "Agora Horizonte tem voz, {nome}. Ainda há muita história pela frente.",
+    "proximo": null
+   }
+  }
+ },
+ "lucia_professora": {
+  "nome": "Dona Lúcia (professora)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "enigma_lei_ok",
+    "no": "ja"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Sou professora aqui na escola. Meus alunos estudam a história da cidade. Quer testar seus conhecimentos?",
+    "proximo": "q"
+   },
+   "q": {
+    "fala": "Em que data a Lei nº 11.300 criou o município de Horizonte?",
+    "opcoes": [
+     {
+      "texto": "6 de março de 1987",
+      "flag": "enigma_lei_ok",
+      "proximo": "acertou"
+     },
+     {
+      "texto": "1º de janeiro de 1989",
+      "proximo": "errou1"
+     },
+     {
+      "texto": "20 de dezembro de 1938",
+      "proximo": "errou2"
+     }
+    ]
+   },
+   "errou1": {
+    "fala": "Quase! A cidade só foi instalada em 1989, mas a lei é de antes. Pense no ano em que ela foi aprovada.",
+    "proximo": "q"
+   },
+   "errou2": {
+    "fala": "Esse é o ano em que o nome Horizonte foi dado. Tente de novo, pensando na lei de criação do município.",
+    "proximo": "q"
+   },
+   "acertou": {
+    "fala": "Isso! Lei nº 11.300, de 6 de março de 1987. A instalação só veio em 1º de janeiro de 1989, com o primeiro prefeito.",
+    "proximo": "a2"
+   },
+   "a2": {
+    "fala": "Quando o povo fala junto, a lei muda. Leve isso pro Seu Expedito.",
+    "proximo": null
+   },
+   "ja": {
+    "fala": "Já respondemos, lembra? Vá lá com a Sahori.",
+    "proximo": null
+   }
+  }
+ },
+ "ze_praca": {
+  "nome": "Zé da praça",
+  "inicio": "inicio",
+  "nos": {
+   "inicio": {
+    "fala": "Oi! Cuidado com os xique-xiques da praça, eles machucam. Dizem que a Sahori deixou papeizinhos de apoio pelo caminho.",
+    "proximo": null
+   }
+  }
+ }
 }

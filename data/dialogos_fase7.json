@@ -5,7 +5,7 @@
   "nos": {
    "a1": {
     "quem": "Livro do Tempo",
-    "fala": "Todo dia 24 de junho, Horizonte se veste de festa para São João Batista, o padroeiro da cidade.",
+    "fala": "Um clarão azul: {nome} chega à festa de hoje. Todo dia 24 de junho, Horizonte se veste de festa para São João Batista, o padroeiro da cidade.",
     "proximo": "a2"
    },
    "a2": {

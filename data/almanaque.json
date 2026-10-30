@@ -128,5 +128,40 @@
   "titulo": "Horizonte de 2020 a 2026",
   "texto": "Em 2020, a eleição municipal foi adiada pela pandemia de Covid-19, e Nezinho Farias foi eleito prefeito pela quarta vez. Em 2021, a Ford anunciou o fechamento da fábrica da Troller. Em 2022, o Governo do Ceará criou o Parque Estadual das Águas, e a Vulcabras inaugurou uma ampliação de sua fábrica. Em 2024, Nezinho Farias foi reeleito. Em 2025, a primeira escola quilombola de tempo integral do Ceará foi inaugurada em Horizonte, uma vereadora quilombola tomou posse na Câmara e o Polo Automotivo começou a produzir. Em 2026, o Governo do Ceará inaugurou o Terminal Rodoviário de Horizonte, com investimento de R$ 4,7 milhões, e a prefeitura criou o Progredih, programa de redesenvolvimento industrial.",
   "fonte": "Prefeitura de Horizonte (eleição de 2020, segundo o site oficial); Gazeta do Povo e Diário do Nordeste (eleições de 2020 e 2024); Mercado&Consumo (ampliação da Vulcabras, 2022); Correio da Manhã (escola quilombola, 2025); Diário do Transporte (terminal rodoviário, 2026); Diário do Nordeste (Progredih, 2026)."
+ },
+ "liderancas": {
+  "titulo": "Lideranças da emancipação",
+  "texto": "Em 1963, o movimento pela emancipação foi liderado por Horácio Domingos de Sousa e Manoel Feliciano de Sousa. Nos anos 1980, a Sociedade dos Amigos de Horizonte (Sahori) retomou a luta, com nomes como Horácio Domingos de Sousa, Francisco César de Sousa, José Evandro Nogueira e Juvenal Lamartine Azevedo Lima. O plebiscito deu 2.273 votos a favor e 182 contra a emancipação.",
+  "fonte": "Notícia sobre a história do movimento de emancipação (lista de lideranças da Sahori e do movimento de 1963); Livro Horizonte e Mapa Mental (plebiscito). Confirmar as funções de cada liderança com a Câmara e a Prefeitura."
+ },
+ "prefeitos_horizonte": {
+  "titulo": "Os prefeitos de Horizonte",
+  "texto": "O primeiro prefeito de Horizonte foi Francisco César de Sousa, empossado em 1º de janeiro de 1989. Nezinho Farias (Manoel Gomes de Farias Neto) foi prefeito em vários mandatos, incluindo os de 2008 e 2012, foi eleito em 2020 e reeleito em 2024. A lista completa, com todos os períodos e partidos, deve ser confirmada no TSE e no site oficial da Prefeitura.",
+  "fonte": "Mapa Mental da História de Horizonte (primeiro prefeito); site oficial da Prefeitura de Horizonte (mandatos de Nezinho Farias); O Povo (eleição de 2024). Os períodos exatos de cada mandato ainda precisam de conferência."
+ },
+ "mapa_localidades": {
+  "titulo": "O mapa de Horizonte",
+  "texto": "No mapa municipal de 2019 aparecem localidades como Catu, Dourados, Lagoinha, Catolé, Buenos Aires, Jenipapeiro e Alto Alegre. Pelo território correm rios e riachos como o Pacoti, o Erer é e o Malcozinhado, e há açudes como o Riachão e o de Queimadas. O ponto mais alto da cidade é o Serrote João Conceição, no Catolé, com 127 metros.",
+  "fonte": "Mapa municipal de Horizonte (2019); Mapa Mental da História de Horizonte (altitude do Serrote João Conceição)."
+ },
+ "pandemia_horizonte": {
+  "titulo": "A pandemia em Horizonte",
+  "texto": "Durante a pandemia de Covid-19, a Prefeitura comprou cestas básicas em caráter emergencial para as famílias em situação de vulnerabilidade social, para que pudessem ficar em casa seguindo as orientações sanitárias. A ajuda foi organizada pela Secretaria de Assistência Social e Trabalho, em 2021.",
+  "fonte": "Lista de contratos da Prefeitura Municipal de Horizonte (2021). Os nomes e documentos das empresas e pessoas dos contratos não são usados aqui."
+ },
+ "horizonte_em_numeros": {
+  "titulo": "Horizonte em números",
+  "texto": "Horizonte tem 74.755 habitantes, segundo o Censo de 2022. Entre 2000 e 2010, a população cresceu cerca de 65%. A cidade tem mais de 40 indústrias, de têxteis, calçados, granito e automóveis, e cerca de 20 mil empregos diretos. Dos municípios da Região Metropolitana, Horizonte é um dos únicos do Nordeste a integrar a Associação Internacional de Cidades Educadoras. O maior ponto da cidade é o Serrote João Conceição, no Catolé.",
+  "fonte": "Wikipédia (Horizonte, Ceará), com base no Censo 2022 e no IBGE; IPECE (dados de emprego de 2009); Mapa Mental da História de Horizonte. Algumas medidas do texto da Wikipédia se contradizem (altitude, área), por isso não foram usadas."
+ },
+ "perfil_ipece": {
+  "titulo": "Horizonte no perfil do IPECE",
+  "texto": "Horizonte foi criado em 1987, pela Lei nº 11.300, a partir de Pacajus. Tem quatro distritos: Horizonte, Aningas, Dourados e Queimadas. Fica a 39 km de Fortaleza, a 68 metros de altitude. Sua população passou de 18.283 habitantes em 1991 para 33.790 em 2000 e 55.187 em 2010, quando 92,5% vivia na cidade. Em 2009, o PIB foi de cerca de R$ 1,07 bilhão, com a indústria respondendo por mais da metade. A cidade tinha 19.744 empregos formais em 2011, a maioria na indústria de transformação.",
+  "fonte": "IPECE, Perfil Básico Municipal 2012 (dados de 1991, 2000, 2010 e 2011, segundo o IBGE, o TCM e o CAGED)."
+ },
+ "avancos_2024": {
+  "titulo": "Os avanços de Horizonte em 2024",
+  "texto": "Segundo a própria Prefeitura, em 2024 a cidade comemorou 37 anos com novidades: a chegada de uma fábrica do Grupo J. Macêdo, com mais de 250 empregos previstos; a inauguração do Centro Integrado de Segurança Pública (março de 2024) e de um Centro de Imagens; cinco novos Centros de Educação Infantil; e mais de 400 ruas e avenidas pavimentadas. Pelo IBGE, a população cresceu 35,46% entre 2010 e 2022.",
+  "fonte": "Notícia publicitária (publieditorial) da Prefeitura de Horizonte no jornal O Povo, março de 2024. Os números são da própria Prefeitura, sem avaliação independente."
  }
 }

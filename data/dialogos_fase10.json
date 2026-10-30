@@ -1,0 +1,323 @@
+{
+ "abertura": {
+  "nome": "Livro do Tempo",
+  "inicio": "a1",
+  "nos": {
+   "a1": {
+    "quem": "Livro do Tempo",
+    "fala": "Um clarão azul: {nome} chega ao tempo das lideranças. Aqui, a cidade foi construída por gente que lutou por ela.",
+    "proximo": "a2"
+   },
+   "a2": {
+    "quem": "{nome}",
+    "fala": "Quem foram essas pessoas?",
+    "proximo": "a3"
+   },
+   "a3": {
+    "quem": "Livro do Tempo",
+    "fala": "Converse com a guardiã da memória, responda ao quiz das lideranças e conheça quem fez a política de Horizonte.",
+    "proximo": null
+   }
+  }
+ },
+ "guardia_memoria": {
+  "nome": "Guardiã da memória",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "falou_guardia",
+    "no": "repete"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Eu guardo as histórias das lutas daqui. Em 1963 a cidade tentou se emancipar pela primeira vez, com Horácio Domingos de Sousa e Manoel Feliciano de Sousa à frente.",
+    "proximo": "i2"
+   },
+   "i2": {
+    "fala": "Quer saber mais?",
+    "opcoes": [
+     {
+      "texto": "O que foi a Sahori?",
+      "proximo": "p1"
+     },
+     {
+      "texto": "Quem foi Francisco César de Sousa?",
+      "proximo": "p2"
+     },
+     {
+      "texto": "Obrigado, guardiã",
+      "flag": "falou_guardia",
+      "recompensa": {
+       "pagina": "liderancas"
+      },
+      "proximo": "fim"
+     }
+    ]
+   },
+   "p1": {
+    "fala": "A Sahori foi a Sociedade dos Amigos de Horizonte. Nos anos 1980 ela organizou o plebiscito que deu 2.273 votos a favor da emancipação.",
+    "proximo": "i2"
+   },
+   "p2": {
+    "fala": "Chico César foi o primeiro prefeito de Horizonte, empossado em 1989. Ele estava entre as lideranças da luta.",
+    "recompensa": {
+     "pagina": "prefeitos_horizonte"
+    },
+    "proximo": "i2"
+   },
+   "fim": {
+    "fala": "Cada liderança deixou um pedaço da cidade, {nome}. Guarde esses nomes.",
+    "proximo": null
+   },
+   "repete": {
+    "fala": "Já conversamos sobre as lideranças. Obrigada por ouvir.",
+    "proximo": null
+   }
+  }
+ },
+ "quiz_liderancas": {
+  "nome": "Professor do quiz",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "quiz_lideres_ok",
+    "no": "ja"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Três perguntas sobre as lideranças de Horizonte. Errou, eu repito com uma dica.",
+    "proximo": "q1"
+   },
+   "q1": {
+    "fala": "Quem liderou o movimento de emancipação de 1963?",
+    "opcoes": [
+     {
+      "texto": "Horácio Domingos de Sousa",
+      "proximo": "q2"
+     },
+     {
+      "texto": "Gonzaga Mota",
+      "proximo": "e1"
+     },
+     {
+      "texto": "Venâncio Raimundo de Sousa",
+      "proximo": "e1"
+     }
+    ]
+   },
+   "e1": {
+    "fala": "Não é esse nome. Pense nos dois nomes que lideraram o movimento de 1963.",
+    "proximo": "q1"
+   },
+   "q2": {
+    "fala": "Qual associação organizou a luta pela emancipação nos anos 1980?",
+    "opcoes": [
+     {
+      "texto": "Sahori",
+      "proximo": "q3"
+     },
+     {
+      "texto": "Midema",
+      "proximo": "e2"
+     },
+     {
+      "texto": "Amho",
+      "proximo": "e2"
+     }
+    ]
+   },
+   "e2": {
+    "fala": "Quase! O nome começa com S: Sociedade dos Amigos de Horizonte.",
+    "proximo": "q2"
+   },
+   "q3": {
+    "fala": "Quantos votos a favor da emancipação o plebiscito recebeu?",
+    "opcoes": [
+     {
+      "texto": "2.273",
+      "flag": "quiz_lideres_ok",
+      "proximo": "fim"
+     },
+     {
+      "texto": "182",
+      "proximo": "e3"
+     },
+     {
+      "texto": "22.730",
+      "proximo": "e3"
+     }
+    ]
+   },
+   "e3": {
+    "fala": "Não é esse número. Os votos a favor foram mais de dois mil.",
+    "proximo": "q3"
+   },
+   "fim": {
+    "fala": "Você acertou! Agora conhece algumas lideranças de Horizonte.",
+    "recompensa": {
+     "sementes": 10
+    },
+    "proximo": null
+   },
+   "ja": {
+    "fala": "Você já fez o quiz. Obrigado!",
+    "proximo": null
+   }
+  }
+ },
+ "quiz_perfil": {
+  "nome": "Professora Ana (perfil)",
+  "inicio": "inicio",
+  "condicoes": [
+   {
+    "flag": "quiz_perfil_ok",
+    "no": "ja"
+   }
+  ],
+  "nos": {
+   "inicio": {
+    "fala": "Vamos ao perfil básico de Horizonte, do IPECE. Cinco perguntas. Errou, eu repito com uma dica.",
+    "proximo": "pf0"
+   },
+   "pf0": {
+    "fala": "Qual é a altitude de Horizonte, segundo o IPECE?",
+    "opcoes": [
+     {
+      "texto": "22 metros",
+      "proximo": "pfe0"
+     },
+     {
+      "texto": "41 metros",
+      "proximo": "pfe0"
+     },
+     {
+      "texto": "68 metros",
+      "proximo": "pf1"
+     },
+     {
+      "texto": "28 metros",
+      "proximo": "pfe0"
+     }
+    ]
+   },
+   "pfe0": {
+    "fala": "Pense no número que aparece no perfil básico do município.",
+    "proximo": "pf0"
+   },
+   "pf1": {
+    "fala": "Em qual bacia hidrográfica Horizonte está?",
+    "opcoes": [
+     {
+      "texto": "Baixo Jaguaribe",
+      "proximo": "pfe1"
+     },
+     {
+      "texto": "Salgado",
+      "proximo": "pfe1"
+     },
+     {
+      "texto": "Metropolitana",
+      "proximo": "pf2"
+     },
+     {
+      "texto": "Banabuiú",
+      "proximo": "pfe1"
+     }
+    ]
+   },
+   "pfe1": {
+    "fala": "O nome da bacia lembra a região onde a cidade fica.",
+    "proximo": "pf1"
+   },
+   "pf2": {
+    "fala": "A que distância, em linha reta, Horizonte fica de Fortaleza?",
+    "opcoes": [
+     {
+      "texto": "22 km",
+      "proximo": "pfe2"
+     },
+     {
+      "texto": "39 km",
+      "proximo": "pf3"
+     },
+     {
+      "texto": "68 km",
+      "proximo": "pfe2"
+     },
+     {
+      "texto": "41 km",
+      "proximo": "pfe2"
+     }
+    ]
+   },
+   "pfe2": {
+    "fala": "O perfil dá a distância à capital em quilômetros.",
+    "proximo": "pf2"
+   },
+   "pf3": {
+    "fala": "Em qual microrregião Horizonte está?",
+    "opcoes": [
+     {
+      "texto": "Iguatu",
+      "proximo": "pfe3"
+     },
+     {
+      "texto": "Pacajus",
+      "proximo": "pf4"
+     },
+     {
+      "texto": "Cariri",
+      "proximo": "pfe3"
+     },
+     {
+      "texto": "Caucaia",
+      "proximo": "pfe3"
+     }
+    ]
+   },
+   "pfe3": {
+    "fala": "A microrregião leva o nome de um município vizinho.",
+    "proximo": "pf3"
+   },
+   "pf4": {
+    "fala": "Qual é o clima de Horizonte?",
+    "opcoes": [
+     {
+      "texto": "Equatorial",
+      "proximo": "pfe4"
+     },
+     {
+      "texto": "Tropical quente semi-árido brando",
+      "proximo": "fim",
+      "flag": "quiz_perfil_ok"
+     },
+     {
+      "texto": "Tropical continental",
+      "proximo": "pfe4"
+     },
+     {
+      "texto": "Tropical semi-árido",
+      "proximo": "pfe4"
+     }
+    ]
+   },
+   "pfe4": {
+    "fala": "O clima é tropical quente, com um toque de semi-árido.",
+    "proximo": "pf4"
+   },
+   "fim": {
+    "fala": "Você conhece o perfil de Horizonte! Muito bem.",
+    "recompensa": {
+     "sementes": 10
+    },
+    "proximo": null
+   },
+   "ja": {
+    "fala": "Você já fez o quiz do perfil. Obrigada!",
+    "proximo": null
+   }
+  }
+ }
+}
