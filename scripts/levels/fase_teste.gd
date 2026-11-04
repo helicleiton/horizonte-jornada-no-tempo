@@ -16,6 +16,8 @@ const CHAO_Y := 160.0
 @export var dialogo_abertura := "abertura"
 @export_file("*.json") var arquivo_dialogos := "res://data/dialogos_fase1.json"
 
+var _sol: TextureRect
+
 @onready var _jogador: Player = $Jogador
 @onready var _ponto_inicio: Marker2D = $PontoInicio
 
@@ -29,7 +31,9 @@ func _ready() -> void:
 	var luz := LuzDoDia.new()
 	luz.tom = _tom_luz()
 	add_child(luz)
+	_montar_particulas()
 	_montar_fundo()
+	luz.sol = _sol
 	_decorar_terreno()
 	_colocar_cenario()
 	_iniciar_audio()
@@ -91,8 +95,9 @@ func _montar_fundo() -> void:
 		fundo.add_child(faixa)
 	var sol := TextureRect.new()
 	sol.texture = _tex("sol")
-	sol.position = Vector2(232, 22)
+	sol.position = Vector2(200, 8)
 	fundo.add_child(sol)
+	_sol = sol
 
 	_camada_parallax("serras_longe", 0.25, 88.0, -30)
 	_camada_parallax("serras_perto", 0.5, 110.0, -25)
@@ -245,6 +250,29 @@ func _zurrar_de_vez_em_quando(posicao: Vector2) -> void:
 			zurro.play()
 		timer.start(randf_range(14.0, 26.0)))
 	timer.start(randf_range(6.0, 12.0))
+
+
+## Partículas de poeira no ar, em tela cheia, que flutuam com o vento e acompanham a luz da fase.
+func _montar_particulas() -> void:
+	var ar := CanvasLayer.new()
+	ar.layer = 3
+	add_child(ar)
+	var poeira := CPUParticles2D.new()
+	poeira.position = Vector2(160, 90)
+	poeira.amount = 28
+	poeira.lifetime = 7.0
+	poeira.preprocess = 7.0
+	poeira.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	poeira.emission_rect_extents = Vector2(170, 100)
+	poeira.direction = Vector2(1, -0.15)
+	poeira.spread = 20.0
+	poeira.initial_velocity_min = 2.0
+	poeira.initial_velocity_max = 6.0
+	poeira.gravity = Vector2.ZERO
+	poeira.scale_amount_min = 1.0
+	poeira.scale_amount_max = 2.0
+	poeira.color = Color(1.0, 0.96, 0.85, 0.35)
+	ar.add_child(poeira)
 
 
 ## Tom de luz da fase; cada fase pode sobrescrever para ter sua própria atmosfera.

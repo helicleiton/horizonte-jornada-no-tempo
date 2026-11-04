@@ -7,6 +7,8 @@ extends CanvasLayer
 @export var duracao := 150.0
 ## Cor e força do tom de luz da fase (o alfa diminui até o meio-dia).
 var tom := Color(1.0, 0.7, 0.45, 0.2)
+## Desenho do sol no céu da fase, que a luz move ao longo do dia (opcional).
+var sol: Control = null
 
 var _tempo := 0.0
 var _brilho: TextureRect
@@ -50,6 +52,10 @@ func _process(delta: float) -> void:
 	_tempo += delta
 	_brilho.modulate.a = 0.75 + sin(_tempo * 1.2) * 0.15
 	var t := clampf(_tempo / duracao, 0.0, 1.0)
+	# O sol nasce à direita, baixo, e sobe até o meio-dia; o halo acompanha o sol.
+	if sol:
+		sol.position = Vector2(lerpf(252.0, 200.0, t), lerpf(60.0, 8.0, sin(t * PI * 0.5)))
+		_brilho.position = sol.position + sol.size / 2.0 - Vector2(48, 48)
 	_tinta.color = Color(tom.r, tom.g, tom.b, tom.a * (1.0 - t))
 	for i in _nevoa.size():
 		var pico := 1.0 - absf((i - 4.5) / 5.0)
