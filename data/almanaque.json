@@ -136,8 +136,8 @@
  },
  "prefeitos_horizonte": {
   "titulo": "Os prefeitos de Horizonte",
-  "texto": "O primeiro prefeito de Horizonte foi Francisco César de Sousa, empossado em 1º de janeiro de 1989. Nezinho Farias (Manoel Gomes de Farias Neto) foi prefeito em vários mandatos, incluindo os de 2008 e 2012, foi eleito em 2020 e reeleito em 2024. A lista completa, com todos os períodos e partidos, deve ser confirmada no TSE e no site oficial da Prefeitura.",
-  "fonte": "Mapa Mental da História de Horizonte (primeiro prefeito); site oficial da Prefeitura de Horizonte (mandatos de Nezinho Farias); O Povo (eleição de 2024). Os períodos exatos de cada mandato ainda precisam de conferência."
+  "texto": "O primeiro prefeito de Horizonte foi Francisco César de Sousa, empossado em 1º de janeiro de 1989. Nezinho Farias (Manoel Gomes de Farias Neto) foi prefeito em vários mandatos, incluindo os de 2008 e 2012, foi eleito em 2020 e reeleito em 2024. José Rocha Neto também foi prefeito de Horizonte; registros de campanha de 2004 e 2008 o indicam como candidato ao cargo, mas os anos do mandato ainda precisam ser confirmados. A lista completa, com todos os períodos e partidos, deve ser confirmada no TSE e no site oficial da Prefeitura.",
+  "fonte": "Mapa Mental da História de Horizonte (primeiro prefeito); site oficial da Prefeitura de Horizonte (mandatos de Nezinho Farias); O Povo (eleição de 2024). Os períodos exatos de cada mandato ainda precisam de conferência. José Rocha Neto como prefeito: informação do desenvolvedor do jogo, a confirmar; registros de campanha de 2004 e 2008 no Econodata (econodata.com.br)."
  },
  "mapa_localidades": {
   "titulo": "O mapa de Horizonte",
@@ -163,5 +163,25 @@
   "titulo": "Os avanços de Horizonte em 2024",
   "texto": "Segundo a própria Prefeitura, em 2024 a cidade comemorou 37 anos com novidades: a chegada de uma fábrica do Grupo J. Macêdo, com mais de 250 empregos previstos; a inauguração do Centro Integrado de Segurança Pública (março de 2024) e de um Centro de Imagens; cinco novos Centros de Educação Infantil; e mais de 400 ruas e avenidas pavimentadas. Pelo IBGE, a população cresceu 35,46% entre 2010 e 2022.",
   "fonte": "Notícia publicitária (publieditorial) da Prefeitura de Horizonte no jornal O Povo, março de 2024. Os números são da própria Prefeitura, sem avaliação independente."
+ },
+ "vila_1933": {
+   "titulo": "De povoado a vila (1933)",
+   "texto": "Em 4 de dezembro de 1933, o povoado de Olho d'Água foi elevado à condição de vila, no município de Aquiraz. Em 1935, pelo decreto estadual nº 1.591, de 23 de maio, o distrito passou ao município de Guaraní, hoje Pacajus. Em 20 de dezembro de 1938, o decreto estadual nº 448 deu ao lugar o nome de Horizonte.",
+   "fonte": "Site Mapa Cultural de Horizonte (mapaculturaldehorizonte.wordpress.com), seção Início. Datas a confirmar no Diário Oficial do Ceará."
+ },
+ "lei_1963_e_extincao_1965": {
+   "titulo": "Criado, extinto e recriado",
+   "texto": "Em 21 de novembro de 1963, a Lei estadual nº 6.793 elevou o distrito à categoria de município, com o nome de Horizonte. Em 14 de dezembro de 1965, a Lei estadual nº 8.339 extinguiu o município, e o território voltou a Pacajus: o município foi criado, mas não chegou a ser instalado. Ele só voltou a existir com a Lei nº 11.300, de 1987.",
+   "fonte": "Site Mapa Cultural de Horizonte (mapaculturaldehorizonte.wordpress.com), seção Início. Números das leis a confirmar no Diário Oficial do Ceará."
+ },
+ "espacos_culturais": {
+   "titulo": "Onde a cultura acontece",
+   "texto": "O mapeamento cultural de Horizonte aponta quatro espaços culturais: o Centro Cultural de Horizonte, o Centro Cultural Nego Cazuza, o Centro de Esportes e Artes Unificados e a Biblioteca Pública Waldemar Gonçalves de Sousa. A Igreja de São José e a Praça Manoel Rosio Carneiro também aparecem no patrimônio mapeado.",
+   "fonte": "Site Mapa Cultural de Horizonte (mapaculturaldehorizonte.wordpress.com), seções Espaços Culturais, Igrejas e Praças e Logradouros."
+ },
+ "saude_e_educacao": {
+   "titulo": "Saúde e educação em números",
+   "texto": "Segundo o mapeamento cultural, a cidade tem 17 Unidades Básicas de Saúde, 1 hospital, 1 Unidade de Pronto Atendimento, 2 Centros de Atenção Psicossocial e 1 SAMU. Na educação, são 15 Centros de Educação Infantil, 27 escolas de ensino fundamental, 2 de ensino médio e 1 escola profissionalizante.",
+   "fonte": "Site Mapa Cultural de Horizonte (mapaculturaldehorizonte.wordpress.com), seção Aspectos Demográficos e Sociais. O site não informa o ano desses dados."
  }
 }
