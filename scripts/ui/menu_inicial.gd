@@ -276,6 +276,10 @@ CONTEÚDO HISTÓRICO E FONTES:
 • Prefeitura Municipal de Horizonte e IBGE Cidades.
 • Dissertação de Mestrado (UFC, 2012) - Marlene P. dos Santos (Comunidade Alto-Alegre).
 • Projeto Bordando Memórias (Clic Horizonte) e Mapa Mental da História de Horizonte.
+• Mapa Cultural de Horizonte (mapaculturaldehorizonte.wordpress.com).
+• Jornais O Povo e Diário do Nordeste (reportagens citadas no almanaque).
+• Fotos: Wikimedia Commons, com autores e licenças em assets/fotos/creditos.json.
+• Fotos de prefeitos cedidas para o jogo, com uso autorizado.
 
 DESENVOLVIMENTO:
 • Desenvolvido por @helicleiton.

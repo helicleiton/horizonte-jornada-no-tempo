@@ -70,10 +70,16 @@ func mostrar(titulo: String, texto: String) -> void:
 		filho.queue_free()
 	if proxima_cena != "":
 		_botao("IR PARA A PRÓXIMA FASE", func() -> void: _trocar_cena(proxima_cena))
+	if QuizAlmanaque.disponiveis() > 0:
+		_botao("QUIZ DO ALMANAQUE", _abrir_quiz)
 	_botao("CONTINUAR EXPLORANDO", _continuar)
 	_botao("MENU PRINCIPAL", func() -> void: _trocar_cena(MENU))
 	visible = true
 	get_tree().paused = true
+
+
+func _abrir_quiz() -> void:
+	get_tree().root.add_child(QuizAlmanaque.new())
 
 
 func _continuar() -> void:

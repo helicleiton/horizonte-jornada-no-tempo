@@ -1,0 +1,94 @@
+{
+ "perguntas": [
+  {
+   "pagina": "vila_1933",
+   "pergunta": "Em que ano o povoado de Olho d'Água foi elevado a vila?",
+   "opcoes": [
+    "1933",
+    "1938",
+    "1963"
+   ],
+   "correta": 0
+  },
+  {
+   "pagina": "nome_horizonte",
+   "pergunta": "Em que ano o lugar passou a se chamar Horizonte?",
+   "opcoes": [
+    "1938",
+    "1933",
+    "1987"
+   ],
+   "correta": 0
+  },
+  {
+   "pagina": "lei_1963_e_extincao_1965",
+   "pergunta": "Em que ano a Lei estadual nº 8.339 extinguiu o município?",
+   "opcoes": [
+    "1963",
+    "1965",
+    "1987"
+   ],
+   "correta": 1
+  },
+  {
+   "pagina": "emancipacao",
+   "pergunta": "Qual lei criou o município de Horizonte em 1987?",
+   "opcoes": [
+    "Lei nº 11.300",
+    "Lei nº 032",
+    "Lei nº 8.339"
+   ],
+   "correta": 0
+  },
+  {
+   "pagina": "distrito_industrial",
+   "pergunta": "Em que ano foi criada a Companhia de Desenvolvimento Industrial de Horizonte?",
+   "opcoes": [
+    "1990",
+    "1987",
+    "1996"
+   ],
+   "correta": 0
+  },
+  {
+   "pagina": "troller_polo",
+   "pergunta": "Em que ano a fábrica da Troller foi reaberta com investimento da Ford?",
+   "opcoes": [
+    "1995",
+    "2014",
+    "2021"
+   ],
+   "correta": 1
+  },
+  {
+   "pagina": "vulcabras",
+   "pergunta": "Desde que ano a fábrica da Vulcabras em Horizonte está em operação?",
+   "opcoes": [
+    "1952",
+    "1996",
+    "2026"
+   ],
+   "correta": 1
+  },
+  {
+   "pagina": "espacos_culturais",
+   "pergunta": "Qual destes é um espaço cultural mapeado em Horizonte?",
+   "opcoes": [
+    "Biblioteca Pública Waldemar Gonçalves de Sousa",
+    "Aeroporto Internacional",
+    "Estação ferroviária"
+   ],
+   "correta": 0
+  },
+  {
+   "pagina": "saude_e_educacao",
+   "pergunta": "Quantas Unidades Básicas de Saúde há em Horizonte, segundo o mapeamento cultural?",
+   "opcoes": [
+    "17",
+    "7",
+    "27"
+   ],
+   "correta": 0
+  }
+ ]
+}

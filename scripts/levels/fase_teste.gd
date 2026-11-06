@@ -17,6 +17,8 @@ const CHAO_Y := 160.0
 @export_file("*.json") var arquivo_dialogos := "res://data/dialogos_fase1.json"
 
 var _sol: TextureRect
+## Fases de fim de tarde: o sol desce e as sombras dos objetos ficam compridas.
+var fim_de_tarde := false
 
 @onready var _jogador: Player = $Jogador
 @onready var _ponto_inicio: Marker2D = $PontoInicio
@@ -30,6 +32,7 @@ func _ready() -> void:
 	GameState.jogador_morreu.connect(_on_jogador_morreu)
 	var luz := LuzDoDia.new()
 	luz.tom = _tom_luz()
+	luz.entardecer = fim_de_tarde
 	add_child(luz)
 	_montar_particulas()
 	_montar_fundo()
@@ -173,7 +176,13 @@ func _prop(nome: String, x: float, base_y := CHAO_Y, z := -5, espelhar := false)
 	var largura := textura.get_width() * 0.7
 	sombra.color = Color(0, 0, 0, 0.22)
 	sombra.position = Vector2(x - largura / 2.0, base_y - 2.0)
-	sombra.size = Vector2(largura, 3.0)
+	if fim_de_tarde:
+		# Sol baixo: a sombra se estende para a direita do objeto.
+		sombra.position.x += largura * 0.2
+		sombra.size = Vector2(largura * 2.4, 3.0)
+		sombra.color.a = 0.16
+	else:
+		sombra.size = Vector2(largura, 3.0)
 	sombra.z_index = z - 1
 	add_child(sombra)
 

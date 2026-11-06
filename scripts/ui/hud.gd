@@ -120,7 +120,11 @@ func _alternar_almanaque() -> void:
 
 
 func _preencher_almanaque() -> void:
-	var texto := "[center][b]ALMANAQUE DE HORIZONTE[/b][/center]\n\n"
+	var encontradas := 0
+	for id: String in _paginas:
+		if id in GameState.paginas:
+			encontradas += 1
+	var texto := "[center][b]ALMANAQUE DE HORIZONTE[/b][/center]\n[center]Páginas encontradas: %d de %d[/center]\n\n" % [encontradas, _paginas.size()]
 	for id: String in _paginas:
 		var pagina: Dictionary = _paginas[id]
 		if id in GameState.paginas:

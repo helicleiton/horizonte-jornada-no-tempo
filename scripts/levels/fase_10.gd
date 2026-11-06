@@ -4,6 +4,7 @@ extends "res://scripts/levels/fase_teste.gd"
 
 
 func _ready() -> void:
+	fim_de_tarde = true
 	GameState.restaurar_cajus()
 	super._ready()
 
