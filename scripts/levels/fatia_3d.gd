@@ -24,6 +24,11 @@ func _ready() -> void:
 	DialogueBox.iniciar.call_deferred(DIALOGOS, "abertura", _jogador)
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://scenes/ui/menu_inicial.tscn")
+
+
 func _physics_process(delta: float) -> void:
 	_tempo += delta
 	var direcao := Input.get_axis("mover_esquerda", "mover_direita")

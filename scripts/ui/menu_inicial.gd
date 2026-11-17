@@ -68,6 +68,7 @@ func _ready() -> void:
 	_espaco(vbox, 6)
 	_botao(vbox, "JOGAR (FASE 1)", _on_jogar_pressed)
 	_botao(vbox, "ESCOLHER FASE", _mostrar_fases)
+	_botao(vbox, "VERSÃO 3D (TESTE)", func() -> void: get_tree().change_scene_to_file("res://scenes/fatia_3d/fatia_3d.tscn"))
 	_botao(vbox, "CRÉDITO & FONTES", _on_creditos_pressed)
 	var linha_opcoes := HBoxContainer.new()
 	vbox.add_child(linha_opcoes)
